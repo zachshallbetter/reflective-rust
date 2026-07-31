@@ -1,0 +1,12 @@
+[package]
+name = "reflective-rust-meta"
+version = "0.1.0"
+edition = "2024"
+authors = ["Reflective Rust Research Team"]
+description = "Reference prototype crate for core::meta::Info and static semantic reflection queries in Rust."
+license = "MIT OR Apache-2.0"
+
+[dependencies]
+# Zero external runtime dependencies for core substrate
+
+[dev-dependencies]
