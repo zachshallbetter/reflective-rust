@@ -1,12 +1,12 @@
 [package]
 name = "reflective-rust-conformance"
-version = "0.2.0"
+version = "1.0.0"
 edition = "2024"
 authors = ["Reflective Rust Research Team"]
 description = "Cross-backend compiler conformance vector validation suite for Reflective Rust."
 license = "MIT OR Apache-2.0"
 
 [dependencies]
-reflective-rust-csg = { path = "../reflective-rust-csg", version = "0.2.0" }
+reflective-rust-csg = { path = "../reflective-rust-csg", version = "1.0.0" }
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"

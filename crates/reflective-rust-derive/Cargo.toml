@@ -1,6 +1,6 @@
 [package]
 name = "reflective-rust-derive"
-version = "0.2.0"
+version = "1.0.0"
 edition = "2024"
 authors = ["Reflective Rust Research Team"]
 description = "Procedural macro prototype for #[derive(Reflectable)] generating opt-in zero-cost runtime descriptors."
@@ -15,4 +15,4 @@ quote = "1.0"
 proc-macro2 = "1.0"
 
 [dev-dependencies]
-reflective-rust-meta = { path = "../reflective-rust-meta", version = "0.2.0" }
+reflective-rust-meta = { path = "../reflective-rust-meta", version = "1.0.0" }
