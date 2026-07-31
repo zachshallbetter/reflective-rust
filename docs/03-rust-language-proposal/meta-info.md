@@ -98,12 +98,33 @@ pub const fn associated_items_of(entity: Info)
 Rust needs separate operations for declaration identity, type equality, and alias normalization.
 
 ```rust
-pub const fn same_entity(a: Info, b: Info) -> bool;
-pub const fn same_type(a: Info, b: Info) -> Query<bool>;
-pub const fn dealias(ty: Info) -> Query<Info>;
+### 7.5 Default Trait Method Bounds (`Sized` Requirement)
+
+Static reflection traits providing default helper implementations (such as `csg_node()`) MUST explicitly bound `where Self: Sized` when evaluating memory properties:
+
+```rust
+pub trait MetaInfo {
+    fn type_name() -> &'static str;
+    fn domain_category() -> &'static str;
+    fn db_table() -> Option<&'static str>;
+    fn field_meta() -> Vec<FieldMeta>;
+
+    /// Generates compiler semantic graph node with exact byte size.
+    fn csg_node() -> CSGNode where Self: Sized {
+        let fields = Self::field_meta();
+        CSGNode {
+            type_name: Self::type_name(),
+            domain_category: Self::domain_category(),
+            byte_size: std::mem::size_of::<Self>(),
+            field_count: fields.len(),
+            fields,
+            db_table: Self::db_table(),
+        }
+    }
+}
 ```
 
-An `Info` for `Vec<T>` is not an `Info` for `Vec<u32>`. A generic declaration is not a concrete codegen instance. A type alias may have declaration identity distinct from its normalized target.
+Without `where Self: Sized`, compiler static size evaluation (`std::mem::size_of::<Self>()`) yields `E0277: the size for values of type Self cannot be known at compilation time`.
 ---
 
 ## Navigation

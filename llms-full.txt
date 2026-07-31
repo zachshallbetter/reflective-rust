@@ -2,6 +2,7 @@
 REFLECTIVE RUST: CONSOLIDATED RESEARCH CORPUS
 Formal Architecture: Rust Reflective Systems Architecture (RRSA)
 Core Substrate: Compiler Semantic Graph (CSG)
+Version: v1.0.0
 ========================================================================
 
 ---
@@ -1066,12 +1067,33 @@ pub const fn associated_items_of(entity: Info)
 Rust needs separate operations for declaration identity, type equality, and alias normalization.
 
 ```rust
-pub const fn same_entity(a: Info, b: Info) -> bool;
-pub const fn same_type(a: Info, b: Info) -> Query<bool>;
-pub const fn dealias(ty: Info) -> Query<Info>;
+### 7.5 Default Trait Method Bounds (`Sized` Requirement)
+
+Static reflection traits providing default helper implementations (such as `csg_node()`) MUST explicitly bound `where Self: Sized` when evaluating memory properties:
+
+```rust
+pub trait MetaInfo {
+    fn type_name() -> &'static str;
+    fn domain_category() -> &'static str;
+    fn db_table() -> Option<&'static str>;
+    fn field_meta() -> Vec<FieldMeta>;
+
+    /// Generates compiler semantic graph node with exact byte size.
+    fn csg_node() -> CSGNode where Self: Sized {
+        let fields = Self::field_meta();
+        CSGNode {
+            type_name: Self::type_name(),
+            domain_category: Self::domain_category(),
+            byte_size: std::mem::size_of::<Self>(),
+            field_count: fields.len(),
+            fields,
+            db_table: Self::db_table(),
+        }
+    }
+}
 ```
 
-An `Info` for `Vec<T>` is not an `Info` for `Vec<u32>`. A generic declaration is not a concrete codegen instance. A type alias may have declaration identity distinct from its normalized target.
+Without `where Self: Sized`, compiler static size evaluation (`std::mem::size_of::<Self>()`) yields `E0277: the size for values of type Self cannot be known at compilation time`.
 ---
 
 ## Navigation
@@ -3211,6 +3233,25 @@ pub struct MetaobjectContract {
 - **`side_effect_free`**: Pure function of input `Info` handles and static consteval parameters.
 - **`testable`**: Generated code must pass ordinary compiler safety, privacy, and borrow checks.
 - **`inspectable`**: Macro expansion outputs inspectable via `cargo expand` and CSG nodes.
+
+---
+
+## 3. Declarative `#[meta(...)]` MOP Privacy & Access Control
+
+Metaobject Protocols support declarative field visibility annotations to isolate access control policy from application handlers:
+
+```rust
+#[derive(MetaInfo)]
+pub struct UserProfile {
+    pub id: String,
+    pub handle: String,
+    
+    #[meta(permit = "sovereign_member")]
+    pub reputation_score: u64,
+}
+```
+
+The MOP reification engine automatically emits field sanitization hooks based on caller role metadata (`Public`, `SovereignMember`, `Creator`, `Admin`), preventing field leaks across REST, WASM, and GraphQL boundaries.
 ---
 
 ## Navigation
@@ -4354,7 +4395,9 @@ Rejected or deferred directions include:
 - privileged generated impls that bypass coherence;
 - dynamic invocation based on unchecked `Any` casts or raw pointers;
 - arbitrary native stack mutation presented as safe procedural reflection;
-- one universal "post-semantic-analysis" reflection phase.
+- one universal "post-semantic-analysis" reflection phase;
+- static memory size reflection trait default methods missing explicit `where Self: Sized` bounds (causes compile failure `E0277`);
+- parsing stringified JSON reflection graphs inside high-frequency 60 FPS WebGL render loops (requires zero-copy binary array projections).
 ---
 
 ## Navigation

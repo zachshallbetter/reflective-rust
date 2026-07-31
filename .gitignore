@@ -14,3 +14,6 @@ build/
 .env.local
 *.log
 scratch/tmp/
+llms*
+
+llms-full.txt

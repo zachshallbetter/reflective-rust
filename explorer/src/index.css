@@ -1,0 +1,182 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-neo-edo: #040711;
+    --neon-crimson: #ff2a5f;
+    --neon-cyan: #00ffb3;
+    --neon-amber: #ffb703;
+    --neon-purple: #c084fc;
+    --neon-green: #10b981;
+    --hud-border: rgba(0, 255, 179, 0.25);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--bg-neo-edo);
+    color: #f8fafc;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    overflow-x: hidden;
+    margin: 0;
+  }
+
+  code, pre {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+/* CRT Scanline Overlay */
+.crt-overlay {
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.35) 50%
+  ), linear-gradient(
+    90deg,
+    rgba(255, 42, 95, 0.03),
+    rgba(0, 255, 179, 0.01),
+    rgba(192, 132, 252, 0.03)
+  );
+  background-size: 100% 3px, 6px 100%;
+  pointer-events: none;
+}
+
+/* Glass Panels */
+.glass-panel {
+  background: rgba(8, 12, 22, 0.85);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(0, 255, 179, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(0, 255, 179, 0.03);
+}
+
+.glass-panel-glow {
+  background: rgba(10, 15, 28, 0.9);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(0, 255, 179, 0.3);
+  box-shadow: 0 0 35px rgba(0, 255, 179, 0.12), inset 0 0 20px rgba(255, 42, 95, 0.05);
+}
+
+/* Neo Edo Cyber Glass Panels */
+.cyber-panel {
+  background: rgba(10, 13, 22, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 255, 179, 0.25);
+  box-shadow: 0 0 30px rgba(0, 255, 179, 0.08), inset 0 0 15px rgba(255, 42, 95, 0.05);
+  position: relative;
+}
+
+.cyber-panel-crimson {
+  background: rgba(20, 8, 16, 0.88);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 42, 95, 0.45);
+  box-shadow: 0 0 35px rgba(255, 42, 95, 0.18);
+  position: relative;
+}
+
+.cyber-panel-cyan {
+  background: rgba(6, 18, 24, 0.88);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 255, 179, 0.45);
+  box-shadow: 0 0 35px rgba(0, 255, 179, 0.18);
+  position: relative;
+}
+
+.cyber-panel-gold {
+  background: rgba(22, 16, 6, 0.88);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 183, 3, 0.45);
+  box-shadow: 0 0 35px rgba(255, 183, 3, 0.18);
+  position: relative;
+}
+
+/* Cyber Corner Bracket Markers */
+.cyber-corner {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-color: #00ffb3;
+  pointer-events: none;
+}
+.cyber-corner-tl { top: -1px; left: -1px; border-top: 2px solid #00ffb3; border-left: 2px solid #00ffb3; }
+.cyber-corner-tr { top: -1px; right: -1px; border-top: 2px solid #00ffb3; border-right: 2px solid #00ffb3; }
+.cyber-corner-bl { bottom: -1px; left: -1px; border-bottom: 2px solid #00ffb3; border-left: 2px solid #00ffb3; }
+.cyber-corner-br { bottom: -1px; right: -1px; border-bottom: 2px solid #00ffb3; border-right: 2px solid #00ffb3; }
+
+.cyber-corner-crimson-tl { top: -1px; left: -1px; border-top: 2px solid #ff2a5f; border-left: 2px solid #ff2a5f; }
+.cyber-corner-crimson-tr { top: -1px; right: -1px; border-top: 2px solid #ff2a5f; border-right: 2px solid #ff2a5f; }
+.cyber-corner-crimson-bl { bottom: -1px; left: -1px; border-bottom: 2px solid #ff2a5f; border-left: 2px solid #ff2a5f; }
+.cyber-corner-crimson-br { bottom: -1px; right: -1px; border-bottom: 2px solid #ff2a5f; border-right: 2px solid #ff2a5f; }
+
+.cyber-corner-gold-tl { top: -1px; left: -1px; border-top: 2px solid #ffb703; border-left: 2px solid #ffb703; }
+.cyber-corner-gold-tr { top: -1px; right: -1px; border-top: 2px solid #ffb703; border-right: 2px solid #ffb703; }
+.cyber-corner-gold-bl { bottom: -1px; left: -1px; border-bottom: 2px solid #ffb703; border-left: 2px solid #ffb703; }
+.cyber-corner-gold-br { bottom: -1px; right: -1px; border-bottom: 2px solid #ffb703; border-right: 2px solid #ffb703; }
+
+/* Glowing Neo Edo Text Gradients */
+.gradient-text-crimson {
+  background: linear-gradient(135deg, #ffffff 0%, #ff2a5f 45%, #e11d48 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-text-cyan {
+  background: linear-gradient(135deg, #ffffff 0%, #00ffb3 50%, #0284c7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-text-gold {
+  background: linear-gradient(135deg, #ffffff 0%, #ffb703 50%, #d97706 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-text-orange {
+  background: linear-gradient(135deg, #ffffff 0%, #f97316 50%, #dc2626 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Grid Matrix Background */
+.bg-neo-grid {
+  background-size: 50px 50px;
+  background-image: 
+    linear-gradient(to right, rgba(0, 255, 179, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 42, 95, 0.04) 1px, transparent 1px);
+}
+
+/* Vertical Kanji Watermark Styling */
+.writing-vertical {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+}
+
+/* Pulse Animations */
+@keyframes pulseSlow {
+  0%, 100% { opacity: 0.15; transform: scale(1); }
+  50% { opacity: 0.25; transform: scale(1.05); }
+}
+
+.animate-pulse-slow {
+  animation: pulseSlow 8s ease-in-out infinite;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #040711;
+}
+::-webkit-scrollbar-thumb {
+  background: #ff2a5f;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #00ffb3;
+}

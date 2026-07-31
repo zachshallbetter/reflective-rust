@@ -53,6 +53,25 @@ pub struct MetaobjectContract {
 - **`side_effect_free`**: Pure function of input `Info` handles and static consteval parameters.
 - **`testable`**: Generated code must pass ordinary compiler safety, privacy, and borrow checks.
 - **`inspectable`**: Macro expansion outputs inspectable via `cargo expand` and CSG nodes.
+
+---
+
+## 3. Declarative `#[meta(...)]` MOP Privacy & Access Control
+
+Metaobject Protocols support declarative field visibility annotations to isolate access control policy from application handlers:
+
+```rust
+#[derive(MetaInfo)]
+pub struct UserProfile {
+    pub id: String,
+    pub handle: String,
+    
+    #[meta(permit = "sovereign_member")]
+    pub reputation_score: u64,
+}
+```
+
+The MOP reification engine automatically emits field sanitization hooks based on caller role metadata (`Public`, `SovereignMember`, `Creator`, `Admin`), preventing field leaks across REST, WASM, and GraphQL boundaries.
 ---
 
 ## Navigation

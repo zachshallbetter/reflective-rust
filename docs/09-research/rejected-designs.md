@@ -20,7 +20,9 @@ Rejected or deferred directions include:
 - privileged generated impls that bypass coherence;
 - dynamic invocation based on unchecked `Any` casts or raw pointers;
 - arbitrary native stack mutation presented as safe procedural reflection;
-- one universal "post-semantic-analysis" reflection phase.
+- one universal "post-semantic-analysis" reflection phase;
+- static memory size reflection trait default methods missing explicit `where Self: Sized` bounds (causes compile failure `E0277`);
+- parsing stringified JSON reflection graphs inside high-frequency 60 FPS WebGL render loops (requires zero-copy binary array projections).
 ---
 
 ## Navigation

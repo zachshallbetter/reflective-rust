@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.0.1] - 2026-07-31
+
+### Added
+- **Static Reflection `Sized` Trait Invariant**: Documented `where Self: Sized` requirement on static size reflection default trait methods (`std::mem::size_of::<Self>()`) in `docs/03-rust-language-proposal/meta-info.md`.
+- **Declarative MOP Privacy Attributes**: Added Section 3 (`#[meta(permit = "role")]`) in `docs/05-metaobjects/contract-attributes-framework.md` isolating access control policies across REST, WASM, and GraphQL boundaries.
+- **Empirical Negative Results**: Recorded empirical negative findings in `docs/09-research/rejected-designs.md` regarding unbounded static trait size evaluation (`E0277`) and stringified JSON parsing inside 60 FPS WebGL render loops.
+
+---
+
 ## [1.0.0] - 2026-07-31 — Canonical v1.0 Release
 
 ### Added
