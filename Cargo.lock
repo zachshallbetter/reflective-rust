@@ -34,7 +34,7 @@ dependencies = [
 
 [[package]]
 name = "reflective-rust-agent"
-version = "0.2.0"
+version = "1.0.0"
 dependencies = [
  "reflective-rust-csg",
  "serde",
@@ -43,7 +43,7 @@ dependencies = [
 
 [[package]]
 name = "reflective-rust-bench"
-version = "0.2.0"
+version = "1.0.0"
 dependencies = [
  "reflective-rust-agent",
  "reflective-rust-csg",
@@ -54,7 +54,7 @@ dependencies = [
 
 [[package]]
 name = "reflective-rust-cli"
-version = "0.2.0"
+version = "1.0.0"
 dependencies = [
  "reflective-rust-agent",
  "reflective-rust-bench",
@@ -66,7 +66,7 @@ dependencies = [
 
 [[package]]
 name = "reflective-rust-conformance"
-version = "0.2.0"
+version = "1.0.0"
 dependencies = [
  "reflective-rust-csg",
  "serde",
@@ -75,7 +75,7 @@ dependencies = [
 
 [[package]]
 name = "reflective-rust-csg"
-version = "0.2.0"
+version = "1.0.0"
 dependencies = [
  "reflective-rust-meta",
  "serde",
@@ -84,7 +84,7 @@ dependencies = [
 
 [[package]]
 name = "reflective-rust-derive"
-version = "0.2.0"
+version = "1.0.0"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -94,11 +94,11 @@ dependencies = [
 
 [[package]]
 name = "reflective-rust-meta"
-version = "0.2.0"
+version = "1.0.0"
 
 [[package]]
 name = "reflective-rust-server"
-version = "0.2.0"
+version = "1.0.0"
 dependencies = [
  "reflective-rust-agent",
  "reflective-rust-csg",
