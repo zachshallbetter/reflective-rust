@@ -14,4 +14,4 @@ Julia and Smalltalk demonstrate dynamic metaobject-rich environments, live metho
 ---
 
 ## Navigation
-[← D, Zig, Nim](../02-comparative-analysis/d-zig-nim.md) | [Table of Contents](../SUMMARY.md) | [Comparison Matrix →](../02-comparative-analysis/comparison-matrix.md)
+[← D, Zig, Nim](../02-comparative-analysis/d-zig-nim.md) | [Table of Contents](../SUMMARY.md) | [CallMeMaybe →](../02-comparative-analysis/callmemaybe.md)

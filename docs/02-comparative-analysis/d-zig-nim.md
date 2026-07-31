@@ -14,4 +14,4 @@ D, Zig, and Nim show alternative compile-time models. D offers broad traits and 
 ---
 
 ## Navigation
-[← Java & C#](../02-comparative-analysis/java-csharp.md) | [Table of Contents](../SUMMARY.md) | [Julia & Smalltalk →](../02-comparative-analysis/julia-smalltalk.md)
+[← Clang Implementation](../02-comparative-analysis/clang-implementation.md) | [Table of Contents](../SUMMARY.md) | [Julia & Smalltalk →](../02-comparative-analysis/julia-smalltalk.md)

@@ -14,4 +14,4 @@ Rust currently has syntax-level macros, derives, compiler queries, const evaluat
 ---
 
 ## Navigation
-[← CallMeMaybe](../02-comparative-analysis/callmemaybe.md) | [Table of Contents](../SUMMARY.md) | [Java & C# →](../02-comparative-analysis/java-csharp.md)
+[← Java & C#](../02-comparative-analysis/java-csharp.md) | [Table of Contents](../SUMMARY.md) | [Clang Implementation →](../02-comparative-analysis/clang-implementation.md)

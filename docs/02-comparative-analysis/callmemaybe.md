@@ -14,4 +14,4 @@ CallMeMaybe demonstrates static-to-runtime projection: compile-time reflection t
 ---
 
 ## Navigation
-[← Clang Implementation](../02-comparative-analysis/clang-implementation.md) | [Table of Contents](../SUMMARY.md) | [Rust Current State →](../02-comparative-analysis/rust-current-state.md)
+[← Julia & Smalltalk](../02-comparative-analysis/julia-smalltalk.md) | [Table of Contents](../SUMMARY.md) | [Comparison Matrix →](../02-comparative-analysis/comparison-matrix.md)
