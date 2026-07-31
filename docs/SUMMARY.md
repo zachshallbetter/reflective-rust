@@ -97,6 +97,7 @@
   - [AI Panel Pressure Classification](09-research/ai-panel-pressure-classification.md)
   - [SSP Spatial Anchor Protocol](09-research/ssp-spatial-anchor-protocol.md)
   - [Semantic Graph Agent Context Slicing](09-research/semantic-graph-agent-slicing.md)
+  - [Performance Metrics & Empirical Proof](09-research/performance-and-empirical-proof.md)
 
 # Context & Appendices
 

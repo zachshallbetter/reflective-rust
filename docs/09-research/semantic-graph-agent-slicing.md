@@ -54,4 +54,4 @@ pub fn slice_around(
 ---
 
 ## Navigation
-[← SSP Spatial Anchor Protocol](../09-research/ssp-spatial-anchor-protocol.md) | [Table of Contents](../SUMMARY.md) | [01 History & Lineage →](../01-history/README.md)
+[← SSP Spatial Anchor Protocol](../09-research/ssp-spatial-anchor-protocol.md) | [Table of Contents](../SUMMARY.md) | [Performance Metrics & Empirical Proof →](../09-research/performance-and-empirical-proof.md)

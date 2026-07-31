@@ -14,4 +14,4 @@ Historical systems provide distinct lessons: Genera for live semantic environmen
 ---
 
 ## Navigation
-[← Semantic Graph Agent Context Slicing](../09-research/semantic-graph-agent-slicing.md) | [Table of Contents](../SUMMARY.md) | [3-Lisp →](../01-history/3-lisp.md)
+[← Performance Metrics & Empirical Proof](../09-research/performance-and-empirical-proof.md) | [Table of Contents](../SUMMARY.md) | [3-Lisp →](../01-history/3-lisp.md)
