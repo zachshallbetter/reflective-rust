@@ -33,4 +33,4 @@ summary: "Reflective Rust research specification for RFC Template under Scope I:
 ---
 
 ## Navigation
-[← FAQ](../08-reference/faq.md) | [Table of Contents](../SUMMARY.md) | [Terminology Lanes →](../08-reference/terminology-lanes.md)
+[← FAQ](../08-reference/faq.md) | [Table of Contents](../SUMMARY.md) | [RFC 0001: Static Semantic Reflection →](../08-reference/rfc-0001-semantic-static-reflection.md)

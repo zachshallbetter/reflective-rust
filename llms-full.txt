@@ -2048,7 +2048,176 @@ pub mod core::meta {
 ---
 
 ## Navigation
-[← RFC Template](../08-reference/rfc-template.md) | [Table of Contents](../SUMMARY.md) | [Terminology Lanes →](../08-reference/terminology-lanes.md)
+[← RFC Template](../08-reference/rfc-template.md) | [Table of Contents](../SUMMARY.md) | [RFC 0002: Compiler Semantic Graph (CSG) →](../08-reference/rfc-0002-compiler-semantic-graph.md)
+
+
+========================================================================
+CHAPTER: RFC 0002: Compiler Semantic Graph (CSG) (docs/08-reference/rfc-0002-compiler-semantic-graph.md)
+========================================================================
+
+---
+title: "RFC 0002: Compiler Semantic Graph (CSG) Specification"
+scope: "near-term"
+status: "canonical"
+version: "1.0.0"
+updated: "2026-07-31"
+summary: "Reflective Rust research specification for RFC 0002: Compiler Semantic Graph (CSG) Specification under Scope I: Near-Term (Rust Semantic Reflection & Compile-Time Metaprogramming)."
+---
+# RFC 0002: Compiler Semantic Graph (CSG) Specification
+
+- Feature Name: `compiler_semantic_graph`
+- Start Date: 2026-07-31
+- RFC PR: rust-lang/rfcs#0002
+- Rust Issue: rust-lang/rust#00000
+
+---
+
+## 1. Summary
+
+This RFC proposes the **Compiler Semantic Graph (CSG)**: a standardized, language-agnostic out-of-process semantic representation that exposes compiler-resolved program entities (AST nodes, resolved types, trait bounds, lifetime constraints, hygiene maps, and source spans) across multiple compiler backends (LLVM, Cranelift, GCC).
+
+---
+
+## 2. Motivation
+
+Internal representations in `rustc` (`HIR`, `MIR`, `TyCtxt`) are internal compiler details that change frequently. External toolchains, language servers (rust-analyzer), IDEs, AI coding agents, and spatial environments must currently re-parse and approximate semantic analysis. 
+
+The CSG establishes a stable, versioned, out-of-process graph protocol (`reflective-rust-csg`).
+
+---
+
+## 3. Reference-Level Explanation
+
+```json
+{
+  "nodes": [
+    {
+      "id": 100,
+      "name": "PlayerState",
+      "kind": "StructNode",
+      "span": { "file": "src/lib.rs", "start_line": 1, "end_line": 20 },
+      "privacy": "pub",
+      "size_bytes": 32
+    }
+  ],
+  "edges": [
+    { "from": 100, "to": 101, "relationship": "HAS_FIELD" }
+  ]
+}
+```
+
+- **Query Schema**: Out-of-process toolchains communicate with `rustc` via JSON-RPC / gRPC.
+- **Cross-Backend Determinism**: CI vectors enforce byte-identical CSG schema outputs across LLVM, Cranelift, and GCC backends.
+---
+
+## Navigation
+[← RFC 0001: Static Semantic Reflection](../08-reference/rfc-0001-semantic-static-reflection.md) | [Table of Contents](../SUMMARY.md) | [RFC 0003: Opt-In Zero-Cost Runtime Descriptors →](../08-reference/rfc-0003-runtime-descriptors.md)
+
+
+========================================================================
+CHAPTER: RFC 0003: Opt-In Zero-Cost Runtime Descriptors (docs/08-reference/rfc-0003-runtime-descriptors.md)
+========================================================================
+
+---
+title: "RFC 0003: Opt-In Zero-Cost Runtime Descriptors"
+scope: "near-term"
+status: "canonical"
+version: "1.0.0"
+updated: "2026-07-31"
+summary: "Reflective Rust research specification for RFC 0003: Opt-In Zero-Cost Runtime Descriptors under Scope I: Near-Term (Rust Semantic Reflection & Compile-Time Metaprogramming)."
+---
+# RFC 0003: Opt-In Zero-Cost Runtime Descriptors
+
+- Feature Name: `runtime_descriptors`
+- Start Date: 2026-07-31
+- RFC PR: rust-lang/rfcs#0003
+- Rust Issue: rust-lang/rust#00000
+
+---
+
+## 1. Summary
+
+This RFC specifies **Runtime Semantic Projection**: an opt-in procedural macro framework (`#[derive(Reflectable)]`) that emits static `TypeDescriptor`, `FieldDescriptor`, and `VariantDescriptor` VTables into dedicated binary linker sections (`.reflective.descriptors`).
+
+Un-annotated types incur **0 bytes memory overhead**, preserving Rust's zero-cost abstraction principle.
+
+---
+
+## 2. Motivation
+
+Dynamic invocation, serialization frameworks, RPC routing, and ECS registries often require dynamic runtime type information. Traditional dynamic languages force all types to carry object headers. Reflective Rust allows developers to selectively opt-in on a per-type basis.
+
+---
+
+## 3. Reference-Level Explanation
+
+```rust
+#[derive(Reflectable)]
+pub struct Player {
+    pub id: u64,
+    pub health: f32,
+}
+
+fn main() {
+    let descriptor = Player::type_descriptor();
+    assert_eq!(descriptor.name, "Player");
+    assert_eq!(descriptor.fields.len(), 2);
+}
+```
+
+- **Distributed Registry**: `#[derive(Reflectable)]` places static descriptor references into linker sections for runtime discovery (`reflective::registry::all_types()`).
+---
+
+## Navigation
+[← RFC 0002: Compiler Semantic Graph (CSG)](../08-reference/rfc-0002-compiler-semantic-graph.md) | [Table of Contents](../SUMMARY.md) | [RFC 0004: Agentic Context Slicing & Spatial Anchors →](../08-reference/rfc-0004-agent-slicing-and-ssp.md)
+
+
+========================================================================
+CHAPTER: RFC 0004: Agentic Context Slicing & Spatial Anchors (docs/08-reference/rfc-0004-agent-slicing-and-ssp.md)
+========================================================================
+
+---
+title: "RFC 0004: Agentic Context Slicing & Spatial Anchor Protocol"
+scope: "near-term"
+status: "canonical"
+version: "1.0.0"
+updated: "2026-07-31"
+summary: "Reflective Rust research specification for RFC 0004: Agentic Context Slicing & Spatial Anchor Protocol under Scope I: Near-Term (Rust Semantic Reflection & Compile-Time Metaprogramming)."
+---
+# RFC 0004: Agentic Context Slicing & Spatial Anchor Protocol
+
+- Feature Name: `agent_slicing_and_ssp`
+- Start Date: 2026-07-31
+- RFC PR: rust-lang/rfcs#0004
+- Rust Issue: rust-lang/rust#00000
+
+---
+
+## 1. Summary
+
+This RFC specifies:
+1. **Agentic Semantic Context Slicing (`csg::slice_around`)**: Graph RAG algorithms extracting compiler-certified semantic contexts (resolved type bounds, lifetime invariants, privacy barriers) for AI tools.
+2. **Semantic Spatial Projection (SSP)**: 3D $T(N_i) \in \mathbb{SE}(3)$ transformation matrix protocols mapping CSG graph nodes into physical 3D spatial environments for spatial computing and visual debugging.
+
+---
+
+## 2. Motivation
+
+Raw text-based RAG pipelines fail on complex codebases because unparsed code snippets lack compiler context (resolved signatures, trait bounds, macro expansions). 
+
+By slicing directly over the **Compiler Semantic Graph (CSG)**, AI agents receive exact, hallucination-free compiler facts.
+
+---
+
+## 3. Spatial Transformation Protocol
+
+$$T(N_i) = \begin{bmatrix} R(N_i) & p(N_i) \\ 0_{1\times 3} & 1 \end{bmatrix} \in \mathbb{SE}(3)$$
+
+CSG nodes are mapped into 3D bounding spheres, module volumes, and relational dependency lines rendered in WebGL (`apps/ssp-visualizer`).
+---
+
+## Navigation
+[← RFC 0003: Opt-In Zero-Cost Runtime Descriptors](../08-reference/rfc-0003-runtime-descriptors.md) | [Table of Contents](../SUMMARY.md) | [Terminology Lanes →](../08-reference/terminology-lanes.md)
 
 
 ========================================================================
@@ -2106,7 +2275,7 @@ To keep **Reflective Rust (RRSA)** inspectable, deterministic, and clear, terms 
 ---
 
 ## Navigation
-[← RFC 0001: Static Semantic Reflection](../08-reference/rfc-0001-semantic-static-reflection.md) | [Table of Contents](../SUMMARY.md) | [04 Runtime Semantic Projection →](../04-runtime/README.md)
+[← RFC 0004: Agentic Context Slicing & Spatial Anchors](../08-reference/rfc-0004-agent-slicing-and-ssp.md) | [Table of Contents](../SUMMARY.md) | [04 Runtime Semantic Projection →](../04-runtime/README.md)
 
 
 ========================================================================
