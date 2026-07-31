@@ -11,8 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - **Canonical v1.0.0 Release**: Official production release of the Reflective Rust research monograph, RFC corpus, and toolchain workspace.
+- **8 Real-World Industrial Examples**: Added 4 real-world industrial use cases (`serde_zero_copy_serialization`, `ecs_component_engine`, `rpc_dynamic_dispatcher`, `ai_agent_copilot`) alongside core reference examples.
+- **Extended Static Meta Queries (`reflective-rust-meta v1.0.0`)**: Added `variants_of`, `function_info`, `VariantInfo`, and `FunctionInfo` query metadata.
 - **8 Workspace Toolchain Crates (`v1.0.0`)**:
-  - `reflective-rust-meta`: Core static reflection handle `#![no_std]` substrate (`core::meta::Info`, `layout_of`, `fields_of`).
+  - `reflective-rust-meta`: Core static reflection handle `#![no_std]` substrate (`core::meta::Info`, `layout_of`, `fields_of`, `variants_of`).
   - `reflective-rust-csg`: Compiler Semantic Graph out-of-process JSON query engine.
   - `reflective-rust-derive`: Opt-in zero-cost runtime VTable descriptor generator (`#[derive(Reflectable)]`).
   - `reflective-rust-agent`: Graph RAG context slicer (`csg::slice_around`) feeding compiler-certified type and privacy bounds to AI tools.
@@ -21,7 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - `reflective-rust-conformance`: Cross-backend schema validation suite across LLVM, Cranelift, and GCC.
   - `reflective-rust-cli`: Command-line toolchain driver (`inspect`, `csg-export`, `agent-slice`, `bench`, `conformance`).
 - **Academic Citations & Lineage**: Incorporated formal academic bibliography acknowledging Brian Cantwell Smith (3-Lisp 1982), Gregor Kiczales (CLOS MOP 1991), C++ P2996, and Rust Core Team.
-- **Value Metrics Gate (`scripts/verify-value-metrics.py`)**: Automated verification gate tracking research volume (114 chapters), zero-cost memory invariants (0 bytes), and test coverage.
+- **Value Metrics Gate (`scripts/verify-value-metrics.py`)**: Automated verification gate tracking research volume (115 chapters), zero-cost memory invariants (0 bytes), and test coverage.
 
 ---
 

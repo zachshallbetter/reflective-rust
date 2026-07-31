@@ -9,6 +9,21 @@ use reflective_rust_derive::Reflectable;
 use reflective_rust_meta::{fields_of, layout_of, of, Info};
 use std::time::Instant;
 
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub struct FieldDescriptor {
+    pub name: &'static str,
+    pub offset: usize,
+    pub type_name: &'static str,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub struct TypeDescriptor {
+    pub name: &'static str,
+    pub size: usize,
+    pub align: usize,
+    pub fields: &'static [FieldDescriptor],
+}
+
 #[derive(Reflectable)]
 pub struct BenchmarkTarget {
     pub id: u64,

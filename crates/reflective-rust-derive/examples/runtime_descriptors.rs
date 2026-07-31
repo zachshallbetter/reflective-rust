@@ -1,32 +1,49 @@
-//! Example 02: Opt-In Zero-Cost Runtime Descriptors (`#[derive(Reflectable)]`)
+//! Example: Opt-in Runtime Descriptors via `#[derive(Reflectable)]`
 //! Run with: `cargo run --example runtime_descriptors -p reflective-rust-derive`
 
 use reflective_rust_derive::Reflectable;
 
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub struct FieldDescriptor {
+    pub name: &'static str,
+    pub offset: usize,
+    pub type_name: &'static str,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub struct TypeDescriptor {
+    pub name: &'static str,
+    pub size: usize,
+    pub align: usize,
+    pub fields: &'static [FieldDescriptor],
+}
+
 #[derive(Reflectable)]
 #[allow(dead_code)]
-struct GameEntity {
+struct PlayerAccount {
     id: u64,
-    health: f32,
     score: u32,
+    is_admin: bool,
 }
 
 fn main() {
-    println!("=== Reflective Rust Example 02: Runtime Descriptors ===");
+    println!("=== Reflective Rust Example: Runtime Type Descriptors ===");
 
-    // Obtain opt-in static descriptor VTable emitted by #[derive(Reflectable)]
-    let descriptor = GameEntity::type_descriptor();
+    let descriptor: &'static TypeDescriptor = PlayerAccount::type_descriptor();
 
-    println!("Type Name   : {}", descriptor.name);
-    println!("Memory Size : {} bytes", descriptor.size);
-    println!("Alignment   : {} bytes", descriptor.align);
+    println!("Type Descriptor VTable for struct '{}':", descriptor.name);
+    println!("  - Size     : {} bytes", descriptor.size);
+    println!("  - Alignment: {} bytes", descriptor.align);
+    println!("  - Fields ({}) :", descriptor.fields.len());
 
-    println!("\nReflected Field VTable Descriptors ({}):", descriptor.fields.len());
     for field in descriptor.fields {
-        println!("  - Field: {:<10} | Byte Offset: {:<2} | Type: {}", field.name, field.offset, field.type_name);
+        println!(
+            "      └─ field {:<10} (type: {:<8}) offset {}",
+            field.name, field.type_name, field.offset
+        );
     }
 
-    assert_eq!(descriptor.name, "GameEntity");
+    assert_eq!(descriptor.name, "PlayerAccount");
     assert_eq!(descriptor.fields.len(), 3);
-    println!("\n✓ Opt-In Runtime Descriptor VTable Query Succeeded!");
+    println!("\n✓ Opt-In Runtime Descriptor VTable Introspection Succeeded!");
 }

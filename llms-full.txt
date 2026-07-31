@@ -1632,90 +1632,94 @@ CHAPTER: Code Examples (docs/08-reference/examples.md)
 ========================================================================
 
 ---
-title: "Reflective Rust Runnable Examples"
+title: "Runnable Examples & Industrial Use Cases"
 scope: "near-term"
 status: "canonical"
 version: "1.0.0"
 updated: "2026-07-31"
-summary: "Reflective Rust research specification for Reflective Rust Runnable Examples under Scope I: Near-Term (Rust Semantic Reflection & Compile-Time Metaprogramming)."
+summary: "Reflective Rust research specification for Runnable Examples & Industrial Use Cases under Scope I: Near-Term (Rust Semantic Reflection & Compile-Time Metaprogramming)."
 ---
-# Reflective Rust Runnable Examples
+# Runnable Examples & Industrial Use Cases
 
-This guide documents the runnable toolchain examples located across the [`crates/`](../../crates) workspace.
+> **Status:** Canonical Reference Manual  
 
----
-
-## 1. Example 01: Static Semantic Reflection (`core::meta`)
-
-Demonstrates compile-time opaque handle lookup (`Info`), layout introspection, and field reflecting in `#![no_std]`.
-
-```bash
-cargo run --example static_reflection -p reflective-rust-meta
-```
-
-```rust
-use reflective_rust_meta::{fields_of, layout_of, of, Info, Kind};
-
-struct Player {
-    id: u64,
-    active: bool,
-}
-
-fn main() {
-    const PLAYER_INFO: Info = of::<Player>();
-    let layout = layout_of::<Player>();
-    println!("Type Handle ID: 0x{:016X}", PLAYER_INFO.id());
-    println!("Memory Size   : {} bytes", layout.size);
-}
-```
+This document details all 8 runnable reference examples provided across the **Reflective Rust** workspace crates.
 
 ---
 
-## 2. Example 02: Opt-In Zero-Cost Runtime Descriptors (`#[derive(Reflectable)]`)
+## Workspace Examples Index
 
-Demonstrates emitting static `TypeDescriptor` VTables for opt-in runtime reflection without GC or memory overhead for un-annotated types.
+### 1. Static Semantic Reflection (`core::meta`)
+- **Crate**: [`reflective-rust-meta`](../../crates/reflective-rust-meta)
+- **File**: `crates/reflective-rust-meta/examples/static_reflection.rs`
+- **Command**:
+  ```bash
+  cargo run --example static_reflection -p reflective-rust-meta
+  ```
+- **Description**: Demonstrates compile-time `Info` handle inspection, memory layout queries (`layout_of`), struct field iteration, and variant queries in `#![no_std]`.
 
-```bash
-cargo run --example runtime_descriptors -p reflective-rust-derive
-```
+### 2. Zero-Copy Binary Serializer (Real-World Industrial Case)
+- **Crate**: [`reflective-rust-meta`](../../crates/reflective-rust-meta)
+- **File**: `crates/reflective-rust-meta/examples/serde_zero_copy_serialization.rs`
+- **Command**:
+  ```bash
+  cargo run --example serde_zero_copy_serialization -p reflective-rust-meta
+  ```
+- **Description**: Demonstrates zero-copy binary serialization and deserialization using compile-time layout attributes without macro code generation.
 
-```rust
-use reflective_rust_derive::Reflectable;
+### 3. Opt-In Zero-Cost Runtime Descriptors (`#[derive(Reflectable)]`)
+- **Crate**: [`reflective-rust-derive`](../../crates/reflective-rust-derive)
+- **File**: `crates/reflective-rust-derive/examples/runtime_descriptors.rs`
+- **Command**:
+  ```bash
+  cargo run --example runtime_descriptors -p reflective-rust-derive
+  ```
+- **Description**: Demonstrates applying `#[derive(Reflectable)]` to generate static `TypeDescriptor` VTables with zero memory cost for un-annotated types.
 
-#[derive(Reflectable)]
-struct GameEntity {
-    id: u64,
-    health: f32,
-}
+### 4. Dynamic ECS Component Registry (Real-World Industrial Case)
+- **Crate**: [`reflective-rust-derive`](../../crates/reflective-rust-derive)
+- **File**: `crates/reflective-rust-derive/examples/ecs_component_engine.rs`
+- **Command**:
+  ```bash
+  cargo run --example ecs_component_engine -p reflective-rust-derive
+  ```
+- **Description**: Demonstrates automatic entity component registration for Entity-Component-System (ECS) game engines.
 
-fn main() {
-    let descriptor = GameEntity::type_descriptor();
-    println!("Type Name: {}", descriptor.name);
-    for field in descriptor.fields {
-        println!("  - Field: {} (Offset: {})", field.name, field.offset);
-    }
-}
-```
+### 5. Compiler Semantic Graph (CSG) & JSON Schema
+- **Crate**: [`reflective-rust-csg`](../../crates/reflective-rust-csg)
+- **File**: `crates/reflective-rust-csg/examples/csg_query.rs`
+- **Command**:
+  ```bash
+  cargo run --example csg_query -p reflective-rust-csg
+  ```
+- **Description**: Demonstrates graph node/edge creation and out-of-process JSON serialization.
 
----
+### 6. Out-of-Process Dynamic RPC Dispatcher (Real-World Industrial Case)
+- **Crate**: [`reflective-rust-csg`](../../crates/reflective-rust-csg)
+- **File**: `crates/reflective-rust-csg/examples/rpc_dynamic_dispatcher.rs`
+- **Command**:
+  ```bash
+  cargo run --example rpc_dynamic_dispatcher -p reflective-rust-csg
+  ```
+- **Description**: Demonstrates out-of-process JSON-RPC method dispatching based on CSG graph function node schemas.
 
-## 3. Example 03: Compiler Semantic Graph (CSG) & JSON Serialization
+### 7. Graph RAG Agent Context Slicing (`csg::slice_around`)
+- **Crate**: [`reflective-rust-agent`](../../crates/reflective-rust-agent)
+- **File**: `crates/reflective-rust-agent/examples/agent_slicing.rs`
+- **Command**:
+  ```bash
+  cargo run --example agent_slicing -p reflective-rust-agent
+  ```
+- **Description**: Demonstrates extracting compiler-certified LLM prompt context blocks around a target symbol.
 
-Demonstrates constructing a `CompilerSemanticGraph`, creating nodes and edges, and serializing out-of-process JSON schemas.
-
-```bash
-cargo run --example csg_query -p reflective-rust-csg
-```
-
----
-
-## 4. Example 04: Graph RAG CSG Agent Context Slicing (`csg::slice_around`)
-
-Demonstrates extracting compiler-certified semantic slices (types, trait bounds, privacy barriers) for zero-search AI tool context resolution.
-
-```bash
-cargo run --example agent_slicing -p reflective-rust-agent
-```
+### 8. AI Agent Copilot Prompt Generator (Real-World Industrial Case)
+- **Crate**: [`reflective-rust-agent`](../../crates/reflective-rust-agent)
+- **File**: `crates/reflective-rust-agent/examples/ai_agent_copilot.rs`
+- **Command**:
+  ```bash
+  cargo run --example ai_agent_copilot -p reflective-rust-agent
+  ```
+- **Description**: Demonstrates an AI assistant prompt context generator feeding clean privacy and type bounds directly to LLM agents.
 ---
 
 ## Navigation
