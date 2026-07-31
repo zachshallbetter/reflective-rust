@@ -2,6 +2,8 @@
 
 > Reflective Rust: A Reflective Systems Architecture (RRSA) based on a Compiler Semantic Graph (CSG).
 
+Version: v1.0.0
+
 ## Structural Hierarchy
 
 - docs/README.md: Overview, taxonomy matrix, and concentric scopes
