@@ -1,0 +1,8 @@
+flowchart TD
+  DOM[Reflectable Domain] --> SP[Certified Safepoint]
+  SP --> PS[Process State]
+  PS --> INS[Inspect]
+  PS --> MUT[Capability-Limited Mutation]
+  INS --> RES[Resume]
+  MUT --> VAL[Validate Invariants]
+  VAL --> RES

@@ -1,0 +1,18 @@
+[book]
+title = "Reflective Rust: Semantic Reflection, Compiler Graphs, and Reflective Systems Architecture"
+authors = ["Reflective Rust Research Team"]
+language = "en"
+multilingual = false
+src = "docs"
+
+[build]
+build-dir = "book"
+
+[output.html]
+git-repository-url = "https://github.com/zachshallbetter/reflective-rust"
+additional-css = []
+additional-js = []
+
+[output.html.fold]
+enable = true
+level = 1
