@@ -34,7 +34,7 @@ dependencies = [
 
 [[package]]
 name = "reflective-rust-agent"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "reflective-rust-csg",
  "serde",
@@ -43,7 +43,7 @@ dependencies = [
 
 [[package]]
 name = "reflective-rust-csg"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "reflective-rust-meta",
  "serde",
@@ -52,7 +52,7 @@ dependencies = [
 
 [[package]]
 name = "reflective-rust-derive"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -62,11 +62,11 @@ dependencies = [
 
 [[package]]
 name = "reflective-rust-meta"
-version = "0.1.0"
+version = "0.2.0"
 
 [[package]]
 name = "reflective-rust-server"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "reflective-rust-agent",
  "reflective-rust-csg",
