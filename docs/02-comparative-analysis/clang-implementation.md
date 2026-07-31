@@ -14,4 +14,4 @@ The experimental Clang implementation demonstrates that reflection must integrat
 ---
 
 ## Navigation
-[← C++ P2996](../02-comparative-analysis/cpp-p2996.md) | [Table of Contents](../SUMMARY.md) | [CallMeMaybe →](../02-comparative-analysis/callmemaybe.md)
+[← Rust Current State](../02-comparative-analysis/rust-current-state.md) | [Table of Contents](../SUMMARY.md) | [D, Zig, Nim →](../02-comparative-analysis/d-zig-nim.md)

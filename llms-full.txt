@@ -2206,7 +2206,62 @@ CSG nodes are mapped into 3D bounding spheres, module volumes, and relational de
 ---
 
 ## Navigation
-[← RFC 0003: Opt-In Zero-Cost Runtime Descriptors](../08-reference/rfc-0003-runtime-descriptors.md) | [Table of Contents](../SUMMARY.md) | [Terminology Lanes →](../08-reference/terminology-lanes.md)
+[← RFC 0003: Opt-In Zero-Cost Runtime Descriptors](../08-reference/rfc-0003-runtime-descriptors.md) | [Table of Contents](../SUMMARY.md) | [RFC 0005: Cross-Backend Conformance Vectors →](../08-reference/rfc-0005-conformance-vectors.md)
+
+
+========================================================================
+CHAPTER: RFC 0005: Cross-Backend Conformance Vectors (docs/08-reference/rfc-0005-conformance-vectors.md)
+========================================================================
+
+---
+title: "RFC 0005: Cross-Backend Conformance Vectors & Schema Validation"
+scope: "near-term"
+status: "canonical"
+version: "1.0.0"
+updated: "2026-07-31"
+summary: "Reflective Rust research specification for RFC 0005: Cross-Backend Conformance Vectors & Schema Validation under Scope I: Near-Term (Rust Semantic Reflection & Compile-Time Metaprogramming)."
+---
+# RFC 0005: Cross-Backend Conformance Vectors & Schema Validation
+
+- Feature Name: `compiler_conformance_vectors`
+- Start Date: 2026-07-31
+- RFC PR: rust-lang/rfcs#0005
+- Rust Issue: rust-lang/rust#00000
+
+---
+
+## 1. Summary
+
+This RFC specifies **Cross-Backend Conformance Vector Validation**: a test matrix architecture enforcing byte-identical Compiler Semantic Graph (CSG) schema outputs regardless of whether `rustc` is targeting LLVM (`rustc_codegen_llvm`), Cranelift (`rustc_codegen_cranelift`), or GCC (`rustc_codegen_gcc`).
+
+---
+
+## 2. Motivation
+
+Multiple compiler backends are essential for Rust's compiler ecosystem (fast debug builds via Cranelift, production optimizations via LLVM, embedded platform support via GCC). To prevent out-of-process toolchains (IDEs, AI agents, visualizers) from observing backend-dependent semantic behavior, CSG outputs must be proven byte-identical across all backends.
+
+---
+
+## 3. Reference-Level Explanation
+
+```rust
+use reflective_rust_conformance::{verify_backend_conformance, CompilerBackend};
+
+let (res_llvm, res_cranelift, pass) = verify_backend_conformance(
+    CompilerBackend::LLVM,
+    &csg_llvm,
+    CompilerBackend::Cranelift,
+    &csg_cranelift,
+);
+
+assert!(pass, "CSG schema must be byte-identical across compiler backends");
+```
+
+- **CI Enforcement**: Pull requests modifying compiler graph extraction must pass byte-identical vector checks across LLVM, Cranelift, and GCC targets.
+---
+
+## Navigation
+[← RFC 0004: Agentic Context Slicing & Spatial Anchors](../08-reference/rfc-0004-agent-slicing-and-ssp.md) | [Table of Contents](../SUMMARY.md) | [Terminology Lanes →](../08-reference/terminology-lanes.md)
 
 
 ========================================================================
@@ -2264,7 +2319,7 @@ To keep **Reflective Rust (RRSA)** inspectable, deterministic, and clear, terms 
 ---
 
 ## Navigation
-[← RFC 0004: Agentic Context Slicing & Spatial Anchors](../08-reference/rfc-0004-agent-slicing-and-ssp.md) | [Table of Contents](../SUMMARY.md) | [04 Runtime Semantic Projection →](../04-runtime/README.md)
+[← RFC 0005: Cross-Backend Conformance Vectors](../08-reference/rfc-0005-conformance-vectors.md) | [Table of Contents](../SUMMARY.md) | [04 Runtime Semantic Projection →](../04-runtime/README.md)
 
 
 ========================================================================
@@ -5067,53 +5122,30 @@ C++ P2996 is the closest direct reference for opaque compile-time semantic handl
 ---
 
 ## Navigation
-[← Overview](../02-comparative-analysis/overview.md) | [Table of Contents](../SUMMARY.md) | [Clang Implementation →](../02-comparative-analysis/clang-implementation.md)
+[← Overview](../02-comparative-analysis/overview.md) | [Table of Contents](../SUMMARY.md) | [Java & C# →](../02-comparative-analysis/java-csharp.md)
 
 
 ========================================================================
-CHAPTER: Clang Implementation (docs/02-comparative-analysis/clang-implementation.md)
+CHAPTER: Java & C# (docs/02-comparative-analysis/java-csharp.md)
 ========================================================================
 
 ---
-title: "Clang Implementation"
+title: "Java Csharp"
 scope: "context"
 status: "canonical"
 version: "1.0.0"
 updated: "2026-07-31"
-summary: "Reflective Rust research specification for Clang Implementation under Historical Evidence & Comparative Context."
+summary: "Reflective Rust research specification for Java Csharp under Historical Evidence & Comparative Context."
 ---
-# Clang Implementation
+# Java Csharp
 
 **Status:** Research synthesis
 
-The experimental Clang implementation demonstrates that reflection must integrate with semantic analysis and constant evaluation, not preprocessing. Implementation experience also highlights diagnostics, staging, and compiler-query ownership as first-class concerns.
+Java and C# provide mature runtime metadata and invocation systems. Their metadata tables, attributes, and tooling ecosystems are valuable references for runtime projection, but their runtime models tolerate costs and dynamic behavior Rust should keep opt-in.
 ---
 
 ## Navigation
-[← C++ P2996](../02-comparative-analysis/cpp-p2996.md) | [Table of Contents](../SUMMARY.md) | [CallMeMaybe →](../02-comparative-analysis/callmemaybe.md)
-
-
-========================================================================
-CHAPTER: CallMeMaybe (docs/02-comparative-analysis/callmemaybe.md)
-========================================================================
-
----
-title: "Callmemaybe"
-scope: "context"
-status: "canonical"
-version: "1.0.0"
-updated: "2026-07-31"
-summary: "Reflective Rust research specification for Callmemaybe under Historical Evidence & Comparative Context."
----
-# Callmemaybe
-
-**Status:** Research synthesis
-
-CallMeMaybe demonstrates static-to-runtime projection: compile-time reflection traverses annotated entities and emits runtime registries, construction adapters, property access, and dynamic invocation. The runtime layer is generated infrastructure, not persistent compiler reflection.
----
-
-## Navigation
-[← Clang Implementation](../02-comparative-analysis/clang-implementation.md) | [Table of Contents](../SUMMARY.md) | [Rust Current State →](../02-comparative-analysis/rust-current-state.md)
+[← C++ P2996](../02-comparative-analysis/cpp-p2996.md) | [Table of Contents](../SUMMARY.md) | [Rust Current State →](../02-comparative-analysis/rust-current-state.md)
 
 
 ========================================================================
@@ -5136,26 +5168,26 @@ Rust currently has syntax-level macros, derives, compiler queries, const evaluat
 ---
 
 ## Navigation
-[← CallMeMaybe](../02-comparative-analysis/callmemaybe.md) | [Table of Contents](../SUMMARY.md) | [Java & C# →](../02-comparative-analysis/java-csharp.md)
+[← Java & C#](../02-comparative-analysis/java-csharp.md) | [Table of Contents](../SUMMARY.md) | [Clang Implementation →](../02-comparative-analysis/clang-implementation.md)
 
 
 ========================================================================
-CHAPTER: Java & C# (docs/02-comparative-analysis/java-csharp.md)
+CHAPTER: Clang Implementation (docs/02-comparative-analysis/clang-implementation.md)
 ========================================================================
 
 ---
-title: "Java Csharp"
+title: "Clang Implementation"
 scope: "context"
 status: "canonical"
 version: "1.0.0"
 updated: "2026-07-31"
-summary: "Reflective Rust research specification for Java Csharp under Historical Evidence & Comparative Context."
+summary: "Reflective Rust research specification for Clang Implementation under Historical Evidence & Comparative Context."
 ---
-# Java Csharp
+# Clang Implementation
 
 **Status:** Research synthesis
 
-Java and C# provide mature runtime metadata and invocation systems. Their metadata tables, attributes, and tooling ecosystems are valuable references for runtime projection, but their runtime models tolerate costs and dynamic behavior Rust should keep opt-in.
+The experimental Clang implementation demonstrates that reflection must integrate with semantic analysis and constant evaluation, not preprocessing. Implementation experience also highlights diagnostics, staging, and compiler-query ownership as first-class concerns.
 ---
 
 ## Navigation
@@ -5182,7 +5214,7 @@ D, Zig, and Nim show alternative compile-time models. D offers broad traits and 
 ---
 
 ## Navigation
-[← Java & C#](../02-comparative-analysis/java-csharp.md) | [Table of Contents](../SUMMARY.md) | [Julia & Smalltalk →](../02-comparative-analysis/julia-smalltalk.md)
+[← Clang Implementation](../02-comparative-analysis/clang-implementation.md) | [Table of Contents](../SUMMARY.md) | [Julia & Smalltalk →](../02-comparative-analysis/julia-smalltalk.md)
 
 
 ========================================================================
@@ -5205,7 +5237,30 @@ Julia and Smalltalk demonstrate dynamic metaobject-rich environments, live metho
 ---
 
 ## Navigation
-[← D, Zig, Nim](../02-comparative-analysis/d-zig-nim.md) | [Table of Contents](../SUMMARY.md) | [Comparison Matrix →](../02-comparative-analysis/comparison-matrix.md)
+[← D, Zig, Nim](../02-comparative-analysis/d-zig-nim.md) | [Table of Contents](../SUMMARY.md) | [CallMeMaybe →](../02-comparative-analysis/callmemaybe.md)
+
+
+========================================================================
+CHAPTER: CallMeMaybe (docs/02-comparative-analysis/callmemaybe.md)
+========================================================================
+
+---
+title: "Callmemaybe"
+scope: "context"
+status: "canonical"
+version: "1.0.0"
+updated: "2026-07-31"
+summary: "Reflective Rust research specification for Callmemaybe under Historical Evidence & Comparative Context."
+---
+# Callmemaybe
+
+**Status:** Research synthesis
+
+CallMeMaybe demonstrates static-to-runtime projection: compile-time reflection traverses annotated entities and emits runtime registries, construction adapters, property access, and dynamic invocation. The runtime layer is generated infrastructure, not persistent compiler reflection.
+---
+
+## Navigation
+[← Julia & Smalltalk](../02-comparative-analysis/julia-smalltalk.md) | [Table of Contents](../SUMMARY.md) | [Comparison Matrix →](../02-comparative-analysis/comparison-matrix.md)
 
 
 ========================================================================
@@ -5237,7 +5292,7 @@ summary: "Reflective Rust research specification for Comparison Matrix under His
 ---
 
 ## Navigation
-[← Julia & Smalltalk](../02-comparative-analysis/julia-smalltalk.md) | [Table of Contents](../SUMMARY.md) | [Diagrams →](../diagrams/README.md)
+[← CallMeMaybe](../02-comparative-analysis/callmemaybe.md) | [Table of Contents](../SUMMARY.md) | [Diagrams →](../diagrams/README.md)
 
 
 ========================================================================

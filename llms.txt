@@ -48,6 +48,7 @@
 - docs/08-reference/rfc-0002-compiler-semantic-graph.md: RFC 0002: Compiler Semantic Graph (CSG)
 - docs/08-reference/rfc-0003-runtime-descriptors.md: RFC 0003: Opt-In Zero-Cost Runtime Descriptors
 - docs/08-reference/rfc-0004-agent-slicing-and-ssp.md: RFC 0004: Agentic Context Slicing & Spatial Anchors
+- docs/08-reference/rfc-0005-conformance-vectors.md: RFC 0005: Cross-Backend Conformance Vectors
 - docs/08-reference/terminology-lanes.md: Terminology Lanes
 - docs/04-runtime/README.md: 04 Runtime Semantic Projection
 - docs/04-runtime/runtime-reflection.md: Runtime Reflection
@@ -111,12 +112,12 @@
 - docs/02-comparative-analysis/README.md: 02 Comparative Analysis
 - docs/02-comparative-analysis/overview.md: Overview
 - docs/02-comparative-analysis/cpp-p2996.md: C++ P2996
-- docs/02-comparative-analysis/clang-implementation.md: Clang Implementation
-- docs/02-comparative-analysis/callmemaybe.md: CallMeMaybe
-- docs/02-comparative-analysis/rust-current-state.md: Rust Current State
 - docs/02-comparative-analysis/java-csharp.md: Java & C#
+- docs/02-comparative-analysis/rust-current-state.md: Rust Current State
+- docs/02-comparative-analysis/clang-implementation.md: Clang Implementation
 - docs/02-comparative-analysis/d-zig-nim.md: D, Zig, Nim
 - docs/02-comparative-analysis/julia-smalltalk.md: Julia & Smalltalk
+- docs/02-comparative-analysis/callmemaybe.md: CallMeMaybe
 - docs/02-comparative-analysis/comparison-matrix.md: Comparison Matrix
 - docs/diagrams/README.md: Diagrams
 - docs/appendices/README.md: Appendices

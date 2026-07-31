@@ -53,6 +53,27 @@ dependencies = [
 ]
 
 [[package]]
+name = "reflective-rust-cli"
+version = "0.2.0"
+dependencies = [
+ "reflective-rust-agent",
+ "reflective-rust-bench",
+ "reflective-rust-conformance",
+ "reflective-rust-csg",
+ "reflective-rust-meta",
+ "serde_json",
+]
+
+[[package]]
+name = "reflective-rust-conformance"
+version = "0.2.0"
+dependencies = [
+ "reflective-rust-csg",
+ "serde",
+ "serde_json",
+]
+
+[[package]]
 name = "reflective-rust-csg"
 version = "0.2.0"
 dependencies = [

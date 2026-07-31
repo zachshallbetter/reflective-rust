@@ -39,4 +39,4 @@ CSG nodes are mapped into 3D bounding spheres, module volumes, and relational de
 ---
 
 ## Navigation
-[← RFC 0003: Opt-In Zero-Cost Runtime Descriptors](../08-reference/rfc-0003-runtime-descriptors.md) | [Table of Contents](../SUMMARY.md) | [Terminology Lanes →](../08-reference/terminology-lanes.md)
+[← RFC 0003: Opt-In Zero-Cost Runtime Descriptors](../08-reference/rfc-0003-runtime-descriptors.md) | [Table of Contents](../SUMMARY.md) | [RFC 0005: Cross-Backend Conformance Vectors →](../08-reference/rfc-0005-conformance-vectors.md)

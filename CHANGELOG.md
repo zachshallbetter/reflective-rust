@@ -10,6 +10,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.2.1] - 2026-07-31
 
 ### Added
+- **Cross-Backend Conformance Vector Crate (`reflective-rust-conformance v0.2.0`)**: Automated test matrix validating byte-identical CSG schema conformance across LLVM, Cranelift, and GCC compiler backends.
+- **Interactive Toolchain Driver (`reflective-rust-cli v0.2.0`)**: Command-line driver (`reflective-rust inspect`, `csg-export`, `agent-slice`, `bench`, `conformance`).
+- **Upstream RFC 0005**: [`RFC 0005: Cross-Backend Conformance Vectors`](docs/08-reference/rfc-0005-conformance-vectors.md).
 - **Empirical Benchmark Crate (`reflective-rust-bench v0.2.0`)**: Comprehensive micro-benchmark suite measuring static reflection queries (`274.08 ns/op`), `#[derive(Reflectable)]` VTable lookups (`5.77 ns/op`), CSG graph JSON serialization (`10.68 ms/op`), and Graph RAG agent context slicing (`50.93 µs/op`).
 - **Empirical Proof & Metrics Specification (`docs/09-research/performance-and-empirical-proof.md`)**: Theorem 1.1 formal proof of zero-cost un-annotated type memory overhead (0 bytes), time/memory complexity bounds, and quantitative pre-registration invalidation triggers.
 - **Runnable Examples**: Runnable toolchain examples across all workspace crates under `examples/` (`static_reflection`, `runtime_descriptors`, `csg_query`, `agent_slicing`, `run_benchmarks`).

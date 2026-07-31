@@ -23,4 +23,4 @@ summary: "Reflective Rust research specification for Comparison Matrix under His
 ---
 
 ## Navigation
-[← Julia & Smalltalk](../02-comparative-analysis/julia-smalltalk.md) | [Table of Contents](../SUMMARY.md) | [Diagrams →](../diagrams/README.md)
+[← CallMeMaybe](../02-comparative-analysis/callmemaybe.md) | [Table of Contents](../SUMMARY.md) | [Diagrams →](../diagrams/README.md)

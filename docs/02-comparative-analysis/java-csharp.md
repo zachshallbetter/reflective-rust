@@ -14,4 +14,4 @@ Java and C# provide mature runtime metadata and invocation systems. Their metada
 ---
 
 ## Navigation
-[← Rust Current State](../02-comparative-analysis/rust-current-state.md) | [Table of Contents](../SUMMARY.md) | [D, Zig, Nim →](../02-comparative-analysis/d-zig-nim.md)
+[← C++ P2996](../02-comparative-analysis/cpp-p2996.md) | [Table of Contents](../SUMMARY.md) | [Rust Current State →](../02-comparative-analysis/rust-current-state.md)
