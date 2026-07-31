@@ -65,6 +65,16 @@ name = "reflective-rust-meta"
 version = "0.1.0"
 
 [[package]]
+name = "reflective-rust-server"
+version = "0.1.0"
+dependencies = [
+ "reflective-rust-agent",
+ "reflective-rust-csg",
+ "serde",
+ "serde_json",
+]
+
+[[package]]
 name = "serde"
 version = "1.0.229"
 source = "registry+https://github.com/rust-lang/crates.io-index"
