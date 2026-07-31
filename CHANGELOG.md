@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.2.1] - 2026-07-31
+
+### Added
+- **Empirical Benchmark Crate (`reflective-rust-bench v0.2.0`)**: Comprehensive micro-benchmark suite measuring static reflection queries (`274.08 ns/op`), `#[derive(Reflectable)]` VTable lookups (`5.77 ns/op`), CSG graph JSON serialization (`10.68 ms/op`), and Graph RAG agent context slicing (`50.93 µs/op`).
+- **Empirical Proof & Metrics Specification (`docs/09-research/performance-and-empirical-proof.md`)**: Theorem 1.1 formal proof of zero-cost un-annotated type memory overhead (0 bytes), time/memory complexity bounds, and quantitative pre-registration invalidation triggers.
+- **Runnable Examples**: Runnable toolchain examples across all workspace crates under `examples/` (`static_reflection`, `runtime_descriptors`, `csg_query`, `agent_slicing`, `run_benchmarks`).
+
+---
+
 ## [0.2.0] - 2026-07-31
 
 ### Added

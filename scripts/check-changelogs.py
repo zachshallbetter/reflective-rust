@@ -14,17 +14,27 @@ PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 def get_modified_files():
     try:
-        # Check against git diff if in a git repo
+        # Check staged and unstaged changes against HEAD
         result = subprocess.run(
-            ["git", "diff", "--name-only", "HEAD~1", "HEAD"],
+            ["git", "diff", "--name-only", "HEAD"],
             cwd=PROJECT_ROOT,
             capture_output=True,
             text=True,
             check=True,
         )
-        return [line.strip() for line in result.stdout.splitlines() if line.strip()]
+        files = [line.strip() for line in result.stdout.splitlines() if line.strip()]
+        if not files:
+            # Fallback to last commit if working tree clean
+            res_commit = subprocess.run(
+                ["git", "diff", "--name-only", "HEAD~1", "HEAD"],
+                cwd=PROJECT_ROOT,
+                capture_output=True,
+                text=True,
+                check=True,
+            )
+            files = [line.strip() for line in res_commit.stdout.splitlines() if line.strip()]
+        return files
     except Exception:
-        # Fallback if no git commit yet
         return []
 
 
@@ -35,7 +45,7 @@ def main():
 
     modified_files = get_modified_files()
     if not modified_files:
-        print("  No git diff detected or initial repository state.")
+        print("  No git diff detected.")
         print("  ✓ Layer Changelog Gate PASSED (Vacuous).")
         sys.exit(0)
 

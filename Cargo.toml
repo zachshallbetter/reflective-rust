@@ -5,6 +5,7 @@ members = [
     "crates/reflective-rust-derive",
     "crates/reflective-rust-agent",
     "crates/reflective-rust-server",
+    "crates/reflective-rust-bench",
 ]
 resolver = "2"
 

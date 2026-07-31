@@ -100,6 +100,7 @@
 - docs/09-research/ai-panel-pressure-classification.md: AI Panel Pressure Classification
 - docs/09-research/ssp-spatial-anchor-protocol.md: SSP Spatial Anchor Protocol
 - docs/09-research/semantic-graph-agent-slicing.md: Semantic Graph Agent Context Slicing
+- docs/09-research/performance-and-empirical-proof.md: Performance Metrics & Empirical Proof
 - docs/01-history/README.md: 01 History & Lineage
 - docs/01-history/3-lisp.md: 3-Lisp
 - docs/01-history/brian-cantwell-smith.md: Brian Cantwell Smith

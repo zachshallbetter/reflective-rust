@@ -42,6 +42,17 @@ dependencies = [
 ]
 
 [[package]]
+name = "reflective-rust-bench"
+version = "0.2.0"
+dependencies = [
+ "reflective-rust-agent",
+ "reflective-rust-csg",
+ "reflective-rust-derive",
+ "reflective-rust-meta",
+ "serde_json",
+]
+
+[[package]]
 name = "reflective-rust-csg"
 version = "0.2.0"
 dependencies = [
