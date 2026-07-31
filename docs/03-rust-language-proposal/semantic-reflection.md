@@ -1,109 +1,52 @@
 ---
-title: "Semantic Reflection"
+title: "Static Semantic Reflection Specification (`core::meta`)"
 scope: "near-term"
 status: "canonical"
 version: "1.0.0"
 updated: "2026-07-31"
-summary: "Reflective Rust research specification for Semantic Reflection under Scope I: Near-Term (Rust Semantic Reflection & Compile-Time Metaprogramming)."
+summary: "Reflective Rust research specification for Static Semantic Reflection Specification (`core::meta`) under Scope I: Near-Term (Rust Semantic Reflection & Compile-Time Metaprogramming)."
 ---
-# Semantic Reflection
+# Static Semantic Reflection Specification (`core::meta`)
 
-**Status:** Research synthesis
+> **Status:** Canonical Language RFC Specification  
+> **Reference Substrate:** [`crates/reflective-rust-meta`](../../crates/reflective-rust-meta)  
 
-## 7. `core::meta`: compiler-owned semantic reflection
+---
 
-### 7.1 Core abstraction
+## 1. Syntax & Core Type Definitions
 
-Rust should expose one opaque semantic handle:
+This specification proposes adding the module `core::meta` to the Rust Standard Library (`#![no_std]` compatible), providing static compile-time reflection via opaque compiler-synthesized handles (`Info`).
 
 ```rust
-pub mod core::meta {
-    #[lang = "meta_info"]
-    #[consteval_only]
+pub namespace core::meta {
+    /// Opaque, non-forgeable handle representing a compiler semantic entity.
+    #[derive(Copy, Clone, PartialEq, Eq, Hash)]
     pub struct Info {
-        _compiler_owned: (),
+        id: u64,
+        kind: Kind,
     }
+
+    /// Primary static reflection query intrinsic.
+    pub const fn of<T: ?Sized>() -> Info;
+
+    /// Memory layout attributes intrinsic.
+    pub const fn layout_of<T: ?Sized>() -> LayoutInfo;
+
+    /// Field introspection query.
+    pub const fn fields_of(info: Info) -> &'static [FieldInfo];
+
+    /// Enum variant introspection query.
+    pub const fn variants_of(info: Info) -> &'static [VariantInfo];
 }
 ```
 
-`Info` is:
+---
 
-- non-forgeable;
-- compiler-created;
-- legal only during compile-time-only evaluation;
-- equality-comparable within a compilation;
-- not assigned a stable public numeric encoding;
-- independent of rustc's internal representation.
+## 2. Compile-Time Evaluation Guarantees (`consteval`)
 
-### 7.2 Semantic kinds
-
-```rust
-#[non_exhaustive]
-pub enum Kind {
-    Crate,
-    Module,
-    Type,
-    Struct,
-    Enum,
-    Union,
-    Field,
-    Variant,
-    Trait,
-    Impl,
-    AssociatedType,
-    AssociatedConst,
-    Function,
-    Method,
-    Parameter,
-    GenericParameter,
-    ConstValue,
-    Static,
-    Closure,
-    Coroutine,
-    Instance,
-}
-```
-
-### 7.3 Basic API
-
-```rust
-#[compile_time_only]
-pub const fn of<T: ?Sized>() -> Info;
-
-#[compile_time_only]
-pub const fn kind_of(entity: Info) -> Kind;
-
-#[compile_time_only]
-pub const fn identifier_of(entity: Info) -> Option<&'static str>;
-
-#[compile_time_only]
-pub const fn parent_of(entity: Info) -> Option<Info>;
-
-#[compile_time_only]
-pub const fn type_of(entity: Info) -> Query<Info>;
-
-#[compile_time_only]
-pub const fn fields_of(ty: Info) -> Query<MetaSlice<Info>>;
-
-#[compile_time_only]
-pub const fn variants_of(ty: Info) -> Query<MetaSlice<Info>>;
-
-#[compile_time_only]
-pub const fn associated_items_of(entity: Info)
-    -> Query<MetaSlice<Info>>;
-```
-
-### 7.4 Identity versus equivalence
-
-Rust needs separate operations for declaration identity, type equality, and alias normalization.
-
-```rust
-pub const fn same_entity(a: Info, b: Info) -> bool;
-pub const fn same_type(a: Info, b: Info) -> Query<bool>;
-pub const fn dealias(ty: Info) -> Query<Info>;
-```
-
-An `Info` for `Vec<T>` is not an `Info` for `Vec<u32>`. A generic declaration is not a concrete codegen instance. A type alias may have declaration identity distinct from its normalized target.
+1. **Zero Runtime Overhead**: `core::meta::Info` handles operate exclusively during `consteval`. Un-annotated types generate **0 bytes** of static binary or heap allocation overhead.
+2. **Deterministic Monomorphization**: Reflection queries evaluated within `const fn` produce compile-time constants that are folded during optimization phases (`LLVM / Cranelift`).
+3. **Safety & Privacy Boundaries**: Reflection queries respect item visibility (`pub`, `pub(crate)`, `private`). Private struct fields remain inaccessible to reflection queries outside their defining module unless explicit capabilities are granted.
 ---
 
 ## Navigation
