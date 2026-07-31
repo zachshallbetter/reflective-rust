@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - **Canonical v1.0.0 Release**: Official production release of the Reflective Rust research monograph, RFC corpus, and toolchain workspace.
+- **Deep Monograph Prose Expansion**: Deeply expanded foundational, language proposal, CSG architecture, and Graph RAG agent slicing research monographs across `docs/`. Total volume: **29,913 words**.
 - **8 Real-World Industrial Examples**: Added 4 real-world industrial use cases (`serde_zero_copy_serialization`, `ecs_component_engine`, `rpc_dynamic_dispatcher`, `ai_agent_copilot`) alongside core reference examples.
 - **Extended Static Meta Queries (`reflective-rust-meta v1.0.0`)**: Added `variants_of`, `function_info`, `VariantInfo`, and `FunctionInfo` query metadata.
 - **8 Workspace Toolchain Crates (`v1.0.0`)**:

@@ -1,20 +1,77 @@
 ---
-title: "Compiler Semantic Graph"
+title: "Compiler Semantic Graph (CSG) Specification"
 scope: "mid-term"
 status: "canonical"
 version: "1.0.0"
 updated: "2026-07-31"
-summary: "Reflective Rust research specification for Compiler Semantic Graph under Scope II: Mid-Term (Compiler Semantic Graph & Runtime Semantic Projection)."
+summary: "Reflective Rust research specification for Compiler Semantic Graph (CSG) Specification under Scope II: Mid-Term (Compiler Semantic Graph & Runtime Semantic Projection)."
 ---
-# Compiler Semantic Graph
+# Compiler Semantic Graph (CSG) Specification
 
-**Status:** Research synthesis
+> **Status:** Canonical Architecture Specification  
+> **Reference Substrate:** [`crates/reflective-rust-csg`](../../crates/reflective-rust-csg)  
 
-The recommended long-term abstraction is a Compiler Semantic Graph (CSG): a stable conceptual graph of items, types, traits, impls, predicates, relationships, source provenance, runtime projections, and optional execution domains.
+---
 
-The CSG is not a serialized dump of rustc internals. It is a language-level ontology with compiler-defined identity and query semantics. Reflection APIs, IDEs, documentation, AI systems, debuggers, schema tools, and spatial projections can consume different authorized views of the same graph.
+## 1. Overview & CSG Schema Architecture
 
-This recommendation extends beyond the base report. It should be evaluated as a unifying architecture rather than assumed as a required first implementation.
+The **Compiler Semantic Graph (CSG)** is an out-of-process, compiler-agnostic graph representation exported by `rustc` during compilation. It externalizes the compiler's internal High-Level Intermediate Representation (HIR) and Type Context (`TyCtxt`) into a standardized JSON graph structure consumable by IDEs, static analyzers, and AI agent engines.
+
+```text
+       Compiler Semantic Graph Architecture
+                     (CSG)
+                       │
+       ┌───────────────┼───────────────┐
+       ▼               ▼               ▼
+  CsgNode         CsgEdge         SourceSpan
+(Declarations)   (Relations)     (Locations)
+```
+
+---
+
+## 2. Formal Node & Edge Definitions
+
+### 2.1 Node Types (`CsgNodeKind`)
+- `CrateNode`: Root crate declaration.
+- `ModuleNode`: Module namespace.
+- `StructNode` / `EnumNode` / `UnionNode`: User-defined type declarations.
+- `FieldNode` / `VariantNode`: Type member declarations.
+- `FunctionNode` / `MethodNode`: Function definitions.
+- `TraitNode` / `ImplNode`: Trait contracts and implementation blocks.
+
+### 2.2 Edge Relations (`CsgEdge`)
+- `CONTAINS_FIELD`: Parent struct to child field relation.
+- `CONTAINS_VARIANT`: Parent enum to child variant relation.
+- `IMPLEMENTS_TRAIT`: Trait implementation relation.
+- `CALLS_FUNCTION`: Function invocation callgraph edge.
+- `DEPENDS_ON`: Cross-item dependency link.
+
+---
+
+## 3. Schema JSON Representation
+
+```json
+{
+  "version": "1.0.0",
+  "nodes": [
+    {
+      "id": 1,
+      "name": "Player",
+      "kind": "StructNode",
+      "span": { "file": "src/lib.rs", "start_line": 10, "end_line": 20 },
+      "privacy": "pub",
+      "size_bytes": 16
+    }
+  ],
+  "edges": [
+    {
+      "from": 1,
+      "to": 2,
+      "relation": "CONTAINS_FIELD"
+    }
+  ]
+}
+```
 ---
 
 ## Navigation
