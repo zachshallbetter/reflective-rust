@@ -23,11 +23,12 @@ pub fn derive_reflectable(input: TokenStream) -> TokenStream {
                     let field_ident = &f.ident;
                     let field_name = field_ident.as_ref().unwrap().to_string();
                     let field_ty = &f.ty;
+                    let field_ty_str = quote!(#field_ty).to_string();
                     quote! {
                         FieldDescriptor {
                             name: #field_name,
                             offset: ::core::mem::offset_of!(#name, #field_ident),
-                            type_name: ::core::any::type_name::<#field_ty>(),
+                            type_name: #field_ty_str,
                         }
                     }
                 });
@@ -49,7 +50,6 @@ pub fn derive_reflectable(input: TokenStream) -> TokenStream {
 
         pub struct TypeDescriptor {
             pub name: &'static str,
-            pub type_id: ::core::any::TypeId,
             pub size: usize,
             pub align: usize,
             pub fields: &'static [FieldDescriptor],
@@ -60,7 +60,6 @@ pub fn derive_reflectable(input: TokenStream) -> TokenStream {
             pub fn type_descriptor() -> &'static TypeDescriptor {
                 static DESCRIPTOR: TypeDescriptor = TypeDescriptor {
                     name: #name_str,
-                    type_id: ::core::any::TypeId::of::<#name>(),
                     size: ::core::mem::size_of::<#name>(),
                     align: ::core::mem::align_of::<#name>(),
                     fields: #field_descriptors,

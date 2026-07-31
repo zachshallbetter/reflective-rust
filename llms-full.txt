@@ -1622,101 +1622,90 @@ CHAPTER: Code Examples (docs/08-reference/examples.md)
 ========================================================================
 
 ---
-title: "Example Workflows"
+title: "Reflective Rust Runnable Examples"
 scope: "near-term"
 status: "canonical"
 version: "1.0.0"
 updated: "2026-07-31"
-summary: "Reflective Rust research specification for Example Workflows under Scope I: Near-Term (Rust Semantic Reflection & Compile-Time Metaprogramming)."
+summary: "Reflective Rust research specification for Reflective Rust Runnable Examples under Scope I: Near-Term (Rust Semantic Reflection & Compile-Time Metaprogramming)."
 ---
-# Example Workflows
+# Reflective Rust Runnable Examples
 
-**Status:** Research synthesis
+This guide documents the runnable toolchain examples located across the [`crates/`](../../crates) workspace.
 
-## 26. Example workflows
+---
 
-### 26.1 Serialization
+## 1. Example 01: Static Semantic Reflection (`core::meta`)
+
+Demonstrates compile-time opaque handle lookup (`Info`), layout introspection, and field reflecting in `#![no_std]`.
+
+```bash
+cargo run --example static_reflection -p reflective-rust-meta
+```
 
 ```rust
-#[reflect_runtime(serializer = "fieldwise")]
-pub struct Record {
+use reflective_rust_meta::{fields_of, layout_of, of, Info, Kind};
+
+struct Player {
     id: u64,
-    name: String,
+    active: bool,
+}
 
-    #[reflect(skip)]
-    cache: Cache,
+fn main() {
+    const PLAYER_INFO: Info = of::<Player>();
+    let layout = layout_of::<Player>();
+    println!("Type Handle ID: 0x{:016X}", PLAYER_INFO.id());
+    println!("Memory Size   : {} bytes", layout.size);
 }
 ```
 
-Compile-time flow:
+---
 
-```text
-owner-authorized semantic query
--> field policy evaluation
--> typed field walkers
--> static serializer descriptor
--> ordinary optimization
+## 2. Example 02: Opt-In Zero-Cost Runtime Descriptors (`#[derive(Reflectable)]`)
+
+Demonstrates emitting static `TypeDescriptor` VTables for opt-in runtime reflection without GC or memory overhead for un-annotated types.
+
+```bash
+cargo run --example runtime_descriptors -p reflective-rust-derive
 ```
 
-The runtime path may traverse descriptors. The static path may inline generated field access.
-
-### 26.2 Editor generation
-
 ```rust
-#[reflect_runtime(editor)]
-pub struct Light {
-    #[reflect(label = "Intensity", unit = "lm", range = 0.0..=100_000.0)]
-    intensity: f32,
+use reflective_rust_derive::Reflectable;
 
-    #[reflect(label = "Color")]
-    color: Color,
+#[derive(Reflectable)]
+struct GameEntity {
+    id: u64,
+    health: f32,
 }
-```
 
-The projection generates labels, units, range metadata, shared getters, and exclusive setters. Raw offsets are unnecessary.
-
-### 26.3 RPC
-
-```rust
-#[reflect_runtime(rpc)]
-impl InventoryService {
-    #[reflect(rpc, name = "inventory.get")]
-    pub async fn get(
-        &self,
-        request: GetRequest,
-    ) -> Result<GetResponse, ServiceError> {
-        // ...
+fn main() {
+    let descriptor = GameEntity::type_descriptor();
+    println!("Type Name: {}", descriptor.name);
+    for field in descriptor.fields {
+        println!("  - Field: {} (Offset: {})", field.name, field.offset);
     }
 }
 ```
 
-The metaprogram checks supported ownership, schemas, `Send`/`Sync` policy, error mapping, and visibility, then generates dispatch and serialization adapters.
+---
 
-### 26.4 ECS
+## 3. Example 03: Compiler Semantic Graph (CSG) & JSON Serialization
 
-```rust
-#[component]
-pub struct Transform {
-    translation: Vec3,
-    rotation: Quat,
-}
+Demonstrates constructing a `CompilerSemanticGraph`, creating nodes and edges, and serializing out-of-process JSON schemas.
+
+```bash
+cargo run --example csg_query -p reflective-rust-csg
 ```
 
-`#[component]` supplies domain intent. Reflection supplies field shape, drop/clone functions, editor projection, and registration metadata. Structural shape alone does not imply component semantics.
+---
 
-### 26.5 CallMeMaybe-style dynamic invocation
+## 4. Example 04: Graph RAG CSG Agent Context Slicing (`csg::slice_around`)
 
-```text
-meta::of::<Player>()
--> fields_of / associated_items_of
--> owner-authorized selection
--> TypeInfo and TypeKey
--> constructor/method thunks
--> registry
--> checked runtime lookup and invocation
+Demonstrates extracting compiler-certified semantic slices (types, trait bounds, privacy barriers) for zero-search AI tool context resolution.
+
+```bash
+cargo run --example agent_slicing -p reflective-rust-agent
 ```
-
-Rust's version differs by representing ownership through `OwnedValue`, private access through owner authorization, and invocation through borrow/capability checks.
 ---
 
 ## Navigation
