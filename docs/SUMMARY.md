@@ -35,6 +35,7 @@
   - [Migration Strategy](08-reference/migration.md)
   - [FAQ](08-reference/faq.md)
   - [RFC Template](08-reference/rfc-template.md)
+  - [RFC 0001: Static Semantic Reflection](08-reference/rfc-0001-semantic-static-reflection.md)
   - [Terminology Lanes](08-reference/terminology-lanes.md)
 
 # Scope II: Mid-Term (Compiler Semantic Graph & Runtime Semantic Projection)

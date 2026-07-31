@@ -1,0 +1,123 @@
+# Reflective Rust: Agent Document Index
+
+> Reflective Rust: A Reflective Systems Architecture (RRSA) based on a Compiler Semantic Graph (CSG).
+
+## Structural Hierarchy
+
+- docs/README.md: Overview, taxonomy matrix, and concentric scopes
+- AUTHORITY.md: Single source of truth & conflict resolution order
+- VERSIONING.md: Independent layer versioning policy
+- .agents/AGENTS.md: Research doctrine & status honesty rules
+- CLAUDE.md: Agent operational guide & verification commands
+
+## Canonical Chapters (under docs/)
+
+- docs/README.md: Overview
+- docs/00-foundations/README.md: 00 Foundations
+- docs/00-foundations/00-abstract.md: Abstract
+- docs/00-foundations/01-problem-statement.md: Problem Statement
+- docs/00-foundations/02-research-methodology.md: Research Methodology
+- docs/00-foundations/03-ontology.md: Ontology
+- docs/00-foundations/04-taxonomy.md: Taxonomy
+- docs/00-foundations/05-glossary.md: Glossary
+- docs/00-foundations/06-non-negotiable-invariants.md: Non-Negotiable Invariants
+- docs/00-foundations/07-research-practices.md: Research Practices
+- docs/03-rust-language-proposal/README.md: 03 Rust Language Proposal
+- docs/03-rust-language-proposal/semantic-reflection.md: Semantic Reflection
+- docs/03-rust-language-proposal/compile-time-execution.md: Compile-Time Execution
+- docs/03-rust-language-proposal/reification.md: Reification
+- docs/03-rust-language-proposal/generation.md: Generation
+- docs/03-rust-language-proposal/meta-info.md: Meta Info
+- docs/03-rust-language-proposal/proposed-syntax.md: Proposed Syntax
+- docs/03-rust-language-proposal/reflection-queries.md: Reflection Queries
+- docs/03-rust-language-proposal/compiler-phases.md: Compiler Phases
+- docs/03-rust-language-proposal/diagnostics.md: Diagnostics
+- docs/03-rust-language-proposal/layout-and-monomorphization.md: Layout and Monomorphization
+- docs/03-rust-language-proposal/staging-model.md: Staging Model
+- docs/03-rust-language-proposal/phase-state-machine.md: Compile-Time Phase State Machine
+- docs/08-reference/README.md: 08 Reference & Scaffolding
+- docs/08-reference/proposed-api.md: Proposed API
+- docs/08-reference/examples.md: Code Examples
+- docs/08-reference/cookbook.md: Cookbook
+- docs/08-reference/decision-matrix.md: Decision Matrix
+- docs/08-reference/prototype-crates.md: Prototype Crates
+- docs/08-reference/migration.md: Migration Strategy
+- docs/08-reference/faq.md: FAQ
+- docs/08-reference/rfc-template.md: RFC Template
+- docs/08-reference/rfc-0001-semantic-static-reflection.md: RFC 0001: Static Semantic Reflection
+- docs/08-reference/terminology-lanes.md: Terminology Lanes
+- docs/04-runtime/README.md: 04 Runtime Semantic Projection
+- docs/04-runtime/runtime-reflection.md: Runtime Reflection
+- docs/04-runtime/runtime-descriptors.md: Runtime Descriptors
+- docs/04-runtime/invocation.md: Invocation Adapters
+- docs/04-runtime/registries.md: Registries
+- docs/04-runtime/privacy.md: Privacy Boundaries
+- docs/04-runtime/capabilities.md: Capabilities
+- docs/04-runtime/serialization.md: Serialization
+- docs/04-runtime/plugin-systems.md: Plugin Systems
+- docs/04-runtime/ecs.md: ECS Integration
+- docs/04-runtime/zero-cost.md: Zero-Cost Guarantees
+- docs/04-runtime/opt-in-descriptor-registries.md: Opt-In Descriptor Registries
+- docs/05-metaobjects/README.md: 05 Metaobjects & Protocol Design
+- docs/05-metaobjects/protocol-design.md: Protocol Design
+- docs/05-metaobjects/introspection.md: Introspection
+- docs/05-metaobjects/intercession.md: Intercession
+- docs/05-metaobjects/safety-boundaries.md: Safety Boundaries
+- docs/05-metaobjects/compiler-contracts.md: Compiler Contracts
+- docs/05-metaobjects/contract-attributes-framework.md: Contract Attributes Framework
+- docs/07-compiler/README.md: 07 Compiler Architecture & CSG
+- docs/07-compiler/architecture.md: Architecture Overview
+- docs/07-compiler/compiler-semantic-graph.md: Compiler Semantic Graph (CSG)
+- docs/07-compiler/dependency-tracking.md: Dependency Tracking
+- docs/07-compiler/incremental-compilation.md: Incremental Compilation
+- docs/07-compiler/hygiene.md: Hygiene
+- docs/07-compiler/coherence.md: Coherence
+- docs/07-compiler/privacy.md: Privacy Architecture
+- docs/07-compiler/optimization.md: Optimization Boundaries
+- docs/07-compiler/implementation-roadmap.md: Implementation Roadmap
+- docs/07-compiler/compiler-conformance-vectors.md: Compiler Conformance Vectors
+- docs/07-compiler/incremental-trace-verification.md: Incremental Trace Verification
+- docs/06-procedural-reflection/README.md: 06 Procedural Reflection Domain
+- docs/06-procedural-reflection/execution-model.md: Execution Model
+- docs/06-procedural-reflection/process-model.md: Process Model
+- docs/06-procedural-reflection/mir-interpreter.md: MIR Interpreter
+- docs/06-procedural-reflection/continuations.md: Continuations
+- docs/06-procedural-reflection/effect-handlers.md: Effect Handlers
+- docs/06-procedural-reflection/async-integration.md: Async Integration
+- docs/06-procedural-reflection/safepoints-and-capabilities.md: Safepoints & Capabilities
+- docs/09-research/README.md: 09 Research & Experimental Frontier
+- docs/09-research/evaluation-methodology.md: Evaluation Methodology
+- docs/09-research/ai-and-semantic-tools.md: AI & Semantic Tools
+- docs/09-research/ssp-companion.md: Semantic Spatial Projection (SSP)
+- docs/09-research/open-problems.md: Open Problems
+- docs/09-research/rejected-designs.md: Rejected Designs
+- docs/09-research/publication-plan.md: Publication Plan
+- docs/09-research/future-work.md: Future Work
+- docs/09-research/bibliography.md: Bibliography
+- docs/09-research/ai-panel-pressure-classification.md: AI Panel Pressure Classification
+- docs/09-research/ssp-spatial-anchor-protocol.md: SSP Spatial Anchor Protocol
+- docs/09-research/semantic-graph-agent-slicing.md: Semantic Graph Agent Context Slicing
+- docs/01-history/README.md: 01 History & Lineage
+- docs/01-history/3-lisp.md: 3-Lisp
+- docs/01-history/brian-cantwell-smith.md: Brian Cantwell Smith
+- docs/01-history/clos-mop.md: CLOS MOP
+- docs/01-history/historical-timeline.md: Historical Timeline
+- docs/01-history/smalltalk.md: Smalltalk
+- docs/01-history/symbolics-genera.md: Symbolics Genera
+- docs/02-comparative-analysis/README.md: 02 Comparative Analysis
+- docs/02-comparative-analysis/overview.md: Overview
+- docs/02-comparative-analysis/cpp-p2996.md: C++ P2996
+- docs/02-comparative-analysis/clang-implementation.md: Clang Implementation
+- docs/02-comparative-analysis/callmemaybe.md: CallMeMaybe
+- docs/02-comparative-analysis/rust-current-state.md: Rust Current State
+- docs/02-comparative-analysis/java-csharp.md: Java & C#
+- docs/02-comparative-analysis/d-zig-nim.md: D, Zig, Nim
+- docs/02-comparative-analysis/julia-smalltalk.md: Julia & Smalltalk
+- docs/02-comparative-analysis/comparison-matrix.md: Comparison Matrix
+- docs/diagrams/README.md: Diagrams
+- docs/appendices/README.md: Appendices
+- docs/appendices/citations.md: Citations
+- docs/appendices/full-original-report.md: Full Original Report
+- docs/appendices/notation.md: Notation
+- docs/appendices/source-analysis.md: Source Analysis
+- docs/appendices/terminology.md: Terminology
