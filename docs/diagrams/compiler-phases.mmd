@@ -1,0 +1,9 @@
+flowchart LR
+  P[Parse] --> E[Expand]
+  E --> R[Resolve]
+  R --> T[Type Check]
+  T --> S[Trait Solve]
+  S --> N[Normalize]
+  N --> L[Layout]
+  L --> M[Monomorphize]
+  M --> C[Codegen]

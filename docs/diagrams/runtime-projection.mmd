@@ -1,0 +1,9 @@
+flowchart TD
+  SG[Semantic Graph] --> Q[Projection Policy]
+  Q --> D[Descriptors]
+  Q --> A[Checked Accessors]
+  Q --> I[Invocation Adapters]
+  D --> R[Registry]
+  A --> R
+  I --> R
+  R --> APP[Runtime Consumer]

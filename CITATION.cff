@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you cite this research architecture, please cite it as below."
+title: "Reflective Rust: Semantic Reflection, Compiler Graphs, and Reflective Systems Architecture"
+abstract: "A staged reflective systems architecture (RRSA) for Rust based on an opaque, phase-bounded compiler semantic graph (CSG), compile-time metaprogramming, runtime projection, and spatial interfaces."
+authors:
+  - family-names: "Shallbetter"
+    given-names: "Zach"
+    orcid: "https://orcid.org/0009-0009-9450-3429"
+version: "1.0.0"
+date-released: "2026-07-31"
+repository-code: "https://github.com/zachshallbetter/reflective-rust"
+license: "MIT"
+keywords:
+  - rust
+  - reflection
+  - compiler-semantic-graph
+  - metaobjects
+  - consteval
+  - spatial-projection

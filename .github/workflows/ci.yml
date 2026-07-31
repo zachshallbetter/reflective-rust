@@ -1,0 +1,59 @@
+name: CI Verification Gates
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  verification:
+    name: Structure, Link & LLM Generation Verification
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Run Structure Verification Gate
+        run: python3 scripts/check-structure.py
+
+      - name: Run Link Integrity Gate
+        run: node scratch/verify-links.mjs
+
+      - name: Run Layer Changelog Gate
+        run: python3 scripts/check-changelogs.py
+
+      - name: Rebuild LLM Single-File Corpus & Check Drift
+        run: |
+          node scripts/gen-llms.mjs
+          if [ -n "$(git status --porcelain llms.txt llms-full.txt)" ]; then
+            echo "ERROR: llms-full.txt or llms.txt is out of date! Run 'node scripts/gen-llms.mjs' locally and commit the updated files."
+            git diff llms.txt llms-full.txt
+            exit 1
+          fi
+
+  conclusion:
+    name: Verification Gate Conclusion (Required Check)
+    needs: [verification]
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - name: Assert All Dependency Jobs Succeeded
+        run: |
+          if [ "${{ needs.verification.result }}" != "success" ]; then
+            echo "FAILED: Verification gate failed or was skipped."
+            exit 1
+          fi
+          echo "SUCCESS: All verification gates passed cleanly."

@@ -1,0 +1,19 @@
+# Operating System
+.DS_Store
+Thumbs.db
+
+# Build Artifacts
+book/
+target/
+dist/
+build/
+*.bin
+
+# Environment & Temp Files
+.env
+.env.local
+*.log
+scratch/tmp/
+
+llms-full.txt
+llms.txt

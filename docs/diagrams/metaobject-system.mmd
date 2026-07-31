@@ -1,0 +1,6 @@
+flowchart LR
+  ENT[Semantic Entity] --> MO[Descriptive Metaobject]
+  MO --> Q[Queries]
+  MO --> P[Declared Protocol]
+  P --> GEN[Generated Ordinary Rust]
+  GEN --> CHK[Compiler Checks]

@@ -1,0 +1,10 @@
+flowchart TD
+  SRC[Source + Expanded Syntax] --> RES[Resolution]
+  RES --> TC[Type Checking]
+  TC --> TS[Trait Solving / Normalization]
+  TS --> META[Opaque meta::Info Graph]
+  META --> CE[Consteval Metaprogram]
+  CE --> REIFY[Typed Reification]
+  REIFY --> CHECK[Ordinary Rust Checks]
+  CHECK --> BIN[Binary]
+  CHECK --> RTP[Optional Runtime Projection]
