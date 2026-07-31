@@ -49,4 +49,4 @@ To keep **Reflective Rust (RRSA)** inspectable, deterministic, and clear, terms 
 ---
 
 ## Navigation
-[← RFC Template](../08-reference/rfc-template.md) | [Table of Contents](../SUMMARY.md) | [04 Runtime Semantic Projection →](../04-runtime/README.md)
+[← RFC 0004: Agentic Context Slicing & Spatial Anchors](../08-reference/rfc-0004-agent-slicing-and-ssp.md) | [Table of Contents](../SUMMARY.md) | [04 Runtime Semantic Projection →](../04-runtime/README.md)

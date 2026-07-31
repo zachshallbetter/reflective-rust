@@ -93,4 +93,4 @@ pub mod core::meta {
 ---
 
 ## Navigation
-[← RFC Template](../08-reference/rfc-template.md) | [Table of Contents](../SUMMARY.md) | [Terminology Lanes →](../08-reference/terminology-lanes.md)
+[← RFC Template](../08-reference/rfc-template.md) | [Table of Contents](../SUMMARY.md) | [RFC 0002: Compiler Semantic Graph (CSG) →](../08-reference/rfc-0002-compiler-semantic-graph.md)

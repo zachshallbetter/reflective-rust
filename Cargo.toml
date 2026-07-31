@@ -1,0 +1,15 @@
+[workspace]
+members = [
+    "crates/reflective-rust-meta",
+    "crates/reflective-rust-csg",
+    "crates/reflective-rust-derive",
+    "crates/reflective-rust-agent",
+]
+resolver = "2"
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+authors = ["Reflective Rust Research Team"]
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/zachshallbetter/reflective-rust"

@@ -36,6 +36,9 @@
   - [FAQ](08-reference/faq.md)
   - [RFC Template](08-reference/rfc-template.md)
   - [RFC 0001: Static Semantic Reflection](08-reference/rfc-0001-semantic-static-reflection.md)
+  - [RFC 0002: Compiler Semantic Graph (CSG)](08-reference/rfc-0002-compiler-semantic-graph.md)
+  - [RFC 0003: Opt-In Zero-Cost Runtime Descriptors](08-reference/rfc-0003-runtime-descriptors.md)
+  - [RFC 0004: Agentic Context Slicing & Spatial Anchors](08-reference/rfc-0004-agent-slicing-and-ssp.md)
   - [Terminology Lanes](08-reference/terminology-lanes.md)
 
 # Scope II: Mid-Term (Compiler Semantic Graph & Runtime Semantic Projection)
