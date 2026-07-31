@@ -42,21 +42,7 @@ pub fn derive_reflectable(input: TokenStream) -> TokenStream {
     };
 
     let expanded = quote! {
-        pub struct FieldDescriptor {
-            pub name: &'static str,
-            pub offset: usize,
-            pub type_name: &'static str,
-        }
-
-        pub struct TypeDescriptor {
-            pub name: &'static str,
-            pub size: usize,
-            pub align: usize,
-            pub fields: &'static [FieldDescriptor],
-        }
-
         impl #name {
-            /// Returns the opt-in static runtime descriptor for this type.
             pub fn type_descriptor() -> &'static TypeDescriptor {
                 static DESCRIPTOR: TypeDescriptor = TypeDescriptor {
                     name: #name_str,
