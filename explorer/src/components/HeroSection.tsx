@@ -73,7 +73,7 @@ export const HeroSection: React.FC = () => {
         >
           Eliminating procedural macro token-stream parsing with compiler-certified static reflection 
           (<code className="text-cyan-400 font-mono font-bold">core::meta</code>), out-of-process Compiler Semantic Graphs (CSG), 
-          and zero-cost opt-in VTables—delivering <strong className="text-emerald-400 font-semibold">0 bytes memory overhead for un-annotated types</strong>.
+          and zero-cost opt-in VTables - delivering <strong className="text-emerald-400 font-semibold">0 bytes memory overhead for un-annotated types</strong>.
         </motion.p>
 
         {/* Tactical Action Buttons */}

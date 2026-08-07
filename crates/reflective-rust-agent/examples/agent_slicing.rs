@@ -47,5 +47,5 @@ fn main() {
     println!("\nFormatted LLM Prompt Context:\n{}", slice.formatted_prompt_context);
 
     assert_eq!(slice.target_symbol, "SecurityToken");
-    println!("\n✓ Compiler-Certified Graph RAG Agent Context Slicing Succeeded!");
+    println!("\n[OK] Compiler-Certified Graph RAG Agent Context Slicing Succeeded!");
 }

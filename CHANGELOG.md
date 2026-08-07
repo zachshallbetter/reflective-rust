@@ -1,4 +1,4 @@
-# Reflective Rust — Changelog
+# Reflective Rust - Changelog
 
 All notable changes to the **Reflective Rust** research program, specifications, and reference toolchain crates are documented in this file.
 
@@ -13,10 +13,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Static Reflection `Sized` Trait Invariant**: Documented `where Self: Sized` requirement on static size reflection default trait methods (`std::mem::size_of::<Self>()`) in `docs/03-rust-language-proposal/meta-info.md`.
 - **Declarative MOP Privacy Attributes**: Added Section 3 (`#[meta(permit = "role")]`) in `docs/05-metaobjects/contract-attributes-framework.md` isolating access control policies across REST, WASM, and GraphQL boundaries.
 - **Empirical Negative Results**: Recorded empirical negative findings in `docs/09-research/rejected-designs.md` regarding unbounded static trait size evaluation (`E0277`) and stringified JSON parsing inside 60 FPS WebGL render loops.
+- **Special Acknowledgment**: Added prominent acknowledgment to **LaurieWired** ([GitHub](https://github.com/LaurieWired), [YouTube](https://www.youtube.com/@LaurieWired), video [*Reverse Engineering Rust Vtables*](https://www.youtube.com/watch?v=M_720LesVg4)) at the top of `docs/README.md` and `docs/00-foundations/00-abstract.md`.
 
 ---
 
-## [1.0.0] - 2026-07-31 — Canonical v1.0 Release
+## [1.0.0] - 2026-07-31 - Canonical v1.0 Release
 
 ### Added
 - **Canonical v1.0.0 Release**: Official production release of the Reflective Rust research monograph, RFC corpus, and toolchain workspace.

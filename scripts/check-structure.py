@@ -55,7 +55,7 @@ def check_directories():
     if missing:
         print(f"FAILED: Missing directories: {missing}")
         return False
-    print("  ✓ All required directories exist.")
+    print("  [OK] All required directories exist.")
     return True
 
 
@@ -70,7 +70,7 @@ def check_required_files():
     if missing:
         print(f"FAILED: Missing required files: {missing}")
         return False
-    print("  ✓ All required root files exist.")
+    print("  [OK] All required root files exist.")
     return True
 
 
@@ -102,7 +102,7 @@ def check_summary_links():
                 missing_frontmatter += 1
 
     print(
-        f"  ✓ Summary links verified: {total_links} links checked, {broken_links} broken, {missing_frontmatter} missing frontmatter."
+        f"  [OK] Summary links verified: {total_links} links checked, {broken_links} broken, {missing_frontmatter} missing frontmatter."
     )
 
     if broken_links > 0 or missing_frontmatter > 0:

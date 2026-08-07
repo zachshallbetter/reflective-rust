@@ -40,5 +40,5 @@ fn main() {
 
     assert!(slice.formatted_prompt_context.contains("SecurityToken"));
     assert!(slice.formatted_prompt_context.contains("secret_key"));
-    println!("\n✓ Real-World AI Agent Copilot Prompt Context Slicing Succeeded!");
+    println!("\n[OK] Real-World AI Agent Copilot Prompt Context Slicing Succeeded!");
 }

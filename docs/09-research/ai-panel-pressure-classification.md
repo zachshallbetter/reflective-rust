@@ -19,7 +19,7 @@ This document defines how AI coding agents and tool panels operating on the **Co
 
 When an AI agent uses the Compiler Semantic Graph (CSG) to analyze program semantics, type safety, or architectural constraints, human users may challenge the agent's diagnostics (e.g., *"Are you sure this lifetime is invalid?"*).
 
-Unanchored models frequently exhibit **sycophancy**—retracting correct compiler diagnostics purely to appease user sentiment.
+Unanchored models frequently exhibit **sycophancy** - retracting correct compiler diagnostics purely to appease user sentiment.
 
 ---
 

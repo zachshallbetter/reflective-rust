@@ -21,7 +21,10 @@ summary: "Reflective Rust: A Reflective Systems Architecture (RRSA) based on a C
 > **Formal Architecture:** Rust Reflective Systems Architecture (RRSA)  
 > **Core Substrate:** Compiler Semantic Graph (CSG)  
 
-Reflective Rust establishes a comprehensive systems architecture for reflection in Rust. Rather than reducing reflection to a single dynamic API or unconstrained syntax macro system, Reflective Rust defines a phase-staged hierarchy that preserves Rust's core guarantees—safety, coherence, privacy, incremental compilation, and zero-cost abstractions.
+> [!NOTE]
+> **Special Acknowledgment**: Special thanks to **[LaurieWired](https://github.com/LaurieWired)** for her amazing YouTube channel ([@LaurieWired](https://www.youtube.com/@LaurieWired)) and her insightful video (*["Reverse Engineering Rust Vtables"](https://www.youtube.com/watch?v=M_720LesVg4)*), which originally inspired the core concept and architectural direction of Reflective Rust.
+
+Reflective Rust establishes a comprehensive systems architecture for reflection in Rust. Rather than reducing reflection to a single dynamic API or unconstrained syntax macro system, Reflective Rust defines a phase-staged hierarchy that preserves Rust's core guarantees - safety, coherence, privacy, incremental compilation, and zero-cost abstractions.
 
 ---
 
@@ -131,7 +134,7 @@ $$\text{Architecture & Research Doctrine} \to \text{Canonical Ontology & Glossar
 ## Operational Rules
 
 1. **Code Never Silently Alters Theory**:
-   If an experimental macro, compiler prototype, or benchmark output behaves differently from the Level 0–2 specifications, **the code contains a defect** until a formal synthesis determination explicitly updates the specification.
+   If an experimental macro, compiler prototype, or benchmark output behaves differently from the Level 0-2 specifications, **the code contains a defect** until a formal synthesis determination explicitly updates the specification.
 
 2. **Generated Files Are Downstream**:
    Files like `llms-full.txt`, `SUMMARY.md`, and static `book/` builds are downstream projections. They must never be manually edited to introduce new concepts not present in the canonical source files.
@@ -188,7 +191,7 @@ Layer 4: Spatial & AI Tooling Projections (docs/09-research/, docs/06-procedural
    - A patch or clarification to the language specification (Layer 1) does **not** force a release bump in runtime projection crates (Layer 3).
    - A performance fix in a compiler backend (Layer 2) does **not** imply a new theory specification version.
 2. **Explicit Conformance Records**:
-   - Cross-layer compatibility must be declared in an explicit **Conformance Record** (`CONFORMANCE.md` or [`docs/08-reference/comparison-matrix.md`](docs/08-reference/comparison-matrix.md))—never inferred from matching version numbers.
+   - Cross-layer compatibility must be declared in an explicit **Conformance Record** (`CONFORMANCE.md` or [`docs/08-reference/comparison-matrix.md`](docs/08-reference/comparison-matrix.md)) - never inferred from matching version numbers.
 3. **Per-Layer Changelogs**:
    - Each layer maintains its own changelog. A single repo-wide changelog would assert exactly the version coupling this policy denies.
 4. **CI Enforcement**:
@@ -215,7 +218,10 @@ summary: "Reflective Rust: A Reflective Systems Architecture (RRSA) based on a C
 > **Formal Architecture:** Rust Reflective Systems Architecture (RRSA)  
 > **Core Substrate:** Compiler Semantic Graph (CSG)  
 
-Reflective Rust establishes a comprehensive systems architecture for reflection in Rust. Rather than reducing reflection to a single dynamic API or unconstrained syntax macro system, Reflective Rust defines a phase-staged hierarchy that preserves Rust's core guarantees—safety, coherence, privacy, incremental compilation, and zero-cost abstractions.
+> [!NOTE]
+> **Special Acknowledgment**: Special thanks to **[LaurieWired](https://github.com/LaurieWired)** for her amazing YouTube channel ([@LaurieWired](https://www.youtube.com/@LaurieWired)) and her insightful video (*["Reverse Engineering Rust Vtables"](https://www.youtube.com/watch?v=M_720LesVg4)*), which originally inspired the core concept and architectural direction of Reflective Rust.
+
+Reflective Rust establishes a comprehensive systems architecture for reflection in Rust. Rather than reducing reflection to a single dynamic API or unconstrained syntax macro system, Reflective Rust defines a phase-staged hierarchy that preserves Rust's core guarantees - safety, coherence, privacy, incremental compilation, and zero-cost abstractions.
 
 ---
 
@@ -328,7 +334,7 @@ summary: "Reflective Rust research specification for Abstract & Executive Summar
 
 ## Abstract
 
-**Reflective Rust (RRSA)** introduces a paradigm shift for systems programming languages: transforming Rust from a traditional one-way static compilation pipeline into a fully introspectable, metaprogrammable, and reflectively projected systems architecture—without compromising Rust's non-negotiable guarantees of zero-cost abstractions, memory safety, or static determinism.
+**Reflective Rust (RRSA)** introduces a paradigm shift for systems programming languages: transforming Rust from a traditional one-way static compilation pipeline into a fully introspectable, metaprogrammable, and reflectively projected systems architecture - without compromising Rust's non-negotiable guarantees of zero-cost abstractions, memory safety, or static determinism.
 
 By replacing unparsed text procedural macros with **Static Semantic Reflection (`core::meta::Info`)**, standardizing the out-of-process **Compiler Semantic Graph (CSG)** across LLVM, Cranelift, and GCC backends, and providing opt-in **Runtime Semantic Projection (`#[derive(Reflectable)]`)**, Reflective Rust delivers zero-cost reflection with 0 bytes memory overhead for un-annotated types.
 
@@ -344,7 +350,8 @@ Reflective Rust builds upon four decades of programming language research and me
 2. **Gregor Kiczales, Jim des Rivières, and Daniel G. Bobrow (1991)**: For formulating the Metaobject Protocol (MOP) and CLOS, demonstrating that object-oriented execution environments can expose clean reflective interfaces without sacrificing runtime performance.
 3. **C++ Reflection Working Group (P2996)**: For pioneering modern static reflection in C++, demonstrating the power of opaque type handles and compile-time evaluation.
 4. **The Rust Core Team & Community**: For designing Rust's affine type system, ownership semantics, hygiene models, and const evaluation engines (`consteval` / `Miri`) upon which this architecture is constructed.
-5. **The Julia and Smalltalk Research Communities**: For demonstrating the expressive power of dynamic introspection and signals-first reflective environments.
+5. **LaurieWired**: For her YouTube channel ([@LaurieWired](https://www.youtube.com/@LaurieWired)), GitHub projects ([@LaurieWired](https://github.com/LaurieWired)), and video [*Reverse Engineering Rust Vtables*](https://www.youtube.com/watch?v=M_720LesVg4), which inspired the initial inquiry into vtable layout and static reflection.
+6. **The Julia and Smalltalk Research Communities**: For demonstrating the expressive power of dynamic introspection and signals-first reflective environments.
 ---
 
 ## Navigation
@@ -527,12 +534,12 @@ summary: "Reflective Rust research specification for Reflection Taxonomy under S
 
 The architecture distinguishes six related but non-equivalent mechanisms:
 
-1. **Syntax transformation** — source/token manipulation before full semantic resolution.
-2. **Semantic static reflection** — compiler-resolved program entities exposed during compilation.
-3. **Compile-time metaprogramming** — deterministic execution that consumes semantic handles and emits values or Rust fragments.
-4. **Runtime reflection** — intentionally emitted runtime descriptors and adapters.
-5. **Metaobject protocols** — language-level protocols for inspecting or participating in selected operations.
-6. **Procedural reflection** — causally connected access to active computation and its continuation.
+1. **Syntax transformation** - source/token manipulation before full semantic resolution.
+2. **Semantic static reflection** - compiler-resolved program entities exposed during compilation.
+3. **Compile-time metaprogramming** - deterministic execution that consumes semantic handles and emits values or Rust fragments.
+4. **Runtime reflection** - intentionally emitted runtime descriptors and adapters.
+5. **Metaobject protocols** - language-level protocols for inspecting or participating in selected operations.
+6. **Procedural reflection** - causally connected access to active computation and its continuation.
 
 A major design requirement is preventing accidental collapse between these categories. Each has different staging, safety, authority, and implementation constraints.
 ---
@@ -1510,7 +1517,7 @@ impl Info {
 ```
 
 ### Invariants Enforced by Type System
-1. **No Pre-Typecheck Layout Access**: Calling `.layout()` during AST expansion produces a **compile-time type error** in the consteval metaprogram—not a runtime panic or non-deterministic compiler crash.
+1. **No Pre-Typecheck Layout Access**: Calling `.layout()` during AST expansion produces a **compile-time type error** in the consteval metaprogram - not a runtime panic or non-deterministic compiler crash.
 2. **Frozen Snapshot Transition**: Transition to `FrozenSnapshot` seals the CSG state; no further item generation or AST mutation is permitted once layout queries begin.
 ---
 
@@ -3809,7 +3816,7 @@ A static reflection system (`core::meta::Info`) and consteval metaprogramming su
 
 ## 2. Conformance Vector Protocol
 
-To verify multi-backend determinism, Reflective Rust defines a binary conformance vector—a deterministic hash stream of all resolved `meta::Info` queries, layout calculations, and hygienic token streams across a standard conformance test suite (`reflective-conformance-suite`).
+To verify multi-backend determinism, Reflective Rust defines a binary conformance vector - a deterministic hash stream of all resolved `meta::Info` queries, layout calculations, and hygienic token streams across a standard conformance test suite (`reflective-conformance-suite`).
 
 ```text
                                 CONFORMANCE PIPELINE
@@ -4562,7 +4569,7 @@ This document defines how AI coding agents and tool panels operating on the **Co
 
 When an AI agent uses the Compiler Semantic Graph (CSG) to analyze program semantics, type safety, or architectural constraints, human users may challenge the agent's diagnostics (e.g., *"Are you sure this lifetime is invalid?"*).
 
-Unanchored models frequently exhibit **sycophancy**—retracting correct compiler diagnostics purely to appease user sentiment.
+Unanchored models frequently exhibit **sycophancy** - retracting correct compiler diagnostics purely to appease user sentiment.
 
 ---
 
@@ -4982,12 +4989,12 @@ summary: "Reflective Rust research specification for Historical Timeline under H
 
 **Status:** Research synthesis
 
-- 1960s–1970s: Lisp establishes homoiconicity and interactive development.
+- 1960s-1970s: Lisp establishes homoiconicity and interactive development.
 - 1970s: Smalltalk develops image-based object environments.
 - 1982: Brian Cantwell Smith formalizes procedural reflection and 3-LISP.
 - 1980s: Symbolics Genera operationalizes live semantic development.
-- Late 1980s–1990s: CLOS MOP formalizes reflective object protocols.
-- 2000s–2020s: D, Nim, Zig, Julia, C#, Java, and others explore distinct compile-time/runtime reflection tradeoffs.
+- Late 1980s-1990s: CLOS MOP formalizes reflective object protocols.
+- 2000s-2020s: D, Nim, Zig, Julia, C#, Java, and others explore distinct compile-time/runtime reflection tradeoffs.
 - 2020s: C++ P2996 and Rust reflection/comptime initiatives renew compiler-level semantic reflection.
 ---
 

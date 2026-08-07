@@ -30,7 +30,7 @@ $$\text{Architecture & Research Doctrine} \to \text{Canonical Ontology & Glossar
 ## Operational Rules
 
 1. **Code Never Silently Alters Theory**:
-   If an experimental macro, compiler prototype, or benchmark output behaves differently from the Level 0–2 specifications, **the code contains a defect** until a formal synthesis determination explicitly updates the specification.
+   If an experimental macro, compiler prototype, or benchmark output behaves differently from the Level 0-2 specifications, **the code contains a defect** until a formal synthesis determination explicitly updates the specification.
 
 2. **Generated Files Are Downstream**:
    Files like `llms-full.txt`, `SUMMARY.md`, and static `book/` builds are downstream projections. They must never be manually edited to introduce new concepts not present in the canonical source files.
