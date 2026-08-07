@@ -71,5 +71,5 @@ fn main() {
     registry.inspect_registered();
 
     assert_eq!(registry.descriptors.len(), 2);
-    println!("\n✓ Dynamic ECS Component Registry Initialization Succeeded!");
+    println!("\n[OK] Dynamic ECS Component Registry Initialization Succeeded!");
 }

@@ -25,7 +25,7 @@ export const ProblemSection: React.FC = () => {
           <span className="gradient-text-crimson">Escalates Complexity & Waste</span>
         </h2>
         <p className="text-slate-300 text-sm sm:text-base leading-relaxed font-sans">
-          Rust's macro ecosystem relies on procedural macros operating on raw, unparsed token streams devoid of type context—forcing duplicate AST parsing, inflating build times, and leaving AI tools blind.
+          Rust's macro ecosystem relies on procedural macros operating on raw, unparsed token streams devoid of type context - forcing duplicate AST parsing, inflating build times, and leaving AI tools blind.
         </p>
       </div>
 

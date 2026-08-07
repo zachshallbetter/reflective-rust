@@ -58,7 +58,7 @@ impl Info {
 ```
 
 ### Invariants Enforced by Type System
-1. **No Pre-Typecheck Layout Access**: Calling `.layout()` during AST expansion produces a **compile-time type error** in the consteval metaprogram—not a runtime panic or non-deterministic compiler crash.
+1. **No Pre-Typecheck Layout Access**: Calling `.layout()` during AST expansion produces a **compile-time type error** in the consteval metaprogram - not a runtime panic or non-deterministic compiler crash.
 2. **Frozen Snapshot Transition**: Transition to `FrozenSnapshot` seals the CSG state; no further item generation or AST mutation is permitted once layout queries begin.
 ---
 

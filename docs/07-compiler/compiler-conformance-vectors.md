@@ -28,7 +28,7 @@ A static reflection system (`core::meta::Info`) and consteval metaprogramming su
 
 ## 2. Conformance Vector Protocol
 
-To verify multi-backend determinism, Reflective Rust defines a binary conformance vector—a deterministic hash stream of all resolved `meta::Info` queries, layout calculations, and hygienic token streams across a standard conformance test suite (`reflective-conformance-suite`).
+To verify multi-backend determinism, Reflective Rust defines a binary conformance vector - a deterministic hash stream of all resolved `meta::Info` queries, layout calculations, and hygienic token streams across a standard conformance test suite (`reflective-conformance-suite`).
 
 ```text
                                 CONFORMANCE PIPELINE

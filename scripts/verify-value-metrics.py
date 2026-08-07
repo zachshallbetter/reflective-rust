@@ -31,11 +31,11 @@ def main():
     print("==================================================")
 
     files, words = count_research_volume()
-    print(f"  ✓ Total Conceptual Chapters  : {files}")
-    print(f"  ✓ Total Research Volume      : {words:,} words")
-    print(f"  ✓ Toolchain Workspace Crates : 8 crates (v1.0.0)")
-    print(f"  ✓ Zero-Cost Memory Invariant : 0 bytes (Theorem 1.1 Verified)")
-    print(f"  ✓ Upstream RFC Specifications: 5 RFCs (RFC 0001 - 0005)")
+    print(f"  [OK] Total Conceptual Chapters  : {files}")
+    print(f"  [OK] Total Research Volume      : {words:,} words")
+    print(f"  [OK] Toolchain Workspace Crates : 8 crates (v1.0.0)")
+    print(f"  [OK] Zero-Cost Memory Invariant : 0 bytes (Theorem 1.1 Verified)")
+    print(f"  [OK] Upstream RFC Specifications: 5 RFCs (RFC 0001 - 0005)")
 
     if files < 100 or words < 25000:
         print("FAILED: Value metrics below minimum quality threshold.")

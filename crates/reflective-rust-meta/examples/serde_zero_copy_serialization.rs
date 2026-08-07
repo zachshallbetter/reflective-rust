@@ -65,5 +65,5 @@ fn main() {
 
     assert_eq!(packet.timestamp, restored.timestamp);
     assert_eq!(packet.active, restored.active);
-    println!("\n✓ Zero-Copy Binary Serialization & Deserialization Succeeded!");
+    println!("\n[OK] Zero-Copy Binary Serialization & Deserialization Succeeded!");
 }

@@ -63,5 +63,5 @@ fn main() {
 
     assert!(res1.contains("200"));
     assert!(res2.contains("404"));
-    println!("\n✓ Out-of-Process CSG Dynamic RPC Dispatcher Succeeded!");
+    println!("\n[OK] Out-of-Process CSG Dynamic RPC Dispatcher Succeeded!");
 }

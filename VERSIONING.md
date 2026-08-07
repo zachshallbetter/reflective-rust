@@ -42,7 +42,7 @@ Layer 4: Spatial & AI Tooling Projections (docs/09-research/, docs/06-procedural
    - A patch or clarification to the language specification (Layer 1) does **not** force a release bump in runtime projection crates (Layer 3).
    - A performance fix in a compiler backend (Layer 2) does **not** imply a new theory specification version.
 2. **Explicit Conformance Records**:
-   - Cross-layer compatibility must be declared in an explicit **Conformance Record** (`CONFORMANCE.md` or [`docs/08-reference/comparison-matrix.md`](docs/08-reference/comparison-matrix.md))—never inferred from matching version numbers.
+   - Cross-layer compatibility must be declared in an explicit **Conformance Record** (`CONFORMANCE.md` or [`docs/08-reference/comparison-matrix.md`](docs/08-reference/comparison-matrix.md)) - never inferred from matching version numbers.
 3. **Per-Layer Changelogs**:
    - Each layer maintains its own changelog. A single repo-wide changelog would assert exactly the version coupling this policy denies.
 4. **CI Enforcement**:

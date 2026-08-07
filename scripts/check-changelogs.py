@@ -46,7 +46,7 @@ def main():
     modified_files = get_modified_files()
     if not modified_files:
         print("  No git diff detected.")
-        print("  ✓ Layer Changelog Gate PASSED (Vacuous).")
+        print("  [OK] Layer Changelog Gate PASSED (Vacuous).")
         sys.exit(0)
 
     print(f"  Modified files in diff ({len(modified_files)}):")
@@ -64,7 +64,7 @@ def main():
         )
         sys.exit(1)
 
-    print("  ✓ Layer Changelog Gate PASSED.")
+    print("  [OK] Layer Changelog Gate PASSED.")
     sys.exit(0)
 
 

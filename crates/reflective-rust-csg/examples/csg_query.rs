@@ -43,5 +43,5 @@ fn main() {
     println!("Out-of-Process JSON-RPC Graph Output:\n{}", json);
 
     assert!(csg.verify_conformance());
-    println!("\n✓ CSG Graph Out-of-Process Serialization Succeeded!");
+    println!("\n[OK] CSG Graph Out-of-Process Serialization Succeeded!");
 }

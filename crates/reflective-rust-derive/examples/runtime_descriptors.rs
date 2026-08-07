@@ -45,5 +45,5 @@ fn main() {
 
     assert_eq!(descriptor.name, "PlayerAccount");
     assert_eq!(descriptor.fields.len(), 3);
-    println!("\n✓ Opt-In Runtime Descriptor VTable Introspection Succeeded!");
+    println!("\n[OK] Opt-In Runtime Descriptor VTable Introspection Succeeded!");
 }

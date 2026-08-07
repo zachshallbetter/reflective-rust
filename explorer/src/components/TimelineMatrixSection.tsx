@@ -104,7 +104,7 @@ export const TimelineMatrixSection: React.FC = () => {
         <div className="flex items-center gap-3">
           <BookOpen className="w-5 h-5 text-amber-400" />
           <h4 className="text-sm font-bold text-white font-mono uppercase">
-            Milestone Deep Dive: {milestones[selectedMilestone].year} — {milestones[selectedMilestone].title}
+            Milestone Deep Dive: {milestones[selectedMilestone].year} - {milestones[selectedMilestone].title}
           </h4>
         </div>
         <p className="text-xs text-slate-300 font-mono leading-relaxed pl-8">

@@ -29,5 +29,5 @@ fn main() {
     }
 
     assert_eq!(PLAYER_INFO.kind(), Kind::Type(TypeKind::Struct));
-    println!("\n✓ Static Reflection Query Succeeded!");
+    println!("\n[OK] Static Reflection Query Succeeded!");
 }
