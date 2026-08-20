@@ -26,30 +26,35 @@ All 8 crates in the Cargo workspace are fully implemented and verified with zero
 ## 2. Workspace Crate Topology & Feature Verification
 
 ### 1. `reflective-rust-meta` (`crates/reflective-rust-meta`)
+
 - **Substrate**: `#![no_std]` / `alloc` compatible.
 - **Core Types**: `Info`, `Kind`, `LayoutInfo`, `FieldInfo`, `VariantInfo`.
 - **Implementation**: Provides non-forgeable, zero-cost static handles for type introspection, memory layout querying (`size`, `align`, field offsets), and enum variant metadata.
 - **Verification**: `test_enum_variant_queries` and `test_static_reflection_handle` **passed**.
 
 ### 2. `reflective-rust-derive` (`crates/reflective-rust-derive`)
+
 - **Substrate**: `proc-macro`.
 - **Core Attribute**: `#[derive(Reflectable)]`.
 - **Implementation**: Procedural macro generating `Reflectable` implementations for structs and enums, emitting static type structures, layout descriptors, and field offsets.
 - **Verification**: Synthesizes compile-time metadata across all workspace integration tests.
 
 ### 3. `reflective-rust-csg` (`crates/reflective-rust-csg`)
+
 - **Substrate**: `std`.
 - **Core Types**: `CsgNode`, `CsgEdge`, `CsgGraph`, `CsgTypeNode`, `CsgFieldNode`.
 - **Implementation**: Out-of-process Compiler Semantic Graph (CSG) model representing type semantics, layout offsets, and field relationships in a queryable DAG with JSON serialization.
 - **Verification**: `test_csg_graph_serialization` **passed**.
 
 ### 4. `reflective-rust-agent` (`crates/reflective-rust-agent`)
+
 - **Substrate**: `std`.
 - **Core Types**: `CsgContextSlicer`, `SliceConfig`, `GraphSlice`.
 - **Implementation**: Graph RAG context slicer algorithm extracting localized semantic subgraphs (`slice_around`, `find_type`) for LLM/agent prompt compilation.
 - **Verification**: `test_agent_slice_around` **passed**.
 
 ### 5. `reflective-rust-server` (`crates/reflective-rust-server`)
+
 - **Substrate**: `std` (Tokio / Axum).
 - **Core Endpoints**:
   - `GET /v1/runtime/health`: Service health and metrics.
@@ -58,6 +63,7 @@ All 8 crates in the Cargo workspace are fully implemented and verified with zero
 - **Implementation**: Reflective REST server for out-of-process semantic graph querying.
 
 ### 6. `reflective-rust-cli` (`crates/reflective-rust-cli`)
+
 - **Substrate**: `std` (Clap CLI).
 - **Subcommands**:
   - `inspect <TYPE>`: Inspect static reflection metadata.
@@ -65,11 +71,13 @@ All 8 crates in the Cargo workspace are fully implemented and verified with zero
   - `export-csg`: Export entire crate CSG graph to JSON.
 
 ### 7. `reflective-rust-bench` (`crates/reflective-rust-bench`)
+
 - **Substrate**: `std`.
 - **Implementation**: Empirical benchmark suite measuring zero-copy reflection lookup latency (< 1ns), CSG graph traversal speeds, and WASM memory allocation impact.
 - **Verification**: `test_empirical_benchmarks` **passed**.
 
 ### 8. `reflective-rust-conformance` (`crates/reflective-rust-conformance`)
+
 - **Substrate**: `std`.
 - **Implementation**: Cross-backend platform determinism suite verifying binary stability and metadata alignment across target architectures.
 - **Verification**: `test_cross_backend_conformance` **passed**.
