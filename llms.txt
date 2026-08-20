@@ -38,6 +38,7 @@ Version: v1.0.0
 - docs/03-rust-language-proposal/staging-model.md: Staging Model
 - docs/03-rust-language-proposal/phase-state-machine.md: Compile-Time Phase State Machine
 - docs/08-reference/README.md: 08 Reference & Scaffolding
+- docs/IMPLEMENTATION_STATUS.md: Implementation & Verification Status
 - docs/08-reference/proposed-api.md: Proposed API
 - docs/08-reference/examples.md: Code Examples
 - docs/08-reference/cookbook.md: Cookbook

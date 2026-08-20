@@ -27,6 +27,7 @@
   - [Staging Model](03-rust-language-proposal/staging-model.md)
   - [Compile-Time Phase State Machine](03-rust-language-proposal/phase-state-machine.md)
 - [08 Reference & Scaffolding](08-reference/README.md)
+  - [Implementation & Verification Status](IMPLEMENTATION_STATUS.md)
   - [Proposed API](08-reference/proposed-api.md)
   - [Code Examples](08-reference/examples.md)
   - [Cookbook](08-reference/cookbook.md)
