@@ -2,7 +2,7 @@
 
 [Overview](README.md)
 
-# Scope I: Near-Term (Rust Semantic Reflection & Compile-Time Metaprogramming)
+## Scope I: Near-Term (Rust Semantic Reflection & Compile-Time Metaprogramming)
 
 - [00 Foundations](00-foundations/README.md)
   - [Abstract](00-foundations/00-abstract.md)
@@ -43,7 +43,7 @@
   - [RFC 0005: Cross-Backend Conformance Vectors](08-reference/rfc-0005-conformance-vectors.md)
   - [Terminology Lanes](08-reference/terminology-lanes.md)
 
-# Scope II: Mid-Term (Compiler Semantic Graph & Runtime Semantic Projection)
+## Scope II: Mid-Term (Compiler Semantic Graph & Runtime Semantic Projection)
 
 - [04 Runtime Semantic Projection](04-runtime/README.md)
   - [Runtime Reflection](04-runtime/runtime-reflection.md)
@@ -77,7 +77,7 @@
   - [Compiler Conformance Vectors](07-compiler/compiler-conformance-vectors.md)
   - [Incremental Trace Verification](07-compiler/incremental-trace-verification.md)
 
-# Scope III: Long-Term (Reflective Environments, AI Tooling & Spatial Projection)
+## Scope III: Long-Term (Reflective Environments, AI Tooling & Spatial Projection)
 
 - [06 Procedural Reflection Domain](06-procedural-reflection/README.md)
   - [Execution Model](06-procedural-reflection/execution-model.md)
@@ -101,7 +101,7 @@
   - [Semantic Graph Agent Context Slicing](09-research/semantic-graph-agent-slicing.md)
   - [Performance Metrics & Empirical Proof](09-research/performance-and-empirical-proof.md)
 
-# Context & Appendices
+## Context & Appendices
 
 - [01 History & Lineage](01-history/README.md)
   - [3-Lisp](01-history/3-lisp.md)
