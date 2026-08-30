@@ -1,8 +1,8 @@
 ---
 title: "Agent-First Publishing & Artifact Strategy"
 status: "canonical"
-version: "1.0.0"
-updated: "2026-07-31"
+version: "1.0.1"
+updated: "2026-08-25"
 ---
 
 # Reflective Rust Agent-First Publishing Strategy
@@ -22,6 +22,7 @@ This document specifies how **Reflective Rust** artifacts are published for huma
 | **Single-File Agent Corpus** | AI Agents & RAG Pipelines | `llms-full.txt` (249+ KB) | `node scripts/gen-llms.mjs` |
 | **Machine Manifest** | Automated Indexers | `llms.txt` | `node scripts/gen-llms.mjs` |
 | **Academic Repositories** | Citations & Deposits | `CITATION.cff` & DOI Deposits | ORCID / Zenodo |
+| **Rust Registry** | Runtime protocol consumers | versioned crates beginning with `reflective-rust-protocol` | Cargo |
 
 ---
 

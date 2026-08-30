@@ -12,7 +12,7 @@ summary: "Reflective Rust research specification for Abstract & Executive Summar
 
 **Reflective Rust (RRSA)** introduces a paradigm shift for systems programming languages: transforming Rust from a traditional one-way static compilation pipeline into a fully introspectable, metaprogrammable, and reflectively projected systems architecture - without compromising Rust's non-negotiable guarantees of zero-cost abstractions, memory safety, or static determinism.
 
-By replacing unparsed text procedural macros with **Static Semantic Reflection (`core::meta::Info`)**, standardizing the out-of-process **Compiler Semantic Graph (CSG)** across LLVM, Cranelift, and GCC backends, and providing opt-in **Runtime Semantic Projection (`#[derive(Reflectable)]`)**, Reflective Rust delivers zero-cost reflection with 0 bytes memory overhead for un-annotated types.
+Reflective Rust proposes replacing unparsed text procedural macros with **Static Semantic Reflection (`core::meta::Info`)** and standardizing an out-of-process **Compiler Semantic Graph (CSG)** across compiler backends. The implemented workspace currently provides opt-in **Runtime Semantic Projection (`#[derive(Reflectable)]`)**; compiler integration and zero-cost claims remain requirements to prove, not established results.
 
 Furthermore, Reflective Rust grounds AI coding tools via **Compiler-Certified Graph RAG Slicing (`csg::slice_around`)**, eliminating LLM hallucination by replacing unparsed source code text with compiler-verified type bounds, lifetime invariants, and privacy barriers.
 

@@ -1,8 +1,8 @@
 ---
 title: "Layer Versioning Policy"
 status: "canonical"
-version: "1.0.0"
-updated: "2026-07-31"
+version: "1.0.1"
+updated: "2026-08-25"
 ---
 
 # Reflective Rust Layer Versioning Policy
@@ -26,7 +26,7 @@ Layer 2: Compiler Semantic Graph & Compiler Integrations (docs/07-compiler/)
     └── Changelog: docs/07-compiler/CHANGELOG.md
 
 Layer 3: Runtime Semantic Projection Adapters (docs/04-runtime/)
-    ├── Independent Versioning: v0.2.1 (Runtime Descriptor Crate)
+    ├── Independent Versioning: v0.1.0 (implemented RSP/OSG protocol workspace)
     └── Changelog: docs/04-runtime/CHANGELOG.md
 
 Layer 4: Spatial & AI Tooling Projections (docs/09-research/, docs/06-procedural-reflection/)
@@ -47,3 +47,5 @@ Layer 4: Spatial & AI Tooling Projections (docs/09-research/, docs/06-procedural
    - Each layer maintains its own changelog. A single repo-wide changelog would assert exactly the version coupling this policy denies.
 4. **CI Enforcement**:
    - CI workflows inspect the **diff** of changed files against per-layer changelogs (`scripts/check-changelogs.py`). Pull requests touching a layer without updating that layer's changelog fail CI.
+
+The root Cargo workspace version tracks the executable reference implementation only. It does not assert implementation of the independently versioned language or compiler proposals.

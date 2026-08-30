@@ -10,8 +10,7 @@ summary: "Reflective Rust research specification for RFC 0004: Agentic Context S
 
 - Feature Name: `agent_slicing_and_ssp`
 - Start Date: 2026-07-31
-- RFC PR: rust-lang/rfcs#0004
-- Rust Issue: rust-lang/rust#00000
+- Proposal status: repository research draft; CSG slicing subset implemented
 
 ---
 

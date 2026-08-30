@@ -21,6 +21,10 @@ summary: "Reflective Rust research specification for Canonical Ontology under Sc
 | **Reification** | Conversion of a reflected semantic entity into a grammatical Rust role. | Not string-based code generation. |
 | **Generation** | Materialization of new Rust entities from compile-time computation. | Not mutation of already analyzed compiler state. |
 | **Runtime projection** | Descriptors and adapters intentionally emitted from static semantic knowledge. | Not retention of compiler reflection handles. |
+| **Runtime Semantic Projection (RSP)** | A versioned runtime descriptor envelope with explicit provenance, compatibility, access, and canonical identity. | Not automatically compiler-certified. |
+| **Operational Semantic Graph (OSG)** | A graph of runtime capabilities, contracts, providers, stores, models, authority, and operational relationships. | Not a graph of compiler-resolved source semantics. |
+| **Compiler Semantic Graph (CSG)** | Compiler-resolved entities and relationships emitted by an identified compiler extractor. | Not a hand-authored service manifest or runtime topology. |
+| **Observation** | Time-bounded evidence measured from a live subject and linked to its target identity. | Not declared intent or immutable truth. |
 | **Metaobject introspection** | Inspection of structures governing types, traits, implementations, and operations. | Does not necessarily modify those structures. |
 | **Constrained intercession** | Participation in an enumerated protocol whose result remains ordinary compiler-checked Rust. | Not replacement of borrow checking or coherence. |
 | **Procedural reflection** | Causally connected access to an active computation's environment, continuation, and state. | Not ordinary runtime type reflection. |

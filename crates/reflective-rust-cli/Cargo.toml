@@ -1,15 +1,13 @@
 [package]
 name = "reflective-rust-cli"
-version = "1.0.0"
-edition = "2024"
-authors = ["Reflective Rust Research Team"]
-description = "Command-line driver interface for inspecting static metadata, exporting CSG graphs, and extracting agent context slices."
-license = "MIT OR Apache-2.0"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+authors.workspace = true
+description = "Command-line examples for descriptor and graph protocol operations."
+license.workspace = true
+repository.workspace = true
 
 [dependencies]
-reflective-rust-meta = { path = "../reflective-rust-meta", version = "1.0.0" }
-reflective-rust-csg = { path = "../reflective-rust-csg", version = "1.0.0" }
-reflective-rust-agent = { path = "../reflective-rust-agent", version = "1.0.0" }
-reflective-rust-bench = { path = "../reflective-rust-bench", version = "1.0.0" }
-reflective-rust-conformance = { path = "../reflective-rust-conformance", version = "1.0.0" }
-serde_json = "1.0"
+reflective-rust-protocol = { path = "../reflective-rust-protocol", version = "0.1.0" }
+serde_json.workspace = true

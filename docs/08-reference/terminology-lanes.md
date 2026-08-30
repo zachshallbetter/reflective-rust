@@ -23,7 +23,7 @@ To keep **Reflective Rust (RRSA)** inspectable, deterministic, and clear, terms 
 ├─────────────────────────────────────────────────────────────────────────┤
 │ LANE 2: SUBSTRATE LANE :: Compiler Semantic Graph & consteval handles  │
 ├─────────────────────────────────────────────────────────────────────────┤
-│ LANE 3: RUNTIME LANE   :: Opt-in runtime descriptors & dynamic adapters │
+│ LANE 3: RUNTIME LANE   :: RSP descriptors & Operational Semantic Graph │
 ├─────────────────────────────────────────────────────────────────────────┤
 │ LANE 4: SPATIAL LANE   :: Spatial projections & 3D environment nodes   │
 └─────────────────────────────────────────────────────────────────────────┘
@@ -36,6 +36,8 @@ To keep **Reflective Rust (RRSA)** inspectable, deterministic, and clear, terms 
 | **Execution** | Metaprogramming | `consteval` Context | Dynamic Invocation | Active Flow Line |
 | **Authority** | Language Spec | Semantic Graph | Reflection Registry | World Model Node |
 
+`CSG` is reserved for compiler-resolved source semantics. `OSG` is reserved for runtime topology. `RSP` is the envelope that carries runtime-visible descriptors, including an OSG.
+
 ---
 
 ## 2. Governance Invariants
@@ -44,8 +46,8 @@ To keep **Reflective Rust (RRSA)** inspectable, deterministic, and clear, terms 
    `meta::Info` is exclusively a compile-time-only handle in Lane 2. It must *never* be used as a name for a runtime struct in Lane 3 or a spatial object in Lane 4.
 2. **Explicit Adapter Boundaries**:
    Converting an entity from Lane 2 to Lane 3 requires explicit reification via a runtime projection adapter. It is never implicit.
-3. **Deprecated Aliases**:
-   When renaming an entity to conform to terminology lanes, old names must be marked `@deprecated` for one major cycle rather than silently removed.
+3. **Epistemic Status Is Explicit**:
+   Runtime projections identify themselves as compiler-certified, declared, derived, or observed. Consumers must not infer a stronger status.
 ---
 
 ## Navigation

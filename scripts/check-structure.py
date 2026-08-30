@@ -36,6 +36,7 @@ REQUIRED_FILES = [
     "docs/SUMMARY.md",
     "AUTHORITY.md",
     "VERSIONING.md",
+    "CONFORMANCE.md",
     "RELEASING.md",
     "PUBLISHING.md",
     "book.toml",

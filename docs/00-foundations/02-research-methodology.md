@@ -22,7 +22,7 @@ $$\text{Documented} \neq \text{Implemented} \neq \text{Tested} \neq \text{Empiri
 1. **Documented**: A feature or architectural design specified in formal RFCs or documentation chapters.
 2. **Implemented**: Executable source code written and compiled into reference workspace crates under `crates/`.
 3. **Tested**: Source code validated by passing unit tests and integration test suites (`cargo test`).
-4. **Empirically Validated**: Measured performance data gathered from pre-registered benchmarks (`reflective-rust-bench`) under automated CI gates.
+4. **Empirically Validated**: Reproducible measured evidence with a recorded environment, method, raw results, pre-registered threshold, and invalidation rule. A passing unit test or local timing is insufficient.
 
 ---
 
@@ -32,10 +32,10 @@ Every empirical claims matrix, benchmark suite, or compiler behavior change must
 
 | Subsystem | Metric | Target | Invalidation Threshold | Verification Tool |
 | :--- | :--- | :--- | :--- | :--- |
-| Static Reflection (`core::meta`) | Latency | $< 500 \text{ ns/op}$ | $> 2.0 \ \mu\text{s/op}$ | `reflective-rust-bench` |
-| Runtime VTable Lookup | Latency | $< 20 \text{ ns/op}$ | $> 100 \text{ ns/op}$ | `reflective-rust-bench` |
-| Un-annotated Memory Overhead | Memory Size | **`0 bytes`** | $> 0 \text{ bytes}$ | `scripts/verify-value-metrics.py` |
-| Cross-Backend CSG Schema | Conformance | **100% Match** | Byte Mismatch | `reflective-rust-conformance` |
+| Runtime descriptor derivation | Latency and allocation | To be pre-registered | To be pre-registered | `reflective-rust-bench` measurement surface |
+| Canonical envelope hashing | Throughput and allocation | To be pre-registered | To be pre-registered | `reflective-rust-bench` measurement surface |
+| Compiler semantic reflection | Compiler/runtime cost | Blocked on implementation | Any claim before implementation | Future compiler suite |
+| Cross-backend CSG schema | Semantic equivalence | Blocked on extractors | Any claim based on cloned fixtures | Future compiler conformance suite |
 
 ---
 

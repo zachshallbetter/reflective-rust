@@ -8,7 +8,7 @@ on:
 
 jobs:
   verification:
-    name: Structure, Link & LLM Generation Verification
+    name: Code, Structure, Link & Corpus Verification
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
@@ -26,6 +26,20 @@ jobs:
         with:
           python-version: '3.11'
 
+      - name: Setup Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+
+      - name: Check Formatting
+        run: cargo fmt --all --check
+
+      - name: Lint Workspace
+        run: cargo clippy --workspace --all-targets -- -D warnings
+
+      - name: Test Workspace
+        run: cargo test --workspace --all-targets --locked
+
       - name: Run Structure Verification Gate
         run: python3 scripts/check-structure.py
 
@@ -38,9 +52,9 @@ jobs:
       - name: Rebuild LLM Single-File Corpus & Check Drift
         run: |
           node scripts/gen-llms.mjs
-          if [ -n "$(git status --porcelain llms.txt llms-full.txt)" ]; then
-            echo "ERROR: llms-full.txt or llms.txt is out of date! Run 'node scripts/gen-llms.mjs' locally and commit the updated files."
-            git diff llms.txt llms-full.txt
+          if [ -n "$(git status --porcelain llms.txt)" ]; then
+            echo "ERROR: llms.txt is out of date. Run 'node scripts/gen-llms.mjs' locally and commit it."
+            git diff llms.txt
             exit 1
           fi
 

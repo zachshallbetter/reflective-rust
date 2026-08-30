@@ -1,0 +1,18 @@
+[package]
+name = "reflective-rust-protocol"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "Canonical runtime descriptor and Operational Semantic Graph protocol for Reflective Rust."
+
+[dependencies]
+serde.workspace = true
+serde_json.workspace = true
+serde_jcs.workspace = true
+sha2.workspace = true
+base64.workspace = true
+ed25519-dalek.workspace = true
+time.workspace = true

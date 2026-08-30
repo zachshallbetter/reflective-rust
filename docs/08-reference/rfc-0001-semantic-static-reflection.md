@@ -10,8 +10,7 @@ summary: "Reflective Rust research specification for RFC 0001: Static Semantic R
 
 - Feature Name: `semantic_static_reflection`
 - Start Date: 2026-07-31
-- RFC PR: rust-lang/rfcs#0001
-- Rust Issue: rust-lang/rust#00000
+- Proposal status: repository research draft; not submitted upstream
 
 ---
 
@@ -79,7 +78,7 @@ pub mod core::meta {
 
 ## 5. Security & Runtime Cost Model
 
-- **Zero Memory Cost**: `Info` handles exist only in compiler memory during `consteval`. The runtime memory overhead for un-annotated types is **0 bytes**.
+- **Cost requirement**: a future implementation must keep `Info` handles compile-time-only and demonstrate that unprojected types acquire no runtime representation cost.
 - **No Unsafe Type Erasure**: Static reflection never performs unchecked dynamic type-casting; dynamic dynamic invocation requires explicit generated runtime projection adapters.
 
 ---

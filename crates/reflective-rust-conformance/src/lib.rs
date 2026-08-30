@@ -1,87 +1,73 @@
-//! # Reflective Rust Cross-Backend Conformance Vectors (`reflective-rust-conformance`)
-//!
-//! Validates byte-identical Compiler Semantic Graph (CSG) schema conformance
-//! across LLVM, Cranelift, and GCC compiler backends.
+//! Conformance vectors for canonical Runtime Semantic Projection envelopes.
 
-use reflective_rust_csg::CompilerSemanticGraph;
+use reflective_rust_protocol::{CanonicalError, DescriptorEnvelope};
 use serde::{Deserialize, Serialize};
 
-/// Compiler Backend Target.
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
-pub enum CompilerBackend {
-    LLVM,
-    Cranelift,
-    GCC,
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+pub struct ConformanceResult {
+    pub canonical_hash: String,
+    pub expected_hash: String,
+    pub conforms: bool,
 }
 
-/// Conformance Test Vector result.
-#[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct ConformanceVectorResult {
-    pub backend: CompilerBackend,
-    pub node_count: usize,
-    pub edge_count: usize,
-    pub schema_hash: String,
-    pub is_conformant: bool,
-}
-
-/// Verifies that two CSG graphs produced by different compiler backends are byte-identical in semantic schema.
-pub fn verify_backend_conformance(
-    backend_a: CompilerBackend,
-    graph_a: &CompilerSemanticGraph,
-    backend_b: CompilerBackend,
-    graph_b: &CompilerSemanticGraph,
-) -> (ConformanceVectorResult, ConformanceVectorResult, bool) {
-    let json_a = graph_a.to_json().unwrap_or_default();
-    let json_b = graph_b.to_json().unwrap_or_default();
-
-    let is_identical = json_a == json_b;
-
-    let res_a = ConformanceVectorResult {
-        backend: backend_a,
-        node_count: graph_a.nodes.len(),
-        edge_count: graph_a.edges.len(),
-        schema_hash: format!("{:016x}", json_a.len()),
-        is_conformant: is_identical,
-    };
-
-    let res_b = ConformanceVectorResult {
-        backend: backend_b,
-        node_count: graph_b.nodes.len(),
-        edge_count: graph_b.edges.len(),
-        schema_hash: format!("{:016x}", json_b.len()),
-        is_conformant: is_identical,
-    };
-
-    (res_a, res_b, is_identical)
+pub fn verify_descriptor(
+    descriptor: &DescriptorEnvelope,
+    expected_hash: impl Into<String>,
+) -> Result<ConformanceResult, CanonicalError> {
+    let expected_hash = expected_hash.into();
+    let canonical_hash = descriptor.canonical_hash()?;
+    Ok(ConformanceResult {
+        conforms: canonical_hash == expected_hash,
+        canonical_hash,
+        expected_hash,
+    })
 }
 
 #[cfg(test)]
 mod tests {
     use super::*;
-    use reflective_rust_csg::{CsgNode, CsgNodeKind, SourceSpan};
+    use reflective_rust_protocol::{
+        AccessLevel, DescriptorBody, ProjectionKind, Provenance, TypeDescriptor, TypeKind,
+    };
+
+    fn vector() -> DescriptorEnvelope {
+        DescriptorEnvelope::new(
+            "rust:type:Empty",
+            "type-1",
+            Provenance {
+                kind: ProjectionKind::Derived,
+                authority: "reflective-rust-conformance".into(),
+                source: "vector:empty-type".into(),
+                source_hash:
+                    "sha256:503e43da59434586d85f21cb89b94362a54f394a6877f67fdfc60f715a07e924"
+                        .into(),
+                observed_at: None,
+                expires_at: None,
+            },
+            AccessLevel::Public,
+            DescriptorBody::Type(TypeDescriptor {
+                name: "Empty".into(),
+                kind: TypeKind::Struct,
+                layout: None,
+                fields: vec![],
+                variants: vec![],
+            }),
+        )
+        .unwrap()
+    }
 
     #[test]
-    fn test_cross_backend_conformance() {
-        let mut g1 = CompilerSemanticGraph::new();
-        g1.add_node(CsgNode {
-            id: 1,
-            name: "TestStruct".to_string(),
-            kind: CsgNodeKind::StructNode,
-            span: SourceSpan { file: "lib.rs".to_string(), start_line: 1, end_line: 10 },
-            privacy: "pub".to_string(),
-            size_bytes: Some(16),
-        });
+    fn canonical_hash_matches_golden_vector() {
+        let descriptor = vector();
+        let expected = "sha256:7c98ac356aa59dd29e466c6f6e5927eb5afd2ad85f283d59d920de3f7bf05a18";
+        let result = verify_descriptor(&descriptor, expected).unwrap();
+        assert!(result.conforms);
+        assert_eq!(result.canonical_hash, expected);
+    }
 
-        let g2 = g1.clone();
-
-        let (res_llvm, res_cranelift, pass) = verify_backend_conformance(
-            CompilerBackend::LLVM,
-            &g1,
-            CompilerBackend::Cranelift,
-            &g2,
-        );
-
-        assert!(pass);
-        assert_eq!(res_llvm.node_count, res_cranelift.node_count);
+    #[test]
+    fn changed_expectation_fails_conformance() {
+        let result = verify_descriptor(&vector(), "sha256:not-the-vector").unwrap();
+        assert!(!result.conforms);
     }
 }

@@ -10,8 +10,7 @@ summary: "Reflective Rust research specification for RFC 0005: Cross-Backend Con
 
 - Feature Name: `compiler_conformance_vectors`
 - Start Date: 2026-07-31
-- RFC PR: rust-lang/rfcs#0005
-- Rust Issue: rust-lang/rust#00000
+- Proposal status: repository research draft; compiler conformance not implemented
 
 ---
 
@@ -29,20 +28,9 @@ Multiple compiler backends are essential for Rust's compiler ecosystem (fast deb
 
 ## 3. Reference-Level Explanation
 
-```rust
-use reflective_rust_conformance::{verify_backend_conformance, CompilerBackend};
+Future conformance runners must compare independently extracted semantic vectors, not cloned fixtures or JSON length. Exact byte identity is required only after target-dependent facts are normalized or explicitly parameterized by target.
 
-let (res_llvm, res_cranelift, pass) = verify_backend_conformance(
-    CompilerBackend::LLVM,
-    &csg_llvm,
-    CompilerBackend::Cranelift,
-    &csg_cranelift,
-);
-
-assert!(pass, "CSG schema must be byte-identical across compiler backends");
-```
-
-- **CI Enforcement**: Pull requests modifying compiler graph extraction must pass byte-identical vector checks across LLVM, Cranelift, and GCC targets.
+The current `reflective-rust-conformance` crate verifies literal golden hashes for the implemented RSP canonicalization protocol. It does not expose compiler backend types and is not evidence for LLVM, Cranelift, or GCC equivalence.
 ---
 
 ## Navigation

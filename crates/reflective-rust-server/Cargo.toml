@@ -1,13 +1,13 @@
 [package]
 name = "reflective-rust-server"
-version = "1.0.0"
-edition = "2024"
-authors = ["Reflective Rust Research Team"]
-description = "Out-of-process HTTP CSG query server and AI agent Graph RAG context endpoint."
-license = "MIT OR Apache-2.0"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+authors.workspace = true
+description = "Read-only HTTP server for Runtime Semantic Projection envelopes."
+license.workspace = true
+repository.workspace = true
 
 [dependencies]
-reflective-rust-csg = { path = "../reflective-rust-csg", version = "1.0.0" }
-reflective-rust-agent = { path = "../reflective-rust-agent", version = "1.0.0" }
-serde = { version = "1.0", features = ["derive"] }
-serde_json = "1.0"
+reflective-rust-protocol = { path = "../reflective-rust-protocol", version = "0.1.0" }
+serde_json.workspace = true

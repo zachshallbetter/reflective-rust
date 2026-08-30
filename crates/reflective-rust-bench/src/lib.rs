@@ -1,116 +1,66 @@
-//! # Reflective Rust Empirical Performance & Benchmark Proof Suite
+//! Repeatable local measurements for implemented descriptor operations.
 //!
-//! Provides automated micro-benchmarks, memory footprint assertions, and
-//! empirical performance proof verification across all Reflective Rust subsystems.
+//! Results are measurements, not performance guarantees.
 
-use reflective_rust_agent::slice_around;
-use reflective_rust_csg::{CompilerSemanticGraph, CsgNode, CsgNodeKind, SourceSpan};
 use reflective_rust_derive::Reflectable;
-use reflective_rust_meta::{fields_of, layout_of, of, Info};
-use std::time::Instant;
-
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
-pub struct FieldDescriptor {
-    pub name: &'static str,
-    pub offset: usize,
-    pub type_name: &'static str,
-}
-
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
-pub struct TypeDescriptor {
-    pub name: &'static str,
-    pub size: usize,
-    pub align: usize,
-    pub fields: &'static [FieldDescriptor],
-}
+use reflective_rust_protocol::{
+    AccessLevel, DescriptorBody, DescriptorEnvelope, ProjectionKind, Provenance, Reflect,
+};
+use std::hint::black_box;
+use std::time::{Duration, Instant};
 
 #[derive(Reflectable)]
-pub struct BenchmarkTarget {
-    pub id: u64,
-    pub timestamp: u64,
-    pub payload: f64,
-    pub active: bool,
+#[allow(dead_code)]
+struct BenchmarkTarget {
+    id: u64,
+    label: Option<String>,
 }
 
-pub struct UnannotatedStruct {
-    pub _a: u64,
-    pub _b: u64,
-}
-
-/// Results of empirical benchmark measurements.
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq, Eq)]
 pub struct BenchmarkReport {
-    pub static_reflection_ns: f64,
-    pub descriptor_vtable_ns: f64,
-    pub csg_serialization_us: f64,
-    pub agent_slicing_us: f64,
-    pub unannotated_overhead_bytes: usize,
+    pub iterations: usize,
+    pub descriptor_derivation: Duration,
+    pub canonical_hashing: Duration,
 }
 
-/// Executes empirical benchmark suite and returns quantitative timing report.
-pub fn run_empirical_benchmarks(iterations: usize) -> BenchmarkReport {
-    // 1. Benchmark Static Reflection (core::meta)
-    let start = Instant::now();
+pub fn run_measurements(iterations: usize) -> BenchmarkReport {
+    let iterations = iterations.max(1);
+    let started = Instant::now();
     for _ in 0..iterations {
-        let info: Info = of::<BenchmarkTarget>();
-        let layout = layout_of::<BenchmarkTarget>();
-        let _ = fields_of(info);
-        let _ = layout.size;
+        black_box(BenchmarkTarget::type_descriptor());
     }
-    let static_duration = start.elapsed();
-    let static_reflection_ns = (static_duration.as_nanos() as f64) / (iterations as f64);
+    let descriptor_derivation = started.elapsed();
 
-    // 2. Benchmark Opt-In Runtime Descriptor VTable Lookup
-    let start = Instant::now();
+    let envelope = DescriptorEnvelope::new(
+        "rust:type:BenchmarkTarget",
+        "benchmark-type-1",
+        Provenance {
+            kind: ProjectionKind::Derived,
+            authority: "reflective-rust-bench".into(),
+            source: "derive:BenchmarkTarget".into(),
+            source_hash: "sha256:5460909ab229020778cb1e9fef972bdc333751319e96142c08ea92b64a0fd262"
+                .into(),
+            observed_at: None,
+            expires_at: None,
+        },
+        AccessLevel::Public,
+        DescriptorBody::Type(BenchmarkTarget::type_descriptor()),
+    )
+    .expect("benchmark fixture must be valid");
+    let started = Instant::now();
     for _ in 0..iterations {
-        let descriptor = BenchmarkTarget::type_descriptor();
-        let _ = descriptor.name;
-        let _ = descriptor.fields.len();
+        black_box(
+            envelope
+                .canonical_hash()
+                .expect("benchmark fixture must hash"),
+        );
     }
-    let descriptor_duration = start.elapsed();
-    let descriptor_vtable_ns = (descriptor_duration.as_nanos() as f64) / (iterations as f64);
-
-    // Build CSG Graph (1,000 nodes)
-    let mut csg = CompilerSemanticGraph::new();
-    for i in 0..1000 {
-        csg.add_node(CsgNode {
-            id: i as u64,
-            name: format!("Node_{}", i),
-            kind: CsgNodeKind::StructNode,
-            span: SourceSpan { file: "lib.rs".to_string(), start_line: i as u32, end_line: i as u32 + 5 },
-            privacy: "pub".to_string(),
-            size_bytes: Some(32),
-        });
-        if i > 0 {
-            csg.add_edge(i as u64 - 1, i as u64, "DEPENDS_ON");
-        }
-    }
-
-    // 3. Benchmark CSG JSON Serialization
-    let start = Instant::now();
-    for _ in 0..100 {
-        let _ = csg.to_json();
-    }
-    let csg_duration = start.elapsed();
-    let csg_serialization_us = (csg_duration.as_micros() as f64) / 100.0;
-
-    // 4. Benchmark Graph RAG Agent Slicing
-    let start = Instant::now();
-    for _ in 0..iterations {
-        let _ = slice_around(&csg, 500, 1);
-    }
-    let slicing_duration = start.elapsed();
-    let agent_slicing_us = (slicing_duration.as_micros() as f64) / (iterations as f64);
-
-    // 5. Assert Zero Memory Overhead for Un-annotated Types
-    let unannotated_overhead_bytes = 0; // Compile-time invariant
+    let canonical_hashing = started.elapsed();
 
     BenchmarkReport {
-        static_reflection_ns,
-        descriptor_vtable_ns,
-        csg_serialization_us,
-        agent_slicing_us,
-        unannotated_overhead_bytes,
+        iterations,
+        descriptor_derivation,
+        canonical_hashing,
     }
 }
 
@@ -119,16 +69,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_empirical_benchmarks() {
-        let report = run_empirical_benchmarks(1000);
-        println!("Empirical Benchmark Results:");
-        println!("  - Static Reflection Query Latency : {:.2} ns/op", report.static_reflection_ns);
-        println!("  - Descriptor VTable Lookup Latency : {:.2} ns/op", report.descriptor_vtable_ns);
-        println!("  - CSG Graph JSON Serialization     : {:.2} µs (1,000 nodes)", report.csg_serialization_us);
-        println!("  - Agent Graph RAG Slicing Latency  : {:.2} µs/op", report.agent_slicing_us);
-        println!("  - Un-annotated Memory Overhead     : {} bytes", report.unannotated_overhead_bytes);
-
-        assert_eq!(report.unannotated_overhead_bytes, 0);
-        assert!(report.descriptor_vtable_ns < 100.0);
+    fn zero_iterations_still_produces_a_measurement() {
+        assert_eq!(run_measurements(0).iterations, 1);
     }
 }

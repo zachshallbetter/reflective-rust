@@ -44,7 +44,7 @@ pub namespace core::meta {
 
 ## 2. Compile-Time Evaluation Guarantees (`consteval`)
 
-1. **Zero Runtime Overhead**: `core::meta::Info` handles operate exclusively during `consteval`. Un-annotated types generate **0 bytes** of static binary or heap allocation overhead.
+1. **Zero Runtime Overhead Requirement**: a future `core::meta::Info` implementation must operate exclusively during `consteval` and demonstrate that unprojected types gain no static binary or heap representation overhead.
 2. **Deterministic Monomorphization**: Reflection queries evaluated within `const fn` produce compile-time constants that are folded during optimization phases (`LLVM / Cranelift`).
 3. **Safety & Privacy Boundaries**: Reflection queries respect item visibility (`pub`, `pub(crate)`, `private`). Private struct fields remain inaccessible to reflection queries outside their defining module unless explicit capabilities are granted.
 ---

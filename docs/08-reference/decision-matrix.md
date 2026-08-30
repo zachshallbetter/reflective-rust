@@ -21,6 +21,10 @@ summary: "Reflective Rust research specification for Decision Matrix under Scope
 | Generation | frozen snapshot and one-way materialization |
 | Reification | category-typed splicing |
 | Runtime reflection | opt-in generated projection |
+| Runtime descriptor envelope | one versioned RSP shape with provenance, compatibility, access, and canonical identity |
+| Compiler source graph | CSG, restricted to compiler-resolved facts with compiler-extractor provenance |
+| Runtime topology graph | OSG, containing capabilities, contracts, providers, stores, models, and authority relationships |
+| Projection status | compiler-certified, declared, derived, or observed; never inferred |
 | Invocation | safe checked facade over audited generated thunks |
 | Registration | explicit portable core; optional linker aggregation |
 | Private structure | owner-authorized projection only |
