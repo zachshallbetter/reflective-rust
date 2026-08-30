@@ -2,15 +2,17 @@
 title: "Runtime Projection"
 scope: "mid-term"
 status: "canonical"
-version: "1.0.0"
-updated: "2026-07-31"
+version: "1.0.1"
+updated: "2026-08-25"
 summary: "Reflective Rust research specification for Runtime Projection under Scope II: Mid-Term (Compiler Semantic Graph & Runtime Semantic Projection)."
 ---
 # Runtime Projection
 
 **Status:** Research synthesis
 
-Runtime reflection is an opt-in compiler-generated projection containing descriptors, type identities, checked accessors, invocation adapters, and registries.
+Runtime projection has two states in this repository. The implemented v0.1 protocol carries opt-in descriptors with declared, derived, observed, or compiler-certified provenance. Compiler-generated descriptors, checked invocation adapters, and compiler-certified provenance remain proposed until a compiler integration exists.
+
+The canonical implemented surfaces are the [Runtime Semantic Projection Protocol](descriptor-protocol.md) and [Operational Semantic Graph](operational-semantic-graph.md).
 ---
 
 ## Navigation

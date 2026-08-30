@@ -2,13 +2,14 @@
 
 > Reflective Rust: A Reflective Systems Architecture (RRSA) based on a Compiler Semantic Graph (CSG).
 
-Version: v1.0.0
+Version: v0.1.0
 
 ## Structural Hierarchy
 
 - docs/README.md: Overview, taxonomy matrix, and concentric scopes
 - AUTHORITY.md: Single source of truth & conflict resolution order
 - VERSIONING.md: Independent layer versioning policy
+- CONFORMANCE.md: Runtime protocol compatibility and consumer evidence
 - .agents/AGENTS.md: Research doctrine & status honesty rules
 - CLAUDE.md: Agent operational guide & verification commands
 
@@ -39,6 +40,7 @@ Version: v1.0.0
 - docs/03-rust-language-proposal/phase-state-machine.md: Compile-Time Phase State Machine
 - docs/08-reference/README.md: 08 Reference & Scaffolding
 - docs/IMPLEMENTATION_STATUS.md: Implementation & Verification Status
+- docs/08-reference/adoption-profiles.md: Adoption Profiles
 - docs/08-reference/proposed-api.md: Proposed API
 - docs/08-reference/examples.md: Code Examples
 - docs/08-reference/cookbook.md: Cookbook
@@ -54,6 +56,8 @@ Version: v1.0.0
 - docs/08-reference/rfc-0005-conformance-vectors.md: RFC 0005: Cross-Backend Conformance Vectors
 - docs/08-reference/terminology-lanes.md: Terminology Lanes
 - docs/04-runtime/README.md: 04 Runtime Semantic Projection
+- docs/04-runtime/descriptor-protocol.md: Runtime Semantic Projection Protocol
+- docs/04-runtime/operational-semantic-graph.md: Operational Semantic Graph
 - docs/04-runtime/runtime-reflection.md: Runtime Reflection
 - docs/04-runtime/runtime-descriptors.md: Runtime Descriptors
 - docs/04-runtime/invocation.md: Invocation Adapters

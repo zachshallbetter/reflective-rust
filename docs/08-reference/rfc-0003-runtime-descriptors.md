@@ -10,16 +10,15 @@ summary: "Reflective Rust research specification for RFC 0003: Opt-In Zero-Cost 
 
 - Feature Name: `runtime_descriptors`
 - Start Date: 2026-07-31
-- RFC PR: rust-lang/rfcs#0003
-- Rust Issue: rust-lang/rust#00000
+- Proposal status: repository protocol implemented; compiler emission and registry remain proposed
 
 ---
 
 ## 1. Summary
 
-This RFC specifies **Runtime Semantic Projection**: an opt-in procedural macro framework (`#[derive(Reflectable)]`) that emits static `TypeDescriptor`, `FieldDescriptor`, and `VariantDescriptor` VTables into dedicated binary linker sections (`.reflective.descriptors`).
+This RFC specifies **Runtime Semantic Projection**: an opt-in descriptor protocol and procedural macro (`#[derive(Reflectable)]`) for `TypeDescriptor`, `FieldDescriptor`, and `VariantDescriptor` values.
 
-Un-annotated types incur **0 bytes memory overhead**, preserving Rust's zero-cost abstraction principle.
+The implemented derive creates descriptors only when called. Linker-section registration and a zero-overhead guarantee are not implemented or empirically established.
 
 ---
 
@@ -45,7 +44,7 @@ fn main() {
 }
 ```
 
-- **Distributed Registry**: `#[derive(Reflectable)]` places static descriptor references into linker sections for runtime discovery (`reflective::registry::all_types()`).
+- **Registry boundary**: applications may store returned descriptors in their own registries. A distributed linker registry remains proposed.
 ---
 
 ## Navigation

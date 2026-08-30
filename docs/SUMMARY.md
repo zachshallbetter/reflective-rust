@@ -28,6 +28,7 @@
   - [Compile-Time Phase State Machine](03-rust-language-proposal/phase-state-machine.md)
 - [08 Reference & Scaffolding](08-reference/README.md)
   - [Implementation & Verification Status](IMPLEMENTATION_STATUS.md)
+  - [Adoption Profiles](08-reference/adoption-profiles.md)
   - [Proposed API](08-reference/proposed-api.md)
   - [Code Examples](08-reference/examples.md)
   - [Cookbook](08-reference/cookbook.md)
@@ -46,6 +47,8 @@
 ## Scope II: Mid-Term (Compiler Semantic Graph & Runtime Semantic Projection)
 
 - [04 Runtime Semantic Projection](04-runtime/README.md)
+  - [Runtime Semantic Projection Protocol](04-runtime/descriptor-protocol.md)
+  - [Operational Semantic Graph](04-runtime/operational-semantic-graph.md)
   - [Runtime Reflection](04-runtime/runtime-reflection.md)
   - [Runtime Descriptors](04-runtime/runtime-descriptors.md)
   - [Invocation Adapters](04-runtime/invocation.md)

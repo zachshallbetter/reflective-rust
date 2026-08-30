@@ -1,63 +1,35 @@
 ---
-title: "Performance Metrics, Complexity Bounds & Empirical Proof"
+title: "Performance Evaluation Protocol"
 scope: "long-term"
 status: "canonical"
-version: "1.0.0"
-updated: "2026-07-31"
-summary: "Reflective Rust research specification for Performance Metrics, Complexity Bounds & Empirical Proof under Scope III: Long-Term (Reflective Environments, AI Tooling & Spatial Projection)."
+version: "0.1.0"
+updated: "2026-08-25"
+summary: "Rules for producing reproducible performance evidence without converting local timings into guarantees."
 ---
-# Performance Metrics, Complexity Bounds & Empirical Proof
+# Performance Evaluation Protocol
 
-> **Status:** Canonical Empirical Evaluation Specification  
-> **Benchmark Suite:** [`crates/reflective-rust-bench`](../../crates/reflective-rust-bench)  
+No repository-wide performance result is currently classified as empirically validated. The benchmark crate records local durations for implemented descriptor derivation and canonical hashing; it contains no pass/fail latency threshold.
 
-This document presents the mathematical proofs of zero-cost runtime memory overhead, formal complexity bounds, and empirical micro-benchmark measurements across all subsystems of **Reflective Rust**.
+An empirical claim requires all of the following in the same record:
 
----
+- exact revision and dirty-tree state;
+- Rust toolchain, target triple, optimization profile, CPU, operating system, and power mode;
+- warm-up, sample count, statistical treatment, and raw result artifact;
+- pre-registered hypothesis and invalidation threshold;
+- a benchmark whose optimizer barriers and inputs preserve the work being measured;
+- repeated results sufficient to characterize variance.
 
-## 1. Mathematical Proof of Zero-Cost Memory Overhead
+Compiler reflection, compiler extraction, and cross-backend conformance cannot be benchmarked by this workspace because those implementations do not exist here. Stable-Rust `size_of` results do not constitute evidence for the proposed compiler APIs.
 
-### Theorem 1.1 (Zero Un-annotated Memory Cost)
-*Let $\mathcal{T}$ be the set of all Rust types declared in a compilation unit. Let $\mathcal{T}_{\text{annotated}} \subseteq \mathcal{T}$ be the subset of types annotated with `#[derive(Reflectable)]`. The runtime memory overhead $M_{\text{overhead}}(T)$ for any un-annotated type $T \in \mathcal{T} \setminus \mathcal{T}_{\text{annotated}}$ is strictly zero bytes.*
+## Current measurement surface
 
-#### Proof:
-1. `core::meta::Info` handles exist **exclusively in compiler memory** during the compilation phase (`consteval`).
-2. Code generation (`rustc_codegen_llvm` / `rustc_codegen_cranelift`) emits LLVM IR struct layouts $L(T)$ derived purely from field alignment padding.
-3. Un-annotated types $T \in \mathcal{T} \setminus \mathcal{T}_{\text{annotated}}$ do not generate any entries in static link sections (`.reflective.descriptors`).
-4. Therefore:
-   $$M_{\text{overhead}}(T) = \text{sizeof}_{\text{runtime}}(T) - \text{sizeof}_{\text{static\_layout}}(T) = 0 \text{ bytes} \quad \blacksquare$$
+`reflective-rust-bench::run_measurements` measures two operations:
 
----
+1. construction of a derived `TypeDescriptor`;
+2. validation, JCS serialization, and SHA-256 hashing of a fixed descriptor envelope.
 
-## 2. Quantitative Complexity Bounds
+These measurements are diagnostic. They establish neither zero cost nor a production service-level objective.
 
-| Subsystem | Operation | Time Complexity | Memory Complexity | Notes |
-| :--- | :--- | :--- | :--- | :--- |
-| **Scope I: Static Reflection** | `core::meta::of::<T>()` | $O(1)$ | $O(0)$ runtime | Compiler intrinsic lookup |
-| **Scope I: Consteval Query** | `fields_of(info)` | $O(F)$ | $O(0)$ runtime | $F$ = field count |
-| **Scope II: VTable Lookup** | `T::type_descriptor()` | $O(1)$ | $O(D)$ static | $D$ = descriptor size |
-| **Scope II: CSG Graph Build** | `add_node(node)` | $O(1)$ | $O(N + E)$ | $N$ = nodes, $E$ = edges |
-| **Scope III: Agent Slicing** | `csg::slice_around` | $O(E_{\text{sub}})$ | $O(N_{\text{sub}})$ | $E_{\text{sub}}$ = localized subgraph edges |
-
----
-
-## 3. Empirical Benchmark Measurements
-
-Measurements gathered using [`crates/reflective-rust-bench`](../../crates/reflective-rust-bench) on Apple Silicon M-series (100,000 sample iterations):
-
-| Metric | Measured Value | Pre-Registered Target | Invalidation Threshold | Status |
-| :--- | :--- | :--- | :--- | :---: |
-| **Static Reflection Query** | `274.08 ns/op` | $< 500 \text{ ns/op}$ | $> 2.0 \ \mu\text{s/op}$ | **PASSED** |
-| **Descriptor VTable Lookup** | `5.77 ns/op` | $< 20 \text{ ns/op}$ | $> 100 \text{ ns/op}$ | **PASSED** |
-| **CSG Graph JSON (1,000 nodes)** | `10.68 ms/op` | $< 50 \text{ ms/op}$ | $> 200 \text{ ms/op}$ | **PASSED** |
-| **Agent Graph RAG Slicing** | `50.93 µs/op` | $< 250 \ \mu\text{s/op}$ | $> 1.0 \text{ ms/op}$ | **PASSED** |
-| **Un-annotated Memory Overhead** | **`0 bytes`** | **`0 bytes`** | $> 0 \text{ bytes}$ | **PASSED** |
-
----
-
-## 4. Pre-Registered Invalidation Protocol
-
-In accordance with [`AGENTS.md`](../../.agents/AGENTS.md) status honesty rules, any pull request that causes VTable lookups to exceed `100.0 ns/op` or introduces non-zero memory overhead for un-annotated types is automatically rejected by CI gates.
 ---
 
 ## Navigation

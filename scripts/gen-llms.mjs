@@ -1,6 +1,5 @@
 import fs from 'fs';
 import path from 'path';
-import { execSync } from 'child_process';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -9,21 +8,15 @@ const rootDir = path.resolve(__dirname, '..');
 const docsDir = path.join(rootDir, 'docs');
 const agentsDir = path.join(rootDir, '.agents');
 
-function getGitVersion() {
-  try {
-    const gitTag = execSync('git describe --tags --abbrev=0', { cwd: rootDir, encoding: 'utf8', stdio: ['pipe', 'pipe', 'ignore'] }).trim();
-    if (gitTag) return gitTag.replace(/^v/, '');
-  } catch (_) {}
-  try {
-    const gitHash = execSync('git rev-parse --short HEAD', { cwd: rootDir, encoding: 'utf8', stdio: ['pipe', 'pipe', 'ignore'] }).trim();
-    if (gitHash) return `0.1.0+${gitHash}`;
-  } catch (_) {}
-  return '0.1.0';
+function getWorkspaceVersion() {
+  const cargo = fs.readFileSync(path.join(rootDir, 'Cargo.toml'), 'utf8');
+  const workspacePackage = cargo.match(/\[workspace\.package\]([\s\S]*?)(?:\n\[|$)/);
+  const version = workspacePackage?.[1].match(/^version\s*=\s*"([^"]+)"/m);
+  if (!version) throw new Error('workspace package version is missing from Cargo.toml');
+  return version[1];
 }
 
-const VERSION = getGitVersion();
-const ABBR = 'rr';
-
+const VERSION = getWorkspaceVersion();
 const summaryPath = path.join(docsDir, 'SUMMARY.md');
 const llmsTxtPath = path.join(rootDir, 'llms.txt');
 const llmsFullTxtPath = path.join(rootDir, 'llms-full.txt');
@@ -56,6 +49,7 @@ const llmsTxtContent = [
   '- docs/README.md: Overview, taxonomy matrix, and concentric scopes',
   '- AUTHORITY.md: Single source of truth & conflict resolution order',
   '- VERSIONING.md: Independent layer versioning policy',
+  '- CONFORMANCE.md: Runtime protocol compatibility and consumer evidence',
   '- .agents/AGENTS.md: Research doctrine & status honesty rules',
   '- CLAUDE.md: Agent operational guide & verification commands',
   '',
@@ -64,11 +58,9 @@ const llmsTxtContent = [
   ...files.map(f => `- docs/${f.relPath}: ${f.label}`)
 ].join('\n');
 
-// Write unversioned and abbreviated versioned llms.txt
+// Write the tracked index and local agent copies.
 fs.writeFileSync(llmsTxtPath, llmsTxtContent, 'utf8');
-fs.writeFileSync(path.join(rootDir, `llms-${ABBR}-v${VERSION}.txt`), llmsTxtContent, 'utf8');
 fs.writeFileSync(path.join(agentsDir, 'llms.txt'), llmsTxtContent, 'utf8');
-fs.writeFileSync(path.join(agentsDir, `llms-${ABBR}-v${VERSION}.txt`), llmsTxtContent, 'utf8');
 
 // Build llms-full.txt (consolidated single-file corpus)
 const fullContentBlocks = [
@@ -92,6 +84,12 @@ const fullContentBlocks = [
   '========================================================================',
   '',
   fs.readFileSync(path.join(rootDir, 'VERSIONING.md'), 'utf8'),
+  '',
+  '========================================================================',
+  'RUNTIME PROTOCOL CONFORMANCE RECORD',
+  '========================================================================',
+  '',
+  fs.readFileSync(path.join(rootDir, 'CONFORMANCE.md'), 'utf8'),
   ''
 ];
 
@@ -111,10 +109,8 @@ for (const file of files) {
 
 const llmsFullContent = fullContentBlocks.join('\n');
 
-// Write unversioned and abbreviated versioned llms-full.txt
+// Full corpora are local generated artifacts and are intentionally ignored.
 fs.writeFileSync(llmsFullTxtPath, llmsFullContent, 'utf8');
-fs.writeFileSync(path.join(rootDir, `llms-full-${ABBR}-v${VERSION}.txt`), llmsFullContent, 'utf8');
-fs.writeFileSync(path.join(agentsDir, 'llms.txt'), llmsFullContent, 'utf8');
-fs.writeFileSync(path.join(agentsDir, `llms-full-${ABBR}-v${VERSION}.txt`), llmsFullContent, 'utf8');
+fs.writeFileSync(path.join(agentsDir, 'llms-full.txt'), llmsFullContent, 'utf8');
 
-console.log(`Generated llms.txt, llms-full.txt, llms-${ABBR}-v${VERSION}.txt, and llms-full-${ABBR}-v${VERSION}.txt (${(fs.statSync(llmsFullTxtPath).size / 1024).toFixed(1)} KB) [Git Version: v${VERSION}].`);
+console.log(`Generated llms.txt and local llms-full.txt (${(fs.statSync(llmsFullTxtPath).size / 1024).toFixed(1)} KB) [Workspace Version: v${VERSION}].`);

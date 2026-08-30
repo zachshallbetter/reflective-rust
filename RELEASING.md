@@ -1,8 +1,8 @@
 ---
 title: "Release Management & Verification Protocol"
 status: "canonical"
-version: "1.0.0"
-updated: "2026-07-31"
+version: "1.0.1"
+updated: "2026-08-25"
 ---
 
 # Reflective Rust Release Management Protocol
@@ -33,16 +33,27 @@ python3 scripts/check-changelogs.py
 
 # 5. Rebuild agent-first single-file context corpus
 node scripts/gen-llms.mjs
+
+# 6. Verify executable crates
+cargo fmt --all --check
+cargo clippy --workspace --all-targets -- -D warnings
+cargo test --workspace --all-targets --locked
+
+# 7. Verify the publishable protocol package
+cargo package -p reflective-rust-protocol
 ```
 
 ---
 
 ## 2. Release Steps
 
-1. **Verify Conformance Records**: Update `CONFORMANCE.md` declaring exact cross-layer compatibility vectors.
+1. **Verify Conformance Records**: Update `CONFORMANCE.md` declaring exact cross-layer compatibility vectors and consumer evidence.
 2. **Update Layer Changelog**: Add release notes, date, and version tag in the target layer's `CHANGELOG.md`.
 3. **Rebuild Agent Artifacts**: Execute `node scripts/gen-llms.mjs` to ensure `llms.txt` and `llms-full.txt` reflect the updated corpus.
-4. **Git Tagging**: Create a signed git tag using layer-namespaced SemVer tags:
+4. **Publish Runtime Crates in Dependency Order**: publish `reflective-rust-protocol` first, wait until the registry resolves version `0.1.0`, then publish dependent crates individually after `cargo package` verification.
+5. **Git Tagging**: Create a signed git tag only after the release commit and package evidence exist:
    - Theory: `spec-v1.0.0`
    - Compiler: `csg-v0.4.0`
-   - Runtime: `runtime-v0.2.1`
+   - Runtime: `runtime-v0.1.0`
+
+Never tag or publish a dirty worktree. A local path dependency is qualification evidence only and must not be committed into an independently built consumer repository.

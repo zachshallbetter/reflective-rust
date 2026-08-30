@@ -8,7 +8,7 @@ summary: "Reflective Rust research specification for Compiler Conformance Vector
 ---
 # Compiler Conformance Vectors
 
-> **Status:** Canonical Compiler Verification Specification  
+> **Status:** Proposed compiler verification specification; not implemented
 > **Adapted from:** FCI Freestanding Conformance Assertions  
 
 This document specifies the cross-backend determinism testing protocol for **Reflective Rust (`core::meta::Info`)** and the **Compiler Semantic Graph (CSG)**.
@@ -53,9 +53,9 @@ llvm_vector.bin                   clif_vector.bin           gcc_vector.bin
 
 ---
 
-## 3. Automated CI Enforcement Gate
+## 3. Required Future CI Enforcement Gate
 
-In CI workflows, reflection test suites build under all available codegen backends and assert byte-identity:
+Once compiler extractors exist, CI must build reflection test suites under supported codegen backends and compare semantic vectors. The following is illustrative future syntax, not a command supported by this repository:
 
 ```bash
 # Verify consteval reflection query determinism across LLVM and Cranelift
@@ -67,7 +67,7 @@ cmp --silent llvm_vector.bin clif_vector.bin || (
 )
 ```
 
-This prevents backend-specific builtin assumptions or target-specific alignment differences from corrupting compiler reflection query results.
+No current CI job performs this comparison. `reflective-rust-conformance` currently verifies canonical RSP descriptor hashes only and is not evidence of compiler-backend equivalence.
 ---
 
 ## Navigation

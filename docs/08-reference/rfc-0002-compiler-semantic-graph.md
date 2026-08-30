@@ -10,8 +10,7 @@ summary: "Reflective Rust research specification for RFC 0002: Compiler Semantic
 
 - Feature Name: `compiler_semantic_graph`
 - Start Date: 2026-07-31
-- RFC PR: rust-lang/rfcs#0002
-- Rust Issue: rust-lang/rust#00000
+- Proposal status: repository research draft; no compiler extractor implemented
 
 ---
 
@@ -33,24 +32,37 @@ The CSG establishes a stable, versioned, out-of-process graph protocol (`reflect
 
 ```json
 {
+  "schema_version": "rr-csg-0.1",
+  "provenance": {
+    "kind": "fixture",
+    "source": "example"
+  },
   "nodes": [
     {
-      "id": 100,
+      "id": "type:PlayerState",
       "name": "PlayerState",
-      "kind": "StructNode",
+      "kind": "struct",
       "span": { "file": "src/lib.rs", "start_line": 1, "end_line": 20 },
-      "privacy": "pub",
+      "minimum_access": "public",
       "size_bytes": 32
+    },
+    {
+      "id": "field:PlayerState:health",
+      "name": "health",
+      "kind": "field",
+      "span": { "file": "src/lib.rs", "start_line": 2, "end_line": 2 },
+      "minimum_access": "public",
+      "size_bytes": 4
     }
   ],
   "edges": [
-    { "from": 100, "to": 101, "relationship": "HAS_FIELD" }
+    { "from": "type:PlayerState", "to": "field:PlayerState:health", "relationship": "contains", "minimum_access": "public" }
   ]
 }
 ```
 
 - **Query Schema**: Out-of-process toolchains communicate with `rustc` via JSON-RPC / gRPC.
-- **Cross-Backend Determinism**: CI vectors enforce byte-identical CSG schema outputs across LLVM, Cranelift, and GCC backends.
+- **Cross-Backend Determinism**: future compiler extractors must emit conformance vectors. Current CI validates the exchange model only.
 ---
 
 ## Navigation

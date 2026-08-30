@@ -13,6 +13,13 @@ summary: "Reflective Rust research specification for Glossary under Scope I: Nea
 - **Metaobject:** a compiler-owned semantic designator or a runtime descriptor representing a language entity.
 - **Reification:** converting a semantic designator into a grammatical Rust category such as a type, path, expression, pattern, or item.
 - **Projection:** emitting runtime-visible information from compile-time semantic facts.
+- **Runtime Semantic Projection (RSP):** the canonical runtime envelope for type, runtime, observation, and operational graph descriptors.
+- **Operational Semantic Graph (OSG):** runtime topology connecting capabilities, contracts, providers, stores, models, and authority.
+- **Compiler Semantic Graph (CSG):** compiler-resolved semantic facts carrying identified compiler-extractor provenance.
+- **Compiler-certified:** provenance available only to data emitted by an identified compiler integration; derived and declared data do not qualify.
+- **Declared:** a descriptor asserted by the authority that owns its contract.
+- **Derived:** a descriptor mechanically projected from an identified source.
+- **Observed:** a descriptor measured from live state, with observation time and expiry when applicable.
 - **Intercession:** controlled participation in a language-defined protocol.
 - **Causal connection:** a guarantee that a reflected process representation corresponds to and can affect the computation it denotes.
 - **Reflection snapshot:** the frozen semantic world observed by a metaprogram invocation.

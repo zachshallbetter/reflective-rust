@@ -1,14 +1,15 @@
 [package]
 name = "reflective-rust-bench"
-version = "1.0.0"
-edition = "2024"
-authors = ["Reflective Rust Research Team"]
-description = "Empirical performance benchmark suite and quantitative proof verification for Reflective Rust."
-license = "MIT OR Apache-2.0"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+authors.workspace = true
+description = "Repeatable local measurements for descriptor and graph operations."
+license.workspace = true
+repository.workspace = true
 
 [dependencies]
-reflective-rust-meta = { path = "../reflective-rust-meta", version = "1.0.0" }
-reflective-rust-csg = { path = "../reflective-rust-csg", version = "1.0.0" }
-reflective-rust-derive = { path = "../reflective-rust-derive", version = "1.0.0" }
-reflective-rust-agent = { path = "../reflective-rust-agent", version = "1.0.0" }
-serde_json = "1.0"
+reflective-rust-csg = { path = "../reflective-rust-csg", version = "0.1.0" }
+reflective-rust-derive = { path = "../reflective-rust-derive", version = "0.1.0" }
+reflective-rust-agent = { path = "../reflective-rust-agent", version = "0.1.0" }
+reflective-rust-protocol = { path = "../reflective-rust-protocol", version = "0.1.0" }
