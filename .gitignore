@@ -17,7 +17,6 @@ scratch/tmp/
 llms*
 
 llms-full.txt
-llms-full.txt
 
 # The user-global excludes file (~/.config/git/ignore) treats .agents/ as local
 # tooling. In this repository it is a REQUIRED artifact: scripts/check-structure.py
@@ -30,3 +29,24 @@ llms-full.txt
 # corpora under .agents/ stay ignored by the `llms*` rule above.
 !.agents/
 !.agents/AGENTS.md
+
+# --- added for Antigravity/indexer parity (auto) ---
+node_modules/
+out/
+.next/
+.turbo/
+.vercel/
+coverage/
+playwright-report/
+test-results/
+graphify-out/
+.reports/
+__pycache__/
+.venv/
+venv/
+DerivedData/
+.gradle/
+.expo/
+.env.*
+
+!.env.example
