@@ -7,14 +7,20 @@ Version: v0.1.0
 ## Structural Hierarchy
 
 - docs/README.md: Overview, taxonomy matrix, and concentric scopes
-- AUTHORITY.md: Single source of truth & conflict resolution order
-- VERSIONING.md: Independent layer versioning policy
-- CONFORMANCE.md: Runtime protocol compatibility and consumer evidence
+- docs/meta/authority.md: Single source of truth & conflict resolution order
+- docs/meta/versioning.md: Independent layer versioning policy
+- docs/meta/conformance.md: Runtime protocol compatibility and consumer evidence
 - docs/00-foundations/08-research-engineering-standards.md: Research engineering standards & status honesty rules
 - CONTRIBUTING.md: Contribution and claim discipline
 
 ## Canonical Chapters (under docs/)
 
+- docs/meta/README.md: Repository governance
+- docs/meta/authority.md: Authority
+- docs/meta/versioning.md: Versioning
+- docs/meta/conformance.md: Conformance
+- docs/meta/releasing.md: Releasing
+- docs/meta/publishing.md: Publishing
 - docs/README.md: Overview
 - docs/00-foundations/README.md: 00 Foundations
 - docs/00-foundations/00-abstract.md: Abstract

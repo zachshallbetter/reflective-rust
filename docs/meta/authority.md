@@ -19,11 +19,11 @@ $$\text{Architecture & Research Doctrine} \to \text{Canonical Ontology & Glossar
 
 | Level | Artifact | Location | Authority Scope |
 | :---: | :--- | :--- | :--- |
-| **0** | **Architecture & Research Doctrine** | [`docs/00-foundations/08-research-engineering-standards.md`](docs/00-foundations/08-research-engineering-standards.md) & [`README.md`](README.md) | Overarching principles, concentric scope boundaries, non-negotiable invariants, status honesty rules. |
-| **1** | **Canonical Ontology & Glossary** | [`00-foundations/03-ontology.md`](00-foundations/03-ontology.md) & [`05-glossary.md`](00-foundations/05-glossary.md) | Universal entity naming (`core::meta::Info`, `CSG`, `RRSA`), taxonomy definitions, and terminology lanes. |
-| **2** | **Language & Subsystem Specifications** | [`03-rust-language-proposal/`](03-rust-language-proposal/) & [`07-compiler/`](07-compiler/) | Formal consteval query signatures, compiler semantic graph rules, hygiene, and privacy boundaries. |
-| **3** | **Substrate Code & Prototypes** | [`08-reference/prototype-crates.md`](08-reference/prototype-crates.md) | Implementation code, MIR interpreter prototypes, and reference macros. |
-| **4** | **Generated Artifacts & Benchmarks** | [`llms-full.txt`](llms-full.txt), static book builds, benchmark outputs | Exported docs, serialized schemas, and evaluation data. |
+| **0** | **Architecture & Research Doctrine** | [`../00-foundations/08-research-engineering-standards.md`](../00-foundations/08-research-engineering-standards.md) & [`../../README.md`](../../README.md) | Overarching principles, concentric scope boundaries, non-negotiable invariants, status honesty rules. |
+| **1** | **Canonical Ontology & Glossary** | [`00-foundations/03-ontology.md`](../00-foundations/03-ontology.md) & [`../00-foundations/05-glossary.md`](../00-foundations/05-glossary.md) | Universal entity naming (`core::meta::Info`, `CSG`, `RRSA`), taxonomy definitions, and terminology lanes. |
+| **2** | **Language & Subsystem Specifications** | [`03-rust-language-proposal/`](../03-rust-language-proposal/) & [`07-compiler/`](../07-compiler/) | Formal consteval query signatures, compiler semantic graph rules, hygiene, and privacy boundaries. |
+| **3** | **Substrate Code & Prototypes** | [`08-reference/prototype-crates.md`](../08-reference/prototype-crates.md) | Implementation code, MIR interpreter prototypes, and reference macros. |
+| **4** | **Generated Artifacts & Benchmarks** | [`llms-full.txt`](../../llms-full.txt), static book builds, benchmark outputs | Exported docs, serialized schemas, and evaluation data. |
 
 ---
 

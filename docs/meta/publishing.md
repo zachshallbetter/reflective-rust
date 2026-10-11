@@ -30,4 +30,4 @@ This document specifies how **Reflective Rust** artifacts are published for huma
 
 `llms.txt` and `llms-full.txt` are **100% programmatically generated downstream artifacts**. 
 
-Per [`AUTHORITY.md`](AUTHORITY.md), generated artifacts must **never** be manually edited. Any changes to documentation content must be made in the canonical source files under `docs/`.
+Per [`authority.md`](authority.md), generated artifacts must **never** be manually edited. Any changes to documentation content must be made in the canonical source files under `docs/`.

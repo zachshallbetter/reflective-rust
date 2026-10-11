@@ -26,6 +26,7 @@ REQUIRED_DIRS = [
     "docs/09-research",
     "docs/appendices",
     "docs/diagrams",
+    "docs/meta",
     "scripts",
     "scratch",
 ]
@@ -33,13 +34,17 @@ REQUIRED_DIRS = [
 REQUIRED_FILES = [
     "docs/README.md",
     "docs/SUMMARY.md",
-    "AUTHORITY.md",
-    "VERSIONING.md",
-    "CONFORMANCE.md",
-    "RELEASING.md",
-    "PUBLISHING.md",
+    "docs/meta/authority.md",
+    "docs/meta/versioning.md",
+    "docs/meta/conformance.md",
+    "docs/meta/releasing.md",
+    "docs/meta/publishing.md",
+    "docs/meta/README.md",
     "book.toml",
     "docs/00-foundations/08-research-engineering-standards.md",
+    "README.md",
+    "CITATION.cff",
+    "CONTRIBUTING.md",
     ".gitignore",
 ]
 

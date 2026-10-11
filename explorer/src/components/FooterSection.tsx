@@ -76,7 +76,7 @@ export const FooterSection: React.FC<FooterSectionProps> = ({ onOpenCorpus }) =>
         {/* Canonical Hierarchy Declaration */}
         <div className="p-6 bg-slate-950/80 border border-slate-800 text-xs font-mono space-y-2 text-slate-400">
           <div className="flex items-center gap-2 text-cyan-400 font-bold">
-            <FileCode className="w-4 h-4" /> Authority Resolution Hierarchy (AUTHORITY.md)
+            <FileCode className="w-4 h-4" /> Authority Resolution Hierarchy (docs/meta/authority.md)
           </div>
           <p className="leading-relaxed">
             Architecture & Research Doctrine → Canonical Ontology & Glossary → Language Specification → Code / Substrate → Generated Artifacts. Code or generated artifacts never silently alter theory or specs.

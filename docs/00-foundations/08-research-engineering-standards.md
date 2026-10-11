@@ -50,7 +50,7 @@ $$\text{Documented} \neq \text{Implemented} \neq \text{Tested} \neq \text{Empiri
 
 ## 3. Hierarchy of authority
 
-When artifacts conflict, resolve in this order (full table in [`AUTHORITY.md`](../../AUTHORITY.md)):
+When artifacts conflict, resolve in this order (full table in [`docs/meta/authority.md`](../meta/authority.md)):
 
 $$\text{Research engineering standards \& README} \to \text{Ontology \& glossary} \to \text{Language specification} \to \text{Code / substrate} \to \text{Generated artifacts}$$
 
@@ -61,8 +61,8 @@ $$\text{Research engineering standards \& README} \to \text{Ontology \& glossary
 
 ## 4. Layer independence
 
-1. Theory, compiler interfaces, runtime projection adapters, and example crates version independently ([`VERSIONING.md`](../../VERSIONING.md)).
-2. Cross-layer compatibility is declared in an explicit conformance record ([`CONFORMANCE.md`](../../CONFORMANCE.md)), never inferred from matching version numbers.
+1. Theory, compiler interfaces, runtime projection adapters, and example crates version independently ([`docs/meta/versioning.md`](../meta/versioning.md)).
+2. Cross-layer compatibility is declared in an explicit conformance record ([`docs/meta/conformance.md`](../meta/conformance.md)), never inferred from matching version numbers.
 3. Core semantic substrates should remain free of required host dependencies; host integrations are optional adapters.
 
 ---

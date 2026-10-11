@@ -48,3 +48,7 @@ DerivedData/
 
 # Local tooling (not part of the public research surface)
 .agents/
+
+# AI assistant local notes (not part of the public surface)
+CLAUDE.md
+.claude/

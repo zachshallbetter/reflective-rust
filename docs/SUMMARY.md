@@ -1,5 +1,13 @@
 # Summary - Reflective Rust
 
+- [Repository governance](meta/README.md)
+  - [Authority](meta/authority.md)
+  - [Versioning](meta/versioning.md)
+  - [Conformance](meta/conformance.md)
+  - [Releasing](meta/releasing.md)
+  - [Publishing](meta/publishing.md)
+
+
 [Overview](README.md)
 
 ## Scope I: Near-Term (Rust Semantic Reflection & Compile-Time Metaprogramming)

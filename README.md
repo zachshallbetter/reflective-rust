@@ -9,7 +9,7 @@
 ![Workspace: 0.1.0](https://img.shields.io/badge/workspace-0.1.0-2dd4bf)
 ![Status: research software](https://img.shields.io/badge/status-research%20software-4da3ff)
 
-> The Cargo workspace version (**0.1.0**) tracks the **executable reference implementation only**. Theory, compiler interface, and tooling-projection layers version independently. Matching numbers across layers never imply conformance—see [`VERSIONING.md`](VERSIONING.md).
+> The Cargo workspace version (**0.1.0**) tracks the **executable reference implementation only**. Theory, compiler interface, and tooling-projection layers version independently. Matching numbers across layers never imply conformance—see [`docs/meta/versioning.md`](docs/meta/versioning.md).
 
 ## The idea
 
@@ -29,8 +29,8 @@ Compiler reflection facilities such as `core::meta::Info`, semantic queries, rei
 |---|---|
 | [`crates/`](crates/) | Executable workspace (protocol, derive, CSG schema, conformance, CLI, server, bench) |
 | [`docs/`](docs/) | Foundations, runtime protocol docs, language proposal, compiler notes, reference |
-| [`CONFORMANCE.md`](CONFORMANCE.md) | Explicit cross-layer conformance record |
-| [`VERSIONING.md`](VERSIONING.md) | Independent layer versioning policy |
+| [`docs/meta/conformance.md`](docs/meta/conformance.md) | Explicit cross-layer conformance record |
+| [`docs/meta/versioning.md`](docs/meta/versioning.md) | Independent layer versioning policy |
 | [`scripts/`](scripts/) | Structure and corpus gates used in CI |
 
 ### Workspace crates
@@ -79,7 +79,7 @@ Continuous integration runs the same family of gates on every push and pull requ
 ## Where to read next
 
 - [Implementation status](docs/IMPLEMENTATION_STATUS.md)
-- [Conformance record](CONFORMANCE.md)
+- [Conformance record](docs/meta/conformance.md)
 - [Descriptor protocol](docs/04-runtime/descriptor-protocol.md)
 - [Operational Semantic Graph](docs/04-runtime/operational-semantic-graph.md)
 - [Adoption profiles](docs/08-reference/adoption-profiles.md)
@@ -89,7 +89,7 @@ Continuous integration runs the same family of gates on every push and pull requ
 
 Layers version independently. The repository release tag **`v0.1.2`** is the public packaging release for workspace **0.1.0** (see [`Cargo.toml`](Cargo.toml) workspace package version). It does not claim completion of the language or compiler proposals.
 
-Authoritative policy: [`VERSIONING.md`](VERSIONING.md).
+Authoritative policy: [`docs/meta/versioning.md`](docs/meta/versioning.md).
 
 ## Licensing
 

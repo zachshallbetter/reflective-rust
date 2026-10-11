@@ -60,7 +60,7 @@ def main():
     if docs_modified and not changelog_modified:
         print("\nFAILED: Changes detected under docs/ without updating CHANGELOG.md.")
         print(
-            "Per VERSIONING.md, every layer modification must update its per-layer record."
+            "Per docs/meta/versioning.md, every layer modification must update its per-layer record."
         )
         sys.exit(1)
 

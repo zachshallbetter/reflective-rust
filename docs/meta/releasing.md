@@ -47,7 +47,7 @@ cargo package -p reflective-rust-protocol
 
 ## 2. Release Steps
 
-1. **Verify Conformance Records**: Update `CONFORMANCE.md` declaring exact cross-layer compatibility vectors and consumer evidence.
+1. **Verify Conformance Records**: Update `docs/meta/conformance.md` declaring exact cross-layer compatibility vectors and consumer evidence.
 2. **Update Layer Changelog**: Add release notes, date, and version tag in the target layer's `CHANGELOG.md`.
 3. **Rebuild Agent Artifacts**: Execute `node scripts/gen-llms.mjs` to ensure `llms.txt` and `llms-full.txt` reflect the updated corpus.
 4. **Publish Runtime Crates in Dependency Order**: publish `reflective-rust-protocol` first, wait until the registry resolves version `0.1.0`, then publish dependent crates individually after `cargo package` verification.
