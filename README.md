@@ -86,7 +86,7 @@ Continuous integration runs the same family of gates on every push and pull requ
 
 ## Versioning
 
-Layers version independently. The repository release tag **`v0.1.1`** is the public packaging release for workspace **0.1.0** (see [`Cargo.toml`](Cargo.toml) workspace package version). It does not claim completion of the language or compiler proposals.
+Layers version independently. The repository release tag **`v0.1.2`** is the public packaging release for workspace **0.1.0** (see [`Cargo.toml`](Cargo.toml) workspace package version). It does not claim completion of the language or compiler proposals.
 
 Authoritative policy: [`VERSIONING.md`](VERSIONING.md).
 
@@ -99,11 +99,11 @@ Dual-licensed under **MIT OR Apache-2.0**. See [`LICENSE`](LICENSE), [`LICENSE-M
 If you use this software, please cite it.
 
 ```bibtex
-@software{shallbetter_reflective_rust_0_1_1,
+@software{shallbetter_reflective_rust_0_1_2,
   author    = {Shallbetter, Zachary},
   title     = {Reflective Rust},
   year      = {2026},
-  version   = {0.1.1},
+  version   = {0.1.2},
   publisher = {Zenodo},
   note      = {Reference implementation workspace; language and compiler proposals versioned independently},
   url       = {https://github.com/zachshallbetter/reflective-rust},

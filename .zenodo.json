@@ -1,8 +1,8 @@
 {
   "title": "Reflective Rust",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "upload_type": "software",
-  "description": "Reflective Rust version 0.1.1 (public packaging release for workspace 0.1.0). Provenance-aware runtime semantic projection and operational semantic graphs. Language and compiler proposals are versioned independently; see VERSIONING.md. Author: Zachary Shallbetter (ORCID 0009-0009-9450-3429).",
+  "description": "Reflective Rust version 0.1.2 (public packaging release for workspace 0.1.0). Provenance-aware runtime semantic projection and operational semantic graphs. Language and compiler proposals are versioned independently; see VERSIONING.md. Author: Zachary Shallbetter (ORCID 0009-0009-9450-3429).",
   "creators": [
     {
       "name": "Shallbetter, Zachary",
@@ -22,12 +22,12 @@
   "access_right": "open",
   "related_identifiers": [
     {
-      "identifier": "https://github.com/zachshallbetter/reflective-rust/tree/v0.1.1",
+      "identifier": "https://github.com/zachshallbetter/reflective-rust/tree/v0.1.2",
       "relation": "isSupplementTo",
       "resource_type": "software"
     },
     {
-      "identifier": "https://github.com/zachshallbetter/reflective-rust/releases/tag/v0.1.1",
+      "identifier": "https://github.com/zachshallbetter/reflective-rust/releases/tag/v0.1.2",
       "relation": "isIdenticalTo",
       "resource_type": "software"
     }
