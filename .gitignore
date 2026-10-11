@@ -50,3 +50,6 @@ DerivedData/
 .env.*
 
 !.env.example
+
+# Local tooling (not part of the public research surface)
+.agents/

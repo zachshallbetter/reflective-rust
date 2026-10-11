@@ -14,7 +14,7 @@ summary: "Reflective Rust research specification for Research Methodology & Empi
 
 ## 1. Philosophical Framework & Four-Tier Claim Taxonomy
 
-To ensure uncompromised scientific integrity, **Reflective Rust** enforces the strict **Four-Tier Claim Taxonomy** defined in [`AGENTS.md`](../../.agents/AGENTS.md):
+To ensure uncompromised scientific integrity, **Reflective Rust** enforces the strict **Four-Tier Claim Taxonomy** defined in [`08-research-engineering-standards.md`](08-research-engineering-standards.md):
 
 $$\text{Documented} \neq \text{Implemented} \neq \text{Tested} \neq \text{Empirically Validated}$$
 

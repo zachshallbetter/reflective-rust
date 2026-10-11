@@ -26,7 +26,6 @@ REQUIRED_DIRS = [
     "docs/09-research",
     "docs/appendices",
     "docs/diagrams",
-    ".agents",
     "scripts",
     "scratch",
 ]
@@ -40,7 +39,7 @@ REQUIRED_FILES = [
     "RELEASING.md",
     "PUBLISHING.md",
     "book.toml",
-    ".agents/AGENTS.md",
+    "docs/00-foundations/08-research-engineering-standards.md",
     ".gitignore",
 ]
 

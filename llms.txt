@@ -10,8 +10,8 @@ Version: v0.1.0
 - AUTHORITY.md: Single source of truth & conflict resolution order
 - VERSIONING.md: Independent layer versioning policy
 - CONFORMANCE.md: Runtime protocol compatibility and consumer evidence
-- .agents/AGENTS.md: Research doctrine & status honesty rules
-- CLAUDE.md: Agent operational guide & verification commands
+- docs/00-foundations/08-research-engineering-standards.md: Research engineering standards & status honesty rules
+- CONTRIBUTING.md: Contribution and claim discipline
 
 ## Canonical Chapters (under docs/)
 
@@ -25,6 +25,7 @@ Version: v0.1.0
 - docs/00-foundations/05-glossary.md: Glossary
 - docs/00-foundations/06-non-negotiable-invariants.md: Non-Negotiable Invariants
 - docs/00-foundations/07-research-practices.md: Research Practices
+- docs/00-foundations/08-research-engineering-standards.md: Research Engineering Standards
 - docs/03-rust-language-proposal/README.md: 03 Rust Language Proposal
 - docs/03-rust-language-proposal/semantic-reflection.md: Semantic Reflection
 - docs/03-rust-language-proposal/compile-time-execution.md: Compile-Time Execution

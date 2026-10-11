@@ -13,6 +13,7 @@
   - [Glossary](00-foundations/05-glossary.md)
   - [Non-Negotiable Invariants](00-foundations/06-non-negotiable-invariants.md)
   - [Research Practices](00-foundations/07-research-practices.md)
+  - [Research Engineering Standards](00-foundations/08-research-engineering-standards.md)
 - [03 Rust Language Proposal](03-rust-language-proposal/README.md)
   - [Semantic Reflection](03-rust-language-proposal/semantic-reflection.md)
   - [Compile-Time Execution](03-rust-language-proposal/compile-time-execution.md)

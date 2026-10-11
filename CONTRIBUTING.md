@@ -4,7 +4,7 @@ This repository is maintained by Zachary Shallbetter.
 
 ## Before opening a change
 
-1. Read [`VERSIONING.md`](VERSIONING.md) and [`CONFORMANCE.md`](CONFORMANCE.md).
+1. Read [`VERSIONING.md`](VERSIONING.md), [`CONFORMANCE.md`](CONFORMANCE.md), and [`docs/00-foundations/08-research-engineering-standards.md`](docs/00-foundations/08-research-engineering-standards.md).
 2. Do not imply compiler reflection or cross-layer conformance that the records do not claim.
 3. Run the verification gate in the README.
 
