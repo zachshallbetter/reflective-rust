@@ -1,8 +1,8 @@
 {
-  "title": "Reflective Rust: Semantic Reflection, Compiler Graphs, and Reflective Systems Architecture",
-  "version": "1.0.0",
+  "title": "Reflective Rust",
+  "version": "0.1.0",
   "upload_type": "software",
-  "description": "A staged reflective systems architecture (RRSA) for Rust based on an opaque, phase-bounded compiler semantic graph (CSG), compile-time metaprogramming, runtime projection, and spatial interfaces. Includes experimental portable runtime semantic contracts.",
+  "description": "Reflective Rust reference implementation workspace (Cargo workspace 0.1.0). Independent layer versions for theory and compiler proposals are documented in VERSIONING.md and are not asserted by this package version.",
   "creators": [
     {
       "name": "Shallbetter, Zachary",
@@ -12,17 +12,16 @@
   "keywords": [
     "rust",
     "reflection",
-    "compiler-semantic-graph",
-    "metaobjects",
-    "consteval",
-    "spatial-projection",
-    "provenance"
+    "compiler semantic graph",
+    "runtime semantic projection",
+    "provenance",
+    "metaobjects"
   ],
   "license": "mit-license",
   "access_right": "open",
   "related_identifiers": [
     {
-      "identifier": "https://github.com/zachshallbetter/reflective-rust/tree/v1.0.0",
+      "identifier": "https://github.com/zachshallbetter/reflective-rust/tree/v0.1.0",
       "relation": "isSupplementTo",
       "resource_type": "software"
     }
