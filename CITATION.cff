@@ -1,15 +1,20 @@
 cff-version: 1.2.0
 message: "If you cite this research architecture, please cite it as below."
 title: "Reflective Rust: Semantic Reflection, Compiler Graphs, and Reflective Systems Architecture"
-abstract: "A staged reflective systems architecture (RRSA) for Rust based on an opaque, phase-bounded compiler semantic graph (CSG), compile-time metaprogramming, runtime projection, and spatial interfaces."
+abstract: >-
+  A staged reflective systems architecture (RRSA) for Rust based on an opaque,
+  phase-bounded compiler semantic graph (CSG), compile-time metaprogramming,
+  runtime projection, and spatial interfaces.
+type: software
 authors:
-  - family-names: "Shallbetter"
-    given-names: "Zach"
+  - family-names: Shallbetter
+    given-names: Zachary
     orcid: "https://orcid.org/0009-0009-9450-3429"
 version: "1.0.0"
 date-released: "2026-07-31"
+license: "MIT OR Apache-2.0"
 repository-code: "https://github.com/zachshallbetter/reflective-rust"
-license: "MIT"
+url: "https://github.com/zachshallbetter/reflective-rust"
 keywords:
   - rust
   - reflection
@@ -17,3 +22,5 @@ keywords:
   - metaobjects
   - consteval
   - spatial-projection
+  - provenance
+# doi: 10.5281/zenodo.XXXXXXXX  # concept DOI — fill after first Zenodo version
