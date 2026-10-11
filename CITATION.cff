@@ -25,4 +25,4 @@ keywords:
   - provenance
   - metaobjects
   - operational semantic graph
-# doi: 10.5281/zenodo.XXXXXXXX  # concept DOI — fill after Zenodo publication
+doi: 10.5281/zenodo.23290630   # concept DOI — always resolves to the latest release

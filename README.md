@@ -3,6 +3,7 @@
 **A research program and reference implementation for provenance-aware semantic reflection in Rust.** The repository separates language and compiler proposals from an executable workspace that implements portable runtime semantic contracts—without fabricating compiler reflection that stable Rust cannot provide.
 
 [![Release](https://img.shields.io/github/v/release/zachshallbetter/reflective-rust?label=release&color=4da3ff)](https://github.com/zachshallbetter/reflective-rust/releases/latest)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23290715.svg)](https://doi.org/10.5281/zenodo.23290715)
 [![CI](https://github.com/zachshallbetter/reflective-rust/actions/workflows/ci.yml/badge.svg)](https://github.com/zachshallbetter/reflective-rust/actions/workflows/ci.yml)
 [![License: MIT OR Apache-2.0](https://img.shields.io/badge/license-MIT%20OR%20Apache--2.0-blue)](LICENSE)
 ![Workspace: 0.1.0](https://img.shields.io/badge/workspace-0.1.0-2dd4bf)
@@ -105,8 +106,8 @@ If you use this software, please cite it.
   year      = {2026},
   version   = {0.1.2},
   publisher = {Zenodo},
-  note      = {Reference implementation workspace; language and compiler proposals versioned independently},
-  url       = {https://github.com/zachshallbetter/reflective-rust},
+  doi       = {10.5281/zenodo.23290715},
+  url       = {https://doi.org/10.5281/zenodo.23290715},
   orcid     = {0009-0009-9450-3429}
 }
 ```
@@ -114,7 +115,8 @@ If you use this software, please cite it.
 Machine-readable citation metadata: [`CITATION.cff`](CITATION.cff).  
 Archival deposit metadata: [`.zenodo.json`](.zenodo.json).
 
-> After the Zenodo record is published, the concept DOI will be recorded in `CITATION.cff` and a DOI badge will be added here.
+> **DOI (this version):** [10.5281/zenodo.23290715](https://doi.org/10.5281/zenodo.23290715)  
+> **Concept DOI (all versions):** [10.5281/zenodo.23290630](https://doi.org/10.5281/zenodo.23290630)
 
 ## Author
 
