@@ -9,9 +9,9 @@ license.workspace = true
 repository.workspace = true
 
 [dependencies]
-reflective-rust-protocol = { path = "../reflective-rust-protocol", version = "0.1.0" }
-reflective-rust-csg = { path = "../reflective-rust-csg", version = "0.1.0" }
-reflective-rust-agent = { path = "../reflective-rust-agent", version = "0.1.0" }
+reflective-rust-protocol = { path = "../reflective-rust-protocol", version = "0.2.0" }
+reflective-rust-csg = { path = "../reflective-rust-csg", version = "0.2.0" }
+reflective-rust-agent = { path = "../reflective-rust-agent", version = "0.2.0" }
 serde.workspace = true
 serde_json.workspace = true
 ed25519-dalek.workspace = true

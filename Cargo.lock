@@ -227,7 +227,7 @@ dependencies = [
 
 [[package]]
 name = "reflective-rust-agent"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "reflective-rust-csg",
  "reflective-rust-protocol",
@@ -239,7 +239,7 @@ dependencies = [
 
 [[package]]
 name = "reflective-rust-bench"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "reflective-rust-agent",
  "reflective-rust-csg",
@@ -249,7 +249,7 @@ dependencies = [
 
 [[package]]
 name = "reflective-rust-cli"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "ed25519-dalek",
  "reflective-rust-agent",
@@ -263,7 +263,7 @@ dependencies = [
 
 [[package]]
 name = "reflective-rust-conformance"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "reflective-rust-csg",
  "reflective-rust-protocol",
@@ -273,7 +273,7 @@ dependencies = [
 
 [[package]]
 name = "reflective-rust-csg"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "base64",
  "ed25519-dalek",
@@ -287,7 +287,7 @@ dependencies = [
 
 [[package]]
 name = "reflective-rust-derive"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -297,11 +297,11 @@ dependencies = [
 
 [[package]]
 name = "reflective-rust-meta"
-version = "0.1.0"
+version = "0.2.0"
 
 [[package]]
 name = "reflective-rust-protocol"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "base64",
  "ed25519-dalek",
@@ -314,7 +314,7 @@ dependencies = [
 
 [[package]]
 name = "reflective-rust-server"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "reflective-rust-protocol",
  "serde_json",

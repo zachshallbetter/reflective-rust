@@ -17,4 +17,4 @@ quote = "1.0"
 proc-macro2 = "1.0"
 
 [dev-dependencies]
-reflective-rust-protocol = { path = "../reflective-rust-protocol", version = "0.1.0" }
+reflective-rust-protocol = { path = "../reflective-rust-protocol", version = "0.2.0" }

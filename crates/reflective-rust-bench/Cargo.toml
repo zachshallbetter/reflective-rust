@@ -9,7 +9,7 @@ license.workspace = true
 repository.workspace = true
 
 [dependencies]
-reflective-rust-csg = { path = "../reflective-rust-csg", version = "0.1.0" }
-reflective-rust-derive = { path = "../reflective-rust-derive", version = "0.1.0" }
-reflective-rust-agent = { path = "../reflective-rust-agent", version = "0.1.0" }
-reflective-rust-protocol = { path = "../reflective-rust-protocol", version = "0.1.0" }
+reflective-rust-csg = { path = "../reflective-rust-csg", version = "0.2.0" }
+reflective-rust-derive = { path = "../reflective-rust-derive", version = "0.2.0" }
+reflective-rust-agent = { path = "../reflective-rust-agent", version = "0.2.0" }
+reflective-rust-protocol = { path = "../reflective-rust-protocol", version = "0.2.0" }
