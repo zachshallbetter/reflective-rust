@@ -1,0 +1,31 @@
+{
+  "vector_id": "NEG-001-UNKNOWN-FIELD",
+  "description": "Envelope containing unauthorized top-level property",
+  "expected_status": "REJECTED",
+  "expected_error": "unknown_field",
+  "payload": {
+    "schema_version": "rr-rsp-0.1",
+    "subject_id": "rust:type:Empty",
+    "compatibility": {
+      "protocol": "rr-rsp-0.1",
+      "subject_schema": "type-1"
+    },
+    "provenance": {
+      "kind": "derived",
+      "authority": "reflective-rust-conformance",
+      "source": "vector:empty-type",
+      "source_hash": "sha256:503e43da59434586d85f21cb89b94362a54f394a6877f67fdfc60f715a07e924"
+    },
+    "minimum_access": "public",
+    "body": {
+      "descriptor_kind": "type",
+      "descriptor": {
+        "name": "Empty",
+        "kind": "struct",
+        "fields": [],
+        "variants": []
+      }
+    },
+    "unauthorized_injected_field": "malicious_payload"
+  }
+}

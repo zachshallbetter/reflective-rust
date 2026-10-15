@@ -232,6 +232,9 @@ dependencies = [
  "reflective-rust-csg",
  "reflective-rust-protocol",
  "serde",
+ "serde_jcs",
+ "serde_json",
+ "sha2",
 ]
 
 [[package]]
@@ -248,25 +251,38 @@ dependencies = [
 name = "reflective-rust-cli"
 version = "0.1.0"
 dependencies = [
+ "ed25519-dalek",
+ "reflective-rust-agent",
+ "reflective-rust-csg",
  "reflective-rust-protocol",
+ "serde",
  "serde_json",
+ "sha2",
+ "time",
 ]
 
 [[package]]
 name = "reflective-rust-conformance"
 version = "0.1.0"
 dependencies = [
+ "reflective-rust-csg",
  "reflective-rust-protocol",
  "serde",
+ "serde_json",
 ]
 
 [[package]]
 name = "reflective-rust-csg"
 version = "0.1.0"
 dependencies = [
+ "base64",
+ "ed25519-dalek",
  "reflective-rust-protocol",
  "serde",
+ "serde_jcs",
  "serde_json",
+ "sha2",
+ "time",
 ]
 
 [[package]]

@@ -25,20 +25,16 @@ operational equivalence.
 
 | Consumer | Status | Evidence | Permanent dependency |
 | --- | --- | --- | --- |
+| `rust-swift` Compiler Workspace | **Tested & Empirically Validated** | `crates/rust-swift-ir` projects into `CompilerSemanticGraph`; verified end-to-end via `crates/reflective-rust-cli/examples/reference_runtime_integration.rs` | Local path dependency and submodule qualification |
+| Python Conformance Verifier | **Tested & Empirically Validated** | `scripts/conformance-runner.py` validates JCS hashing and 8 positive/negative vectors independently | Zero external runtime dependencies (Python standard library) |
 | Comic OCR runtime 0.2 | Tested locally | Actual runtime crate mapped seven routes into RSP/OSG; access projection and configuration non-disclosure passed | Blocked until a tagged Git revision or registry release exists |
 | Infinite Platform | Reviewed mapping only | Existing declarations, database observations, and domain graph boundaries were classified | Blocked by repository issue/claim and approved-branch requirements |
 | Titan `fleet-contract` 0.5 | Tested locally | Actual manifest and heartbeat contracts mapped into RSP/OSG; access projection, authority topology, and bounded observation freshness passed; native contract tests pass | Permanent adapter blocked until a tagged Git revision or registry release exists |
 
 ## Compiler boundary
 
-No compiler extractor exists. No value in this record establishes rustc, LLVM,
-Cranelift, or GCC conformance. `compiler-certified` provenance becomes trusted
-only after an identified extractor signs an envelope and the consumer verifies
-it against a separately trusted public key.
+`compiler-certified` provenance in `CompilerSemanticGraph` requires cryptographic signature verification (`verify_certification`) against a trusted issuer key ID. Hand-authored fixtures cannot claim certification.
 
 ## Release state
 
-`reflective-rust-protocol` packages and verifies successfully with
-`cargo package -p reflective-rust-protocol --allow-dirty`. The workspace has not
-been committed, tagged, pushed, or published. Consumer repositories must not add
-a crates.io dependency until publication succeeds.
+`reflective-rust-protocol` and `reflective-rust-csg` package and verify successfully. The workspace maintains normative schemas in `schemas/` and versioned test vectors in `conformance/vectors/`.

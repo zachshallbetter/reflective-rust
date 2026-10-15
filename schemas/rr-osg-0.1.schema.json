@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/zachshallbetter/reflective-rust/schemas/rr-osg-0.1.schema.json",
+  "title": "Operational Semantic Graph (OSG)",
+  "description": "Normative schema for derived Operational Semantic Graphs.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "nodes",
+    "edges"
+  ],
+  "properties": {
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "label", "kind", "minimum_access"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9_.:/-]+$"
+          },
+          "label": {
+            "type": "string",
+            "minLength": 1
+          },
+          "kind": {
+            "type": "string",
+            "enum": ["runtime", "capability", "observation"]
+          },
+          "minimum_access": {
+            "type": "string",
+            "enum": ["public", "member", "owner", "administrator"]
+          }
+        }
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["from", "to", "relationship", "minimum_access"],
+        "properties": {
+          "from": {
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9_.:/-]+$"
+          },
+          "to": {
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9_.:/-]+$"
+          },
+          "relationship": {
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9_.:/-]+$"
+          },
+          "minimum_access": {
+            "type": "string",
+            "enum": ["public", "member", "owner", "administrator"]
+          }
+        }
+      }
+    }
+  }
+}

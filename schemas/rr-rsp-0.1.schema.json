@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/zachshallbetter/reflective-rust/schemas/rr-rsp-0.1.schema.json",
+  "title": "Runtime Semantic Projection Envelope",
+  "description": "Normative schema for Reflective Rust RSP descriptor envelopes.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "subject_id",
+    "compatibility",
+    "provenance",
+    "minimum_access",
+    "body"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "rr-rsp-0.1"
+    },
+    "subject_id": {
+      "type": "string",
+      "pattern": "^[a-zA-Z0-9_.:/-]+$"
+    },
+    "compatibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["protocol", "subject_schema"],
+      "properties": {
+        "protocol": {
+          "type": "string",
+          "const": "rr-rsp-0.1"
+        },
+        "subject_schema": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "authority", "source", "source_hash"],
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": ["compiler-certified", "declared", "derived", "observed"]
+        },
+        "authority": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_hash": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        },
+        "observed_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "expires_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "minimum_access": {
+      "type": "string",
+      "enum": ["public", "member", "owner", "administrator"]
+    },
+    "body": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["descriptor_kind", "descriptor"],
+      "properties": {
+        "descriptor_kind": {
+          "type": "string",
+          "enum": ["type", "runtime", "observation", "operational-graph"]
+        },
+        "descriptor": {
+          "type": "object"
+        }
+      }
+    }
+  }
+}

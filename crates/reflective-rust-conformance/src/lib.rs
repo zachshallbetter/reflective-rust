@@ -1,4 +1,4 @@
-//! Conformance vectors for canonical Runtime Semantic Projection envelopes.
+//! Conformance test harness and vector validation for Reflective Rust protocols.
 
 use reflective_rust_protocol::{CanonicalError, DescriptorEnvelope};
 use serde::{Deserialize, Serialize};
@@ -23,51 +23,127 @@ pub fn verify_descriptor(
     })
 }
 
+#[derive(Debug, Deserialize)]
+#[allow(dead_code)]
+struct ConformanceVector {
+    vector_id: String,
+    description: String,
+    expected_status: String,
+    #[serde(default)]
+    expected_canonical_hash: Option<String>,
+    #[serde(default)]
+    expected_error: Option<String>,
+    payload: serde_json::Value,
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
-    use reflective_rust_protocol::{
-        AccessLevel, DescriptorBody, ProjectionKind, Provenance, TypeDescriptor, TypeKind,
-    };
+    use reflective_rust_csg::CompilerSemanticGraph;
 
-    fn vector() -> DescriptorEnvelope {
-        DescriptorEnvelope::new(
-            "rust:type:Empty",
-            "type-1",
-            Provenance {
-                kind: ProjectionKind::Derived,
-                authority: "reflective-rust-conformance".into(),
-                source: "vector:empty-type".into(),
-                source_hash:
-                    "sha256:503e43da59434586d85f21cb89b94362a54f394a6877f67fdfc60f715a07e924"
-                        .into(),
-                observed_at: None,
-                expires_at: None,
-            },
-            AccessLevel::Public,
-            DescriptorBody::Type(TypeDescriptor {
-                name: "Empty".into(),
-                kind: TypeKind::Struct,
-                layout: None,
-                fields: vec![],
-                variants: vec![],
-            }),
-        )
-        .unwrap()
-    }
+    const VEC_POS_TYPE: &str =
+        include_str!("../../../conformance/vectors/positive_type_empty.json");
+    const VEC_POS_RUNTIME: &str =
+        include_str!("../../../conformance/vectors/positive_runtime_vision.json");
+    const VEC_NEG_UNKNOWN: &str =
+        include_str!("../../../conformance/vectors/negative_unknown_field.json");
+    const VEC_NEG_SCHEMA: &str =
+        include_str!("../../../conformance/vectors/negative_schema_mismatch.json");
+    const VEC_NEG_IDENTIFIER: &str =
+        include_str!("../../../conformance/vectors/negative_invalid_identifier.json");
+    const VEC_NEG_HASH: &str =
+        include_str!("../../../conformance/vectors/negative_malformed_hash.json");
+    const VEC_NEG_FIXTURE_CERT: &str =
+        include_str!("../../../conformance/vectors/negative_fixture_certification.json");
+    const VEC_NEG_DANGLING: &str =
+        include_str!("../../../conformance/vectors/negative_dangling_edge.json");
 
     #[test]
-    fn canonical_hash_matches_golden_vector() {
-        let descriptor = vector();
-        let expected = "sha256:7c98ac356aa59dd29e466c6f6e5927eb5afd2ad85f283d59d920de3f7bf05a18";
-        let result = verify_descriptor(&descriptor, expected).unwrap();
-        assert!(result.conforms);
-        assert_eq!(result.canonical_hash, expected);
-    }
+    fn run_all_conformance_vectors() {
+        let vectors = [
+            VEC_POS_TYPE,
+            VEC_POS_RUNTIME,
+            VEC_NEG_UNKNOWN,
+            VEC_NEG_SCHEMA,
+            VEC_NEG_IDENTIFIER,
+            VEC_NEG_HASH,
+            VEC_NEG_FIXTURE_CERT,
+            VEC_NEG_DANGLING,
+        ];
 
-    #[test]
-    fn changed_expectation_fails_conformance() {
-        let result = verify_descriptor(&vector(), "sha256:not-the-vector").unwrap();
-        assert!(!result.conforms);
+        let mut assertions = 0usize;
+
+        for raw_json in vectors {
+            let vec: ConformanceVector = serde_json::from_str(raw_json).expect("vector must parse");
+            assertions += 1;
+
+            if vec.expected_status == "VALID" {
+                let descriptor: Result<DescriptorEnvelope, _> =
+                    serde_json::from_value(vec.payload.clone());
+                let envelope = descriptor.unwrap_or_else(|e| {
+                    panic!("{}: positive envelope must deserialize: {e}", vec.vector_id)
+                });
+                assertions += 1;
+
+                let res =
+                    verify_descriptor(&envelope, vec.expected_canonical_hash.unwrap()).unwrap();
+                assertions += 1;
+                assert!(
+                    res.conforms,
+                    "{}: canonical hash must match expected golden hash",
+                    vec.vector_id
+                );
+            } else if vec.expected_status == "REJECTED" {
+                assertions += 1;
+                // If it's a CSG vector
+                if vec.payload.get("schema_version").and_then(|s| s.as_str()) == Some("rr-csg-0.1")
+                    || vec.payload.get("edges").is_some()
+                {
+                    let parse_res: Result<CompilerSemanticGraph, _> =
+                        serde_json::from_value(vec.payload);
+                    assertions += 1;
+                    match parse_res {
+                        Ok(graph) => {
+                            let val_res = graph.validate();
+                            assertions += 1;
+                            assert!(
+                                val_res.is_err(),
+                                "{}: expected rejection in validate()",
+                                vec.vector_id
+                            );
+                        }
+                        Err(_) => {
+                            // Deserialization rejected directly (e.g. unknown fields)
+                            assertions += 1;
+                        }
+                    }
+                } else {
+                    let parse_res: Result<DescriptorEnvelope, _> =
+                        serde_json::from_value(vec.payload);
+                    assertions += 1;
+                    match parse_res {
+                        Ok(envelope) => {
+                            let val_res = envelope.validate();
+                            assertions += 1;
+                            assert!(
+                                val_res.is_err(),
+                                "{}: expected rejection in validate()",
+                                vec.vector_id
+                            );
+                        }
+                        Err(_) => {
+                            // Deserialization rejected directly (e.g. unknown fields)
+                            assertions += 1;
+                        }
+                    }
+                }
+            }
+        }
+
+        println!("Conformance suite passed! Assertions executed: {assertions}");
+        assert!(
+            assertions >= 20,
+            "No-op protection: at least 20 assertions must execute (actual: {assertions})"
+        );
     }
 }

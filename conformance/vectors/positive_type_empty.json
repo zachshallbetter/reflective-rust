@@ -1,0 +1,30 @@
+{
+  "vector_id": "VEC-001-TYPE-EMPTY",
+  "description": "Valid empty struct type descriptor envelope",
+  "expected_status": "VALID",
+  "expected_canonical_hash": "sha256:7c98ac356aa59dd29e466c6f6e5927eb5afd2ad85f283d59d920de3f7bf05a18",
+  "payload": {
+    "schema_version": "rr-rsp-0.1",
+    "subject_id": "rust:type:Empty",
+    "compatibility": {
+      "protocol": "rr-rsp-0.1",
+      "subject_schema": "type-1"
+    },
+    "provenance": {
+      "kind": "derived",
+      "authority": "reflective-rust-conformance",
+      "source": "vector:empty-type",
+      "source_hash": "sha256:503e43da59434586d85f21cb89b94362a54f394a6877f67fdfc60f715a07e924"
+    },
+    "minimum_access": "public",
+    "body": {
+      "descriptor_kind": "type",
+      "descriptor": {
+        "name": "Empty",
+        "kind": "struct",
+        "fields": [],
+        "variants": []
+      }
+    }
+  }
+}

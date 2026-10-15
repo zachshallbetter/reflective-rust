@@ -1,0 +1,44 @@
+{
+  "vector_id": "VEC-002-RUNTIME-VISION",
+  "description": "Valid runtime descriptor envelope with capabilities",
+  "expected_status": "VALID",
+  "expected_canonical_hash": "sha256:7b460ddc5d8807ead8e93f7fcfd2f3fa0c644538b90cb0268a788280b9a78429",
+  "payload": {
+    "schema_version": "rr-rsp-0.1",
+    "subject_id": "runtime:vision-runtime",
+    "compatibility": {
+      "protocol": "rr-rsp-0.1",
+      "subject_schema": "runtime-v1"
+    },
+    "provenance": {
+      "kind": "declared",
+      "authority": "vision-team",
+      "source": "manifest:vision.yaml",
+      "source_hash": "sha256:0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef"
+    },
+    "minimum_access": "public",
+    "body": {
+      "descriptor_kind": "runtime",
+      "descriptor": {
+        "name": "vision-runtime",
+        "version": "1.0.0",
+        "authority_class": "system",
+        "capabilities": [
+          {
+            "id": "ocr",
+            "description": "Optical character recognition",
+            "endpoint": "/v1/ocr",
+            "inputs": [
+              "image"
+            ],
+            "outputs": [
+              "structured-data"
+            ],
+            "streaming": false,
+            "minimum_access": "public"
+          }
+        ]
+      }
+    }
+  }
+}

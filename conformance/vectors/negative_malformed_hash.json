@@ -1,0 +1,30 @@
+{
+  "vector_id": "NEG-004-MALFORMED-HASH",
+  "description": "Provenance source_hash not conforming to sha256:<64 hex>",
+  "expected_status": "REJECTED",
+  "expected_error": "malformed_hash",
+  "payload": {
+    "schema_version": "rr-rsp-0.1",
+    "subject_id": "rust:type:Empty",
+    "compatibility": {
+      "protocol": "rr-rsp-0.1",
+      "subject_schema": "type-1"
+    },
+    "provenance": {
+      "kind": "derived",
+      "authority": "reflective-rust-conformance",
+      "source": "vector:empty-type",
+      "source_hash": "md5:invalid_digest"
+    },
+    "minimum_access": "public",
+    "body": {
+      "descriptor_kind": "type",
+      "descriptor": {
+        "name": "Empty",
+        "kind": "struct",
+        "fields": [],
+        "variants": []
+      }
+    }
+  }
+}

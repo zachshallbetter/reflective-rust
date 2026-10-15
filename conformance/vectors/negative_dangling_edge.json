@@ -1,0 +1,34 @@
+{
+  "vector_id": "NEG-006-DANGLING-EDGE",
+  "description": "Graph edge referencing non-existent destination node",
+  "expected_status": "REJECTED",
+  "expected_error": "dangling_edge",
+  "payload": {
+    "schema_version": "rr-csg-0.1",
+    "provenance": {
+      "kind": "fixture",
+      "source": "test.rs"
+    },
+    "nodes": [
+      {
+        "id": "node:a",
+        "name": "NodeA",
+        "kind": "struct",
+        "span": {
+          "file": "test.rs",
+          "start_line": 1,
+          "end_line": 5
+        },
+        "minimum_access": "public"
+      }
+    ],
+    "edges": [
+      {
+        "from": "node:a",
+        "to": "node:ghost",
+        "relationship": "points_to",
+        "minimum_access": "public"
+      }
+    ]
+  }
+}

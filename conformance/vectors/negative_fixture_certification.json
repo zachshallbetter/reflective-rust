@@ -1,0 +1,20 @@
+{
+  "vector_id": "NEG-005-FIXTURE-CERTIFICATION-FORGERY",
+  "description": "Fixture provenance attempting to claim compiler certification",
+  "expected_status": "REJECTED",
+  "expected_error": "fixture_cannot_be_certified",
+  "payload": {
+    "schema_version": "rr-csg-0.1",
+    "provenance": {
+      "kind": "fixture",
+      "source": "forged_fixture.rs"
+    },
+    "certification": {
+      "issuer_key_id": "fake-key",
+      "signature": "fake-sig",
+      "certified_at": "2026-10-14T00:00:00Z"
+    },
+    "nodes": [],
+    "edges": []
+  }
+}

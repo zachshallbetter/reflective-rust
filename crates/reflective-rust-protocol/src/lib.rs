@@ -202,6 +202,29 @@ impl DescriptorEnvelope {
         Ok(format!("sha256:{:x}", Sha256::digest(bytes.as_bytes())))
     }
 
+    /// Explicit alias for canonical_hash() to emphasize envelope-level identity.
+    pub fn envelope_hash(&self) -> Result<String, CanonicalError> {
+        self.canonical_hash()
+    }
+
+    /// Computes the canonical hash of only the inner descriptor body.
+    pub fn descriptor_hash(&self) -> Result<String, CanonicalError> {
+        self.validate().map_err(CanonicalError::Validation)?;
+        let bytes = serde_jcs::to_vec(&self.body).map_err(CanonicalError::Serialization)?;
+        let json = String::from_utf8(bytes).map_err(CanonicalError::Utf8)?;
+        Ok(format!("sha256:{:x}", Sha256::digest(json.as_bytes())))
+    }
+
+    /// Returns the claimed source hash from provenance.
+    pub fn source_hash(&self) -> &str {
+        &self.provenance.source_hash
+    }
+
+    /// Validates that actual source bytes match the claimed source_hash.
+    pub fn validate_source_claim(&self, actual_source_bytes: &[u8]) -> bool {
+        compute_source_hash(actual_source_bytes) == self.provenance.source_hash
+    }
+
     pub fn require_compatible(&self, other: &Self) -> Result<(), CompatibilityError> {
         if self.compatibility.protocol != other.compatibility.protocol {
             return Err(CompatibilityError::Protocol {
@@ -634,6 +657,22 @@ impl OperationalSemanticGraph {
                 && ids.contains(&edge.to)
         });
     }
+
+    pub fn canonical_json(&self) -> Result<String, CanonicalError> {
+        self.validate().map_err(CanonicalError::Validation)?;
+        let bytes = serde_jcs::to_vec(self).map_err(CanonicalError::Serialization)?;
+        String::from_utf8(bytes).map_err(CanonicalError::Utf8)
+    }
+
+    pub fn canonical_hash(&self) -> Result<String, CanonicalError> {
+        let bytes = self.canonical_json()?;
+        Ok(format!("sha256:{:x}", Sha256::digest(bytes.as_bytes())))
+    }
+}
+
+/// Computes the normative SHA-256 source hash for an input artifact.
+pub fn compute_source_hash(bytes: &[u8]) -> String {
+    format!("sha256:{:x}", Sha256::digest(bytes))
 }
 
 fn require_nonempty(field: &'static str, value: &str) -> Result<(), ValidationError> {
@@ -1078,5 +1117,32 @@ mod tests {
         public.project_for(AccessLevel::Public);
         assert_eq!(public.nodes.len(), 1);
         assert!(public.edges.is_empty());
+    }
+
+    #[test]
+    fn identity_bindings_and_hashes_are_independent_and_verifiable() {
+        let env = descriptor();
+        let env_hash = env.envelope_hash().unwrap();
+        let desc_hash = env.descriptor_hash().unwrap();
+        assert_eq!(env_hash, env.canonical_hash().unwrap());
+        // Envelope hash must be distinct from inner descriptor hash
+        assert_ne!(env_hash, desc_hash);
+        assert!(env_hash.starts_with("sha256:"));
+        assert!(desc_hash.starts_with("sha256:"));
+
+        // Source hash verification
+        let source_bytes = b"pub struct UserAccount { id: u64 }";
+        let computed = compute_source_hash(source_bytes);
+        assert!(computed.starts_with("sha256:"));
+
+        let mut matched_env = env.clone();
+        matched_env.provenance.source_hash = computed.clone();
+        assert!(matched_env.validate_source_claim(source_bytes));
+        assert!(!matched_env.validate_source_claim(b"tampered source"));
+
+        // OSG canonical hash
+        let osg = OperationalSemanticGraph::default();
+        let osg_hash = osg.canonical_hash().unwrap();
+        assert!(osg_hash.starts_with("sha256:"));
     }
 }

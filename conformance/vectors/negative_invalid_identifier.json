@@ -1,0 +1,30 @@
+{
+  "vector_id": "NEG-003-INVALID-IDENTIFIER",
+  "description": "Subject identifier containing forbidden syntax characters",
+  "expected_status": "REJECTED",
+  "expected_error": "invalid_identifier",
+  "payload": {
+    "schema_version": "rr-rsp-0.1",
+    "subject_id": "rust:type:Empty; DROP TABLE users;--",
+    "compatibility": {
+      "protocol": "rr-rsp-0.1",
+      "subject_schema": "type-1"
+    },
+    "provenance": {
+      "kind": "derived",
+      "authority": "reflective-rust-conformance",
+      "source": "vector:empty-type",
+      "source_hash": "sha256:503e43da59434586d85f21cb89b94362a54f394a6877f67fdfc60f715a07e924"
+    },
+    "minimum_access": "public",
+    "body": {
+      "descriptor_kind": "type",
+      "descriptor": {
+        "name": "Empty",
+        "kind": "struct",
+        "fields": [],
+        "variants": []
+      }
+    }
+  }
+}
