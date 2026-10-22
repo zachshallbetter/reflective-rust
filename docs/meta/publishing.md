@@ -19,7 +19,7 @@ This document specifies how **Reflective Rust** artifacts are published for huma
 | Channel | Target Audience | Primary Artifact | Build Tool |
 | :--- | :--- | :--- | :--- |
 | **Interactive mdBook** | Human Researchers & Web | Static HTML under `book/` | `mdbook build` |
-| **Single-File Agent Corpus** | AI Agents & RAG Pipelines | `llms-full.txt` (249+ KB) | `node scripts/gen-llms.mjs` |
+| **Single-File Agent Corpus** | AI Agents & RAG Pipelines | Generated `llms-full.txt` (size varies with corpus) | `node scripts/gen-llms.mjs` |
 | **Machine Manifest** | Automated Indexers | `llms.txt` | `node scripts/gen-llms.mjs` |
 | **Academic Repositories** | Citations & Deposits | `CITATION.cff` & DOI Deposits | ORCID / Zenodo |
 | **Rust Registry** | Runtime protocol consumers | versioned crates beginning with `reflective-rust-protocol` | Cargo |
