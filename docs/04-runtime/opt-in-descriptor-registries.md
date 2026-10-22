@@ -11,21 +11,21 @@ summary: "Reflective Rust research specification for Opt-In Runtime Descriptor R
 > **Status:** Canonical Runtime Subsystem Specification  
 > **Target:** Runtime Semantic Projection  
 
-This document specifies the **Opt-In Descriptor Registry** mechanism, ensuring that reflection metadata incurs **zero runtime memory cost by default**.
+This document proposes an **Opt-In Descriptor Registry** mechanism. It describes a design goal—avoiding metadata for types that do not opt in—not a verified cost guarantee. The current workspace implements opt-in runtime descriptors, but not this compiler-integrated registry architecture.
 
 ---
 
-## 1. Zero-Cost Invariant
+## 1. Proposed Cost Goal (Not Yet Established)
 
-In accordance with Rust's zero-cost abstraction principle, types that do not explicitly opt into runtime reflection pay **zero memory, binary size, or execution overhead**:
+The intended design goal is that unannotated types incur no reflection-specific metadata overhead. This has not been established by a theorem or benchmark in this repository. Runtime, binary-size, and execution costs depend on the concrete implementation and build.
 
-$$\text{Memory Overhead}(\text{Un-annotated Type}) = 0\text{ bytes}$$
+$\text{Target: minimize reflection overhead for unannotated types}$
 
 ---
 
 ## 2. Deriving Reflection Metadata
 
-Types enable runtime projection using the procedural derive macro `#[derive(Reflectable)]` or explicit consteval registration:
+In the implemented workspace, types can opt into syntax-derived runtime descriptors using `#[derive(Reflectable)]`. The `consteval` registration API described by this proposal is not available in stable Rust:
 
 ```rust
 #[derive(Reflectable)]
@@ -39,9 +39,9 @@ pub struct Player {
 
 ---
 
-## 3. Generated Descriptor VTables
+## 3. Illustrative Registry Sketch (Not Current Workspace Behavior)
 
-The macro expands to a static `TypeDescriptor` handle stored in a linkme/ctor static registry section:
+The following is a conceptual sketch, not a compilable example or a description of what the current derive macro generates. A concrete registry implementation would need its own design and tests:
 
 ```rust
 #[linkme::distributed_slice(RUNTIME_REFLECTION_REGISTRY)]
