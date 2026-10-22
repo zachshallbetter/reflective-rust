@@ -1,12 +1,15 @@
 ---
 title: "A Rust-Native Architecture for Semantic Reflection, Consteval Metaprogramming, Runtime Projection, and Procedural Reflection"
 scope: "context"
-status: "canonical"
+status: "historical"
 version: "1.0.0"
 updated: "2026-07-31"
 summary: "Reflective Rust research specification for A Rust-Native Architecture for Semantic Reflection, Consteval Metaprogramming, Runtime Projection, and Procedural Reflection under Historical Evidence & Comparative Context."
 ---
-# A Rust-Native Architecture for Semantic Reflection, Consteval Metaprogramming, Runtime Projection, and Procedural Reflection
+# A Rust-Native Architecture
+
+> **Historical research snapshot.** This appendix preserves an earlier, broader architecture draft for provenance and comparison. Its descriptions of compiler reflection, compiler-certified graphs, zero-cost behavior, and runtime capabilities are proposals or historical claims, not evidence of current implementation. For current verified status, see [Implementation Status](../IMPLEMENTATION_STATUS.md) and the [root README](../../README.md).
+ for Semantic Reflection, Consteval Metaprogramming, Runtime Projection, and Procedural Reflection
 
 **Deep research report**  
 **Version:** 1.0  
