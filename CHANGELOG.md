@@ -31,20 +31,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## [Unreleased]
-
-### Changed
-- Updated the README to distinguish the current workspace version from the latest published packaging release and to make implementation boundaries and feedback requests easier to find.
-- Added a runnable derive-macro example that serializes an opt-in runtime type descriptor as JSON.
-- Reset the executable workspace to `0.1.0` so crate versions no longer imply implementation of the independently versioned language proposal.
-- Added the canonical Runtime Semantic Projection envelope and Operational Semantic Graph, including provenance, compatibility, access projection, validation, JCS serialization, and SHA-256 identity.
-- Added authenticated envelopes with Ed25519 signatures, trusted key-ID binding, explicit compatibility checks, and enforced RFC 3339 freshness windows for observations.
-- Reworked `#[derive(Reflectable)]` to implement the shared runtime descriptor trait for structs, generics, and enums.
-- Made CSG provenance explicit and distinguished compiler-produced graphs from fixtures.
-- Replaced fabricated compiler metadata, unsafe raw-memory serialization, false cross-backend conformance, and hard-coded performance assertions with honest boundaries and testable behavior.
-- Removed the word-count and unverified “value metrics” gate; repository gates now verify code, structure, links, changelog discipline, and generated-corpus determinism.
-- Updated repository status, terminology, examples, and verification gates to match implemented behavior.
-
 ## [1.0.1] - 2026-07-31
 
 ### Added
