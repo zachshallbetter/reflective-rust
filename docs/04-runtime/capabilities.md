@@ -3,12 +3,12 @@ title: "Capability-Based Access"
 scope: "mid-term"
 status: "canonical"
 version: "1.0.0"
-updated: "2026-07-31"
+updated: "2026-10-22"
 summary: "Reflective Rust research specification for Capability-Based Access under Scope II: Mid-Term (Compiler Semantic Graph & Runtime Semantic Projection)."
 ---
 # Capability-Based Access
 
-**Status:** Research synthesis
+**Status:** Research synthesis; the compiler-backed access model below is proposed, not implemented by this workspace. The runtime protocol can filter access metadata supplied in descriptors, but it cannot enforce Rust source privacy or generate compiler-authorized accessors.
 
 ## 17. Capability-based runtime access
 
@@ -39,9 +39,10 @@ bitflags! {
 }
 ```
 
-A downstream crate cannot grant itself access to a private field. The compiler emits private accessors only inside an authenticated owner context, and the owner explicitly chooses what to export.
+Design requirement: a downstream crate must not gain access to a private field merely by requesting reflection. A future compiler integration could expose explicitly authorized projections from an owner context; this workspace does not implement `#[reflect_runtime]`, compiler-generated accessors, or the access-control syntax shown below.
 
 ```rust
+// Proposed syntax only; not accepted by stable Rust.
 #[reflect_runtime(
     type(discover, construct),
     fields(public = "read", marked = "read,write"),
