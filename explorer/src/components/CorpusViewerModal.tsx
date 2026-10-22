@@ -22,7 +22,7 @@ export const CorpusViewerModal: React.FC<CorpusViewerModalProps> = ({ isOpen, on
           return res.text();
         })
         .then((text) => setCorpusText(text))
-        .catch(() => setCorpusText('Failed to load llms-full.txt corpus. Run the explorer's npm run dev or npm run build command to generate and copy the corpus into public/llms-full.txt.'));
+        .catch(() => setCorpusText('Failed to load llms-full.txt corpus. Run the explorer npm run dev or npm run build command to generate and copy the corpus into public/llms-full.txt.'));
     }
   }, [isOpen]);
 
@@ -72,7 +72,7 @@ export const CorpusViewerModal: React.FC<CorpusViewerModalProps> = ({ isOpen, on
                     Single-File Research Corpus (`llms-full.txt`)
                   </h3>
                   <span className="text-xs text-cyan-400 font-mono">
-                    Reflective Rust Monograph • 115 Chapters • 30,003 Words • 276.5 KB
+                    Generated research corpus • contents and size vary with the source documents
                   </span>
                 </div>
               </div>
@@ -107,7 +107,7 @@ export const CorpusViewerModal: React.FC<CorpusViewerModalProps> = ({ isOpen, on
               <Search className="w-4 h-4 text-slate-400" />
               <input
                 type="text"
-                placeholder="Search monograph chapters, theorems, API functions (e.g. core::meta, CSG, Theorem 1.1)..."
+                placeholder="Search the generated research corpus (e.g. provenance, CSG, runtime protocol)..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full bg-transparent text-xs font-mono text-cyan-300 placeholder-slate-500 focus:outline-none"
@@ -127,9 +127,9 @@ export const CorpusViewerModal: React.FC<CorpusViewerModalProps> = ({ isOpen, on
             {/* Footer Status Bar */}
             <div className="px-6 py-3 bg-slate-950 border-t border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-400">
               <span className="flex items-center gap-2">
-                <Layers className="w-3.5 h-3.5 text-cyan-400" /> Single-Pass Deterministic Context Architecture
+                <Layers className="w-3.5 h-3.5 text-cyan-400" /> Generated corpus preview • source documents remain canonical
               </span>
-              <span className="text-emerald-400 font-bold">100% Zero Search Latency for LLM Agents</span>
+              <span className="text-emerald-400 font-bold">Client-side text filtering • no performance guarantee</span>
             </div>
           </motion.div>
         </div>
