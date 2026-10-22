@@ -1,7 +1,7 @@
 ---
 title: "Runtime Protocol Conformance Record"
 status: "canonical"
-version: "0.2.0"
+version: "0.1.1"
 updated: "2026-10-22"
 ---
 
