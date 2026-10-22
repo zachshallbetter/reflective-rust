@@ -52,11 +52,11 @@ export const Scope3Section: React.FC = () => {
           <Terminal className="w-3.5 h-3.5 text-emerald-400" /> SECTOR 03 // AGENT RAG GRAPH SLICER
         </span>
         <h2 className="text-3xl sm:text-6xl font-black text-white tracking-tight font-sans">
-          Compiler-Certified Context <br />
-          <span className="gradient-text-cyan">Zero-Hallucination Prompt Slicing</span>
+          Illustrative Graph Context <br />
+          <span className="gradient-text-cyan">Experimental Prompt Slicing Concept</span>
         </h2>
         <p className="text-slate-400 text-sm sm:text-base leading-relaxed">
-          Extract exact semantic contexts around target symbols with enforced visibility and type safety boundaries.
+          Explore a mock graph slice around example symbols. The displayed data is hard-coded demonstration content, not compiler-certified output; graph slicing cannot guarantee zero hallucinations.
         </p>
       </div>
 
@@ -130,7 +130,7 @@ export const Scope3Section: React.FC = () => {
 
           <div className="flex items-center justify-between">
             <span className="text-xs font-mono text-emerald-400 font-bold flex items-center gap-2">
-              <Sparkles className="w-4 h-4" /> Real-Time Prompt Slice Output
+              <Sparkles className="w-4 h-4" /> Illustrative Mock Slice Output
             </span>
             <span className="text-[10px] font-mono px-3 py-1 bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 font-bold">
               0% HALLUCINATION CERTIFIED
