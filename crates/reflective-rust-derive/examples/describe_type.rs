@@ -9,7 +9,6 @@ struct Account {
 
 fn main() {
     let descriptor = Account::type_descriptor();
-    let json = serde_json::to_string_pretty(&descriptor)
-        .expect("type descriptor should serialize");
+    let json = serde_json::to_string_pretty(&descriptor).expect("type descriptor should serialize");
     println!("{json}");
 }
