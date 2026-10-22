@@ -3,7 +3,7 @@ title: "Opaque `meta::Info`"
 scope: "near-term"
 status: "canonical"
 version: "1.0.0"
-updated: "2026-07-31"
+updated: "2026-10-22"
 summary: "Reflective Rust research specification for Opaque `meta::Info` under Scope I: Near-Term (Rust Semantic Reflection & Compile-Time Metaprogramming)."
 ---
 # Opaque `meta::Info`
@@ -95,12 +95,13 @@ pub const fn associated_items_of(entity: Info)
 
 ### 7.4 Identity versus equivalence
 
-Rust needs separate operations for declaration identity, type equality, and alias normalization.
+Rust needs separate operations for declaration identity, type equality, and alias normalization. The proposal should define these as distinct queries; a handle's identity must not be confused with normalized type equivalence.
 
-```rust
-### 7.5 Default Trait Method Bounds (`Sized` Requirement)
+### 7.5 Runtime Descriptor Trait Bounds (`Sized` Requirement)
 
-Static reflection traits providing default helper implementations (such as `csg_node()`) MUST explicitly bound `where Self: Sized` when evaluating memory properties:
+The following is a separate stable-Rust runtime-descriptor sketch, not an implementation of compiler-owned `core::meta::Info`:
+
+Runtime descriptor traits providing default helper implementations (such as `csg_node()`) must explicitly bound `where Self: Sized` when evaluating memory properties:
 
 ```rust
 pub trait MetaInfo {
@@ -109,7 +110,7 @@ pub trait MetaInfo {
     fn db_table() -> Option<&'static str>;
     fn field_meta() -> Vec<FieldMeta>;
 
-    /// Generates compiler semantic graph node with exact byte size.
+    /// Generates an application-level graph node with the Rust type's byte size.
     fn csg_node() -> CSGNode where Self: Sized {
         let fields = Self::field_meta();
         CSGNode {
