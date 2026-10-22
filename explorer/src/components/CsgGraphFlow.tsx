@@ -83,7 +83,7 @@ const initialNodes: Node[] = [
       textColor: 'text-cyan-400',
       borderColor: 'border-cyan-500/50',
       icon: <Layers className="w-4 h-4" />,
-      details: ['ID: 0x8000_0000', 'Memory: 0 Bytes'],
+      details: ['ID: illustrative', 'Memory: not measured'],
     },
   },
   {
@@ -97,7 +97,7 @@ const initialNodes: Node[] = [
       textColor: 'text-purple-400',
       borderColor: 'border-purple-500/50',
       icon: <Shield className="w-4 h-4" />,
-      details: ['Nodes: 1,000', 'Backend: LLVM/Cranelift'],
+      details: ['Nodes: sample', 'Backend: hypothetical'],
     },
   },
   {
@@ -111,7 +111,7 @@ const initialNodes: Node[] = [
       textColor: 'text-emerald-400',
       borderColor: 'border-emerald-500/50',
       icon: <Eye className="w-4 h-4" />,
-      details: ['Latency: 50.93 µs', 'Hallucination: 0%'],
+      details: ['Latency: not measured', 'Hallucination: not guaranteed'],
     },
   },
 ];
