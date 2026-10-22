@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Activity, ShieldCheck, FileText, ExternalLink } from 'lucide-react';
 import { audioEngine } from '../utils/audio';
 
+type ProofMetric = { label: string; status: string; value: string; target: string; sub: string; tier: string };
+
 export const ProofDashboardSection: React.FC = () => {
   const [activeTier, setActiveTier] = useState<number>(2); // Default to Tier 3: Tested
 
@@ -13,7 +15,7 @@ export const ProofDashboardSection: React.FC = () => {
   ];
 
   // No reproducible numeric benchmark results are published in this dashboard.
-  const metrics = [];
+  const metrics: ProofMetric[] = [];
 
   const handleTierClick = (idx: number) => {
     setActiveTier(idx);
