@@ -2,46 +2,18 @@ import React from 'react';
 import { Activity, ShieldCheck, Zap, Server } from 'lucide-react';
 
 export const BenchmarkDashboard: React.FC = () => {
-  const metrics = [
-    {
-      label: 'Static Reflection Query',
-      value: '274.08 ns/op',
-      target: '< 500 ns/op',
-      status: 'PASSED',
-      sub: 'core::meta::of::<T>()',
-    },
-    {
-      label: 'Descriptor VTable Lookup',
-      value: '5.77 ns/op',
-      target: '< 20 ns/op',
-      status: 'PASSED',
-      sub: '#[derive(Reflectable)] VTable',
-    },
-    {
-      label: 'CSG JSON Serialization',
-      value: '10.68 ms/op',
-      target: '< 50 ms/op',
-      status: 'PASSED',
-      sub: '1,000 CSG Graph Nodes',
-    },
-    {
-      label: 'Agent Graph RAG Slicing',
-      value: '50.93 µs/op',
-      target: '< 250 µs/op',
-      status: 'PASSED',
-      sub: 'csg::slice_around Engine',
-    },
-  ];
+  // No reproducible numeric benchmark results are published in this dashboard.
+  const metrics = [];
 
   return (
     <section className="py-12 px-6 max-w-7xl mx-auto space-y-8">
       <div>
         <h2 className="text-2xl font-bold text-white flex items-center gap-2">
           <Activity className="w-6 h-6 text-cyan-400" />
-          Empirical Benchmark & Proof Dashboard
+          Local Benchmark Instrumentation
         </h2>
         <p className="text-xs text-slate-400 font-mono mt-1">
-          Quantitative micro-benchmarks gathered via <code className="text-cyan-400">crates/reflective-rust-bench</code> under pre-registered CI gates.
+          The benchmark crate records local diagnostic timings; this dashboard does not publish benchmark results or establish performance guarantees.
         </p>
       </div>
 
@@ -49,23 +21,23 @@ export const BenchmarkDashboard: React.FC = () => {
       <div className="glass-panel-glow p-6 rounded-2xl border border-cyan-500/40 flex flex-col md:flex-row items-center justify-between gap-6">
         <div className="space-y-2">
           <span className="px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-mono font-bold border border-emerald-500/40 inline-flex items-center gap-1">
-            <ShieldCheck className="w-3.5 h-3.5" /> Theorem 1.1 Formally Proven
+            <ShieldCheck className="w-3.5 h-3.5" /> No zero-cost theorem established
           </span>
-          <h3 className="text-xl font-bold text-white">Zero-Cost Un-Annotated Type Memory Overhead</h3>
+          <h3 className="text-xl font-bold text-white">Unannotated-type overhead is a design goal, not a proven result</h3>
           <p className="text-xs text-slate-300 max-w-2xl leading-relaxed font-mono">
-            Un-annotated types generate strictly <strong className="text-emerald-400">0 bytes</strong> of static binary or runtime heap allocation. Static reflection handles exist exclusively during compiler <code className="text-cyan-400">consteval</code>.
+            This workspace does not implement the proposed compiler-reflection handles. No general zero-overhead guarantee is claimed; costs depend on the concrete implementation and build.
           </p>
         </div>
 
         <div className="text-center p-6 rounded-xl bg-slate-950/80 border border-slate-800 min-w-[200px]">
-          <span className="text-3xl font-extrabold text-emerald-400 font-mono block">0 BYTES</span>
-          <span className="text-[10px] text-slate-400 font-mono uppercase">Memory Cost</span>
+          <span className="text-3xl font-extrabold text-emerald-400 font-mono block">NOT PROVEN</span>
+          <span className="text-[10px] text-slate-400 font-mono uppercase">No zero-cost theorem</span>
         </div>
       </div>
 
       {/* Metrics Cards Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {metrics.map((m, idx) => (
+        {metrics.length === 0 ? (<div className="col-span-full p-6 border border-slate-700 text-sm text-slate-300">No numeric benchmark results are published in this dashboard. Run the local benchmark example, record the exact revision/toolchain/hardware and raw results, and review them before making performance claims.</div>) : metrics.map((m, idx) => (
           <div key={idx} className="glass-panel p-5 rounded-2xl border border-slate-800 space-y-3">
             <div className="flex items-center justify-between">
               <span className="text-xs font-mono text-slate-400">{m.label}</span>
