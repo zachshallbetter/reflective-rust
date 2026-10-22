@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-Reflective Rust Layer Changelog Verification Script
+Reflective Rust Changelog Verification Script
 Adapted from FCI & Fundamental Engine PR checks.
-Inspects modified paths and verifies that touched layers update their respective changelogs.
+Inspects modified paths and requires the root changelog for documentation changes.
 """
 
 import os
@@ -60,7 +60,7 @@ def main():
     if docs_modified and not changelog_modified:
         print("\nFAILED: Changes detected under docs/ without updating CHANGELOG.md.")
         print(
-            "Per docs/meta/versioning.md, every layer modification must update its per-layer record."
+            "Per docs/meta/versioning.md, this repository uses the root CHANGELOG.md; separate per-layer changelogs are not maintained."
         )
         sys.exit(1)
 
