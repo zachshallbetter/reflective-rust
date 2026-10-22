@@ -87,11 +87,11 @@ export const FooterSection: React.FC<FooterSectionProps> = ({ onOpenCorpus }) =>
         <div className="flex flex-col sm:flex-row items-center justify-between text-xs font-mono text-slate-500 border-t border-slate-800/80 pt-6">
           <span>Reflective Rust Research Group © 2026. MIT / Apache-2.0 Dual License.</span>
           <div className="flex items-center gap-4 text-[11px] mt-2 sm:mt-0">
-            <span className="text-emerald-400">Theorem 1.1 Verified</span>
+            <span className="text-amber-400">Zero-cost claims unproven</span>
             <span>•</span>
-            <span className="text-cyan-400">0B Memory Cost</span>
+            <span className="text-cyan-400">Runtime descriptors opt-in</span>
             <span>•</span>
-            <span className="text-purple-400">CSG Graph RAG Active</span>
+            <span className="text-purple-400">Compiler extractor not implemented</span>
           </div>
         </div>
       </div>
