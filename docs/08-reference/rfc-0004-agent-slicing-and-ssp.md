@@ -17,7 +17,7 @@ summary: "Reflective Rust research specification for RFC 0004: Agentic Context S
 ## 1. Summary
 
 This RFC specifies:
-1. **Agentic Semantic Context Slicing (`csg::slice_around`)**: Graph RAG algorithms extracting compiler-certified semantic contexts (resolved type bounds, lifetime invariants, privacy barriers) for AI tools.
+1. **Agentic Semantic Context Slicing (`csg::slice_around`)**: Graph RAG algorithms that can slice supplied graph data for AI tools. Compiler-resolved type bounds, lifetime invariants, and privacy barriers require a future compiler extractor; fixture slicing is not compiler certification.
 2. **Semantic Spatial Projection (SSP)**: 3D $T(N_i) \in \mathbb{SE}(3)$ transformation matrix protocols mapping CSG graph nodes into physical 3D spatial environments for spatial computing and visual debugging.
 
 ---
@@ -26,7 +26,7 @@ This RFC specifies:
 
 Raw text-based RAG pipelines fail on complex codebases because unparsed code snippets lack compiler context (resolved signatures, trait bounds, macro expansions). 
 
-By slicing directly over the **Compiler Semantic Graph (CSG)**, AI agents receive exact, hallucination-free compiler facts.
+By slicing over a **CSG-shaped graph**, AI agents can receive structured context. The workspace does not yet extract graphs from a compiler, and structured context is neither guaranteed compiler-verified nor hallucination-free.
 
 ---
 
