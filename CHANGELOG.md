@@ -27,6 +27,10 @@
 - Labeled the graph-flow canvas as hard-coded fixture data rather than live compiler IR.
 - Clarified generated agent-index language so it does not present the proposed architecture as an implemented compiler substrate.
 - Marked the original long-form report as historical and revised graph-slicing research/RFC language to distinguish fixture operations from compiler-certified facts.
+- Clarified the proposed `core::meta` API and CSG architecture against the actual runtime-oriented crates; repaired a malformed Markdown code fence in the `meta::Info` design note.
+- Corrected protocol documentation to distinguish domain-separated signatures from plain artifact hashes, and clarified that compiler-certified graph production is not implemented.
+- Updated Rust reflection/comptime status against the official 2026 Project Goals page and corrected the C++ reflection paper citation and unpublished-manuscript BibTeX metadata.
+- Clarified that compiler-generated access contexts, owner-site privacy projection, and reflection attributes are proposals, not stable-Rust behavior.
 
 ## [0.1.3] - 2026-10-11
 
