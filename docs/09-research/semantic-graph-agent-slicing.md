@@ -1,5 +1,5 @@
 ---
-title: "Compiler-Certified Graph RAG Context Slicing (`csg::slice_around`)"
+title: "Graph RAG Context Slicing Proposal (`csg::slice_around`)
 scope: "long-term"
 status: "canonical"
 version: "1.0.0"
