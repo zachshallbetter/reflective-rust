@@ -22,6 +22,7 @@
 - Labeled interactive explorer diagrams as illustrative proposals/fixtures and removed unverified zero-cost and zero-hallucination claims.
 - Clarified that the CSG and context-slicing explorer panels use hard-coded demonstration data rather than compiler-extracted evidence.
 - Fixed empty-metrics TypeScript inference in the evidence dashboards and clarified the server panel's example-only status.
+- Reworked interactive compile-time/layout/CSG demos to identify mock output, avoid unsupported zero-cost and performance metrics, and link to the tracked LLM index instead of an untracked corpus file.
 
 ## [0.1.3] - 2026-10-11
 
