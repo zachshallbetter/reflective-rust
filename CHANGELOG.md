@@ -1,5 +1,21 @@
 # Reflective Rust - Changelog
 
+## [Unreleased]
+
+> Historical note: older 1.x/0.x research-corpus entries below are legacy repository notes, not a reliable substitute for the published GitHub release list or current implementation status. Earlier claims about compiler reflection, cross-backend conformance, zero-cost behavior, and production services are superseded by [the verified implementation status](docs/IMPLEMENTATION_STATUS.md).
+
+### Changed
+- Updated the README to distinguish the current workspace version from the latest published packaging release and to make implementation boundaries and feedback requests easier to find.
+- Added a runnable derive-macro example that serializes an opt-in runtime type descriptor as JSON.
+- Advanced the executable workspace to `0.2.0`; the runtime and CSG schema identifiers remain independently versioned as `rr-rsp-0.1` and `rr-csg-0.1`.
+- Added the canonical Runtime Semantic Projection envelope and Operational Semantic Graph, including provenance, compatibility, access projection, validation, JCS serialization, and SHA-256 identity.
+- Added authenticated envelopes with Ed25519 signatures, trusted key-ID binding, explicit compatibility checks, and enforced RFC 3339 freshness windows for observations.
+- Reworked `#[derive(Reflectable)]` to implement the shared runtime descriptor trait for structs, generics, and enums.
+- Made CSG provenance explicit and distinguished compiler-produced graphs from fixtures.
+- Replaced fabricated compiler metadata, unsafe raw-memory serialization, false cross-backend conformance, and hard-coded performance assertions with honest boundaries and testable behavior.
+- Removed the word-count and unverified “value metrics” gate; repository gates now verify code, structure, links, changelog discipline, and generated-corpus determinism.
+- Updated repository status, terminology, examples, and verification gates to match implemented behavior.
+
 ## [0.1.3] - 2026-10-11
 
 ### Changed
