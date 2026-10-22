@@ -162,7 +162,7 @@ export const Scope2Section: React.FC = () => {
           <span className="gradient-text-cyan">Out-of-Process Graph Schema</span>
         </h2>
         <p className="text-slate-400 text-sm sm:text-base leading-relaxed">
-          Standardized JSON schema capturing type hierarchies, methods, and privacy bounds across LLVM, Cranelift, and GCC.
+          Proposed exchange schema for type and relationship data. This interactive diagram is illustrative fixture data, not output from a compiler extractor; cross-backend extraction and conformance are not implemented in this repository.
         </p>
       </div>
 
@@ -194,7 +194,7 @@ export const Scope2Section: React.FC = () => {
           <div className="cyber-corner-br" />
 
           <h3 className="text-xs font-bold text-white uppercase tracking-wider font-mono flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-rose-500 animate-ping" /> HUD Node Telemetry
+            <span className="w-2 h-2 rounded-full bg-rose-500 animate-ping" /> Illustrative Fixture Node
           </h3>
 
           {selectedNode ? (
