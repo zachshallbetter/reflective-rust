@@ -8,14 +8,14 @@ summary: "Reflective Rust research specification for Static Semantic Reflection 
 ---
 # Static Semantic Reflection Specification (`core::meta`)
 
-> **Status:** Canonical Language RFC Specification  
-> **Reference Substrate:** [`crates/reflective-rust-meta`](../../crates/reflective-rust-meta)  
+> **Status:** Canonical repository proposal text; not an upstream Rust RFC and not implemented by this workspace.  
+> **Related workspace code:** [`crates/reflective-rust-meta`](../../crates/reflective-rust-meta) contains the current runtime-oriented reference implementation; it does not implement the proposed compiler-owned `core::meta::Info` API.  
 
 ---
 
 ## 1. Syntax & Core Type Definitions
 
-This specification proposes adding the module `core::meta` to the Rust Standard Library (`#![no_std]` compatible), providing static compile-time reflection via opaque compiler-synthesized handles (`Info`).
+This proposal describes adding the module `core::meta` to the Rust standard library (`#![no_std]` compatible), providing static compile-time reflection via opaque compiler-synthesized handles (`Info`). The API below is a design sketch, not compilable stable-Rust API. The Rust Project's separate reflection/comptime experiment is tracked independently; this repository's workspace does not implement this proposal.
 
 ```rust
 pub namespace core::meta {
