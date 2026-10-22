@@ -1,9 +1,11 @@
 import React from 'react';
 import { Activity, ShieldCheck, Zap, Server } from 'lucide-react';
 
+type BenchmarkMetric = { label: string; status: string; value: string; target: string; sub: string };
+
 export const BenchmarkDashboard: React.FC = () => {
   // No reproducible numeric benchmark results are published in this dashboard.
-  const metrics = [];
+  const metrics: BenchmarkMetric[] = [];
 
   return (
     <section className="py-12 px-6 max-w-7xl mx-auto space-y-8">
@@ -61,12 +63,12 @@ export const BenchmarkDashboard: React.FC = () => {
         <div className="flex items-center gap-3">
           <Server className="w-5 h-5 text-purple-400" />
           <div>
-            <h4 className="text-xs font-bold text-white font-mono">Out-of-Process Query Server (`reflective-rust-server`)</h4>
-            <p className="text-[11px] text-slate-400">Serving `/api/csg` and `/api/slice` for out-of-process toolchains.</p>
+            <h4 className="text-xs font-bold text-white font-mono">Reference Discovery Server (`reflective-rust-server`)</h4>
+            <p className="text-[11px] text-slate-400">A bounded protocol-discovery example for exploring the proposed CSG and slicing workflow.</p>
           </div>
         </div>
         <div className="flex items-center gap-1.5 text-xs text-purple-400 font-mono font-bold">
-          <Zap className="w-4 h-4 animate-pulse" /> Active Endpoint
+          <Zap className="w-4 h-4 animate-pulse" /> Example Server
         </div>
       </div>
     </section>
