@@ -14,7 +14,7 @@ summary: "Reflective Rust research specification for Abstract & Executive Summar
 
 Reflective Rust proposes replacing unparsed text procedural macros with **Static Semantic Reflection (`core::meta::Info`)** and standardizing an out-of-process **Compiler Semantic Graph (CSG)** across compiler backends. The implemented workspace currently provides opt-in **Runtime Semantic Projection (`#[derive(Reflectable)]`)**; compiler integration and zero-cost claims remain requirements to prove, not established results.
 
-Furthermore, Reflective Rust grounds AI coding tools via **Compiler-Certified Graph RAG Slicing (`csg::slice_around`)**, eliminating LLM hallucination by replacing unparsed source code text with compiler-verified type bounds, lifetime invariants, and privacy barriers.
+The research program also explores graph-based context slicing for AI coding tools. A graph slice can only be as trustworthy as its source data: this workspace has no compiler CSG extractor, and graph slicing does not eliminate LLM hallucinations. Compiler-certified type bounds, lifetime facts, and privacy guarantees remain future integration goals.
 
 ---
 
