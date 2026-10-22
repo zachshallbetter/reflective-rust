@@ -2,7 +2,7 @@
 title: "Implementation Status"
 scope: "repository"
 status: "canonical"
-version: "0.2.0"
+version: "1.0.1"
 updated: "2026-10-22"
 summary: "Verified distinction between implemented runtime protocols and proposed compiler reflection."
 ---
