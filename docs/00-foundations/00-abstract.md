@@ -2,8 +2,8 @@
 title: "Abstract & Executive Summary"
 scope: "near-term"
 status: "canonical"
-version: "1.0.0"
-updated: "2026-07-31"
+version: "1.0.1"
+updated: "2026-10-22"
 summary: "Reflective Rust research specification for Abstract & Executive Summary under Scope I: Near-Term (Rust Semantic Reflection & Compile-Time Metaprogramming)."
 ---
 # Abstract & Executive Summary
