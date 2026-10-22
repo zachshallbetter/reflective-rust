@@ -19,7 +19,7 @@ export const CorpusViewerModal: React.FC<CorpusViewerModalProps> = ({ isOpen, on
       fetch('/llms-full.txt')
         .then((res) => res.text())
         .then((text) => setCorpusText(text))
-        .catch(() => setCorpusText('Failed to load llms-full.txt corpus. Please ensure it is present in public/llms-full.txt.'));
+        .catch(() => setCorpusText('Failed to load llms-full.txt corpus. Run the explorer's npm run dev or npm run build command to generate and copy the corpus into public/llms-full.txt.'));
     }
   }, [isOpen]);
 
@@ -41,7 +41,7 @@ export const CorpusViewerModal: React.FC<CorpusViewerModalProps> = ({ isOpen, on
         .filter((line) => line.toLowerCase().includes(searchQuery.toLowerCase()))
         .slice(0, 300)
         .join('\n')
-    : corpusText.slice(0, 15000) + '\n\n... [Truncated preview for UI performance. Click Download or Copy for complete 276.5 KB corpus]';
+    : corpusText.slice(0, 15000) + '\n\n... [Truncated preview for UI performance. Click Download or Copy for the complete generated corpus]';
 
   return (
     <AnimatePresence>
