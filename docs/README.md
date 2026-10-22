@@ -2,10 +2,10 @@
 title: "Reflective Rust: Semantic Reflection, Compiler Graphs, and Reflective Systems Architecture"
 scope: "overview"
 status: "canonical"
-version: "1.0.0"
-updated: "2026-07-31"
+version: "1.0.1"
+updated: "2026-10-22"
 tags: [reflective-rust, rrsa, csg, semantic-reflection, metaobjects, spatial-projection]
-summary: "Reflective Rust: A Reflective Systems Architecture (RRSA) based on a Compiler Semantic Graph (CSG)."
+summary: "Research overview of the proposed Reflective Rust architecture and the current runtime reference implementation."
 ---
 
 # Reflective Rust
