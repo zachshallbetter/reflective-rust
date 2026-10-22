@@ -20,6 +20,7 @@
 - Removed the word-count and unverified “value metrics” gate; repository gates now verify code, structure, links, changelog discipline, and generated-corpus determinism.
 - Updated repository status, terminology, examples, and verification gates to match implemented behavior.
 - Labeled interactive explorer diagrams as illustrative proposals/fixtures and removed unverified zero-cost and zero-hallucination claims.
+- Clarified that the CSG and context-slicing explorer panels use hard-coded demonstration data rather than compiler-extracted evidence.
 
 ## [0.1.3] - 2026-10-11
 
