@@ -41,9 +41,9 @@ Reflective Rust (Research Program)
 | Subsystem | Name | Description |
 | :--- | :--- | :--- |
 | **Research Program** | **Reflective Rust** | Overarching research program and publication title. |
-| **Formal Architecture** | **Rust Reflective Systems Architecture (RRSA)** | Complete multi-layer architectural specification. |
-| **Core Substrate** | **Compiler Semantic Graph (CSG)** | The canonical, phase-queryable ontology of program semantics. |
-| **Language Subsystem** | **Rust Semantic Reflection** | Compile-time-only `core::meta::Info` handle & query surface. |
+| **Formal Architecture** | **Rust Reflective Systems Architecture (RRSA)** | Proposed multi-layer architecture; implementation status is documented separately. |
+| **Core Substrate** | **Compiler Semantic Graph (CSG)** | Proposed graph model for compiler-resolved semantic facts; the current workspace implements an exchange schema only. |
+| **Language Subsystem** | **Rust Semantic Reflection** | Proposed compile-time handle/query surface; not implemented or available in stable Rust. |
 | **Runtime Subsystem** | **Runtime Semantic Projection** | Opt-in generation of runtime descriptors & checked adapters. |
 | **Execution Subsystem** | **Procedural Reflection Domain** | Explicit execution domains for retained frame introspection. |
 
