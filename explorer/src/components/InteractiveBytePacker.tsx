@@ -80,11 +80,11 @@ export const InteractiveBytePacker: React.FC = () => {
       <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         <div>
           <span className="px-3 py-1 rounded-full bg-cyan-500/20 text-cyan-300 text-xs font-mono font-bold border border-cyan-500/40 inline-flex items-center gap-1.5 mb-2">
-            <Cpu className="w-3.5 h-3.5" /> Interactive Consteval Layout Engine
+            <Cpu className="w-3.5 h-3.5" /> Illustrative Layout Estimator
           </span>
           <h3 className="text-2xl font-black text-white">Live Struct Byte Packing & Alignment Inspector</h3>
           <p className="text-xs text-slate-400 font-mono">
-            Directly test how <code className="text-cyan-400">core::meta::layout_of::&lt;T&gt;()</code> calculates struct padding across alignment representations.
+            Explore a simplified layout estimate based on the selected field sizes and alignment rules. This is not rustc output; Rust's default representation may reorder fields, and the proposed <code className="text-cyan-400">core::meta::layout_of::&lt;T&gt;()</code> API is not implemented.
           </p>
         </div>
 
