@@ -31,6 +31,7 @@
 - Corrected protocol documentation to distinguish domain-separated signatures from plain artifact hashes, and clarified that compiler-certified graph production is not implemented.
 - Updated Rust reflection/comptime status against the official 2026 Project Goals page and corrected the C++ reflection paper citation and unpublished-manuscript BibTeX metadata.
 - Clarified that compiler-generated access contexts, owner-site privacy projection, and reflection attributes are proposals, not stable-Rust behavior.
+- Clarified the runtime reflection, FAQ, and prototype-crate pages so proposed API sketches and target crate architecture are not mistaken for current workspace APIs.
 
 ## [0.1.3] - 2026-10-11
 
