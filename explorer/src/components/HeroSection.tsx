@@ -71,9 +71,7 @@ export const HeroSection: React.FC = () => {
           transition={{ duration: 0.7, delay: 0.2 }}
           className="text-slate-300 text-base sm:text-xl font-normal max-w-3xl mx-auto leading-relaxed pointer-events-auto font-sans"
         >
-          Eliminating procedural macro token-stream parsing with compiler-certified static reflection 
-          (<code className="text-cyan-400 font-mono font-bold">core::meta</code>), out-of-process Compiler Semantic Graphs (CSG), 
-          and zero-cost opt-in VTables - delivering <strong className="text-emerald-400 font-semibold">0 bytes memory overhead for un-annotated types</strong>.
+          Exploring a proposed Rust reflection architecture: compiler-owned semantic handles (<code className="text-cyan-400 font-mono font-bold">core::meta</code>), a Compiler Semantic Graph (CSG) exchange model, and opt-in runtime descriptors. Compiler reflection is not implemented here, and zero-cost behavior remains a goal to measure—not a guarantee.
         </motion.p>
 
         {/* Tactical Action Buttons */}
