@@ -3,7 +3,7 @@ title: "Compiler Semantic Graph (CSG) Specification"
 scope: "mid-term"
 status: "canonical"
 version: "1.0.0"
-updated: "2026-07-31"
+updated: "2026-10-22"
 summary: "Reflective Rust research specification for Compiler Semantic Graph (CSG) Specification under Scope II: Mid-Term (Compiler Semantic Graph & Runtime Semantic Projection)."
 ---
 # Compiler Semantic Graph (CSG) Specification
@@ -52,7 +52,7 @@ The proposed **Compiler Semantic Graph (CSG)** is an out-of-process, compiler-ag
 
 ```json
 {
-  "version": "1.0.0",
+  "schema_version": "rr-csg-0.1",
   "nodes": [
     {
       "id": 1,
