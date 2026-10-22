@@ -17,7 +17,10 @@ export const CorpusViewerModal: React.FC<CorpusViewerModalProps> = ({ isOpen, on
     if (isOpen) {
       audioEngine.playCyberSweep();
       fetch('/llms-full.txt')
-        .then((res) => res.text())
+        .then((res) => {
+          if (!res.ok) throw new Error(`Corpus request failed: ${res.status}`);
+          return res.text();
+        })
         .then((text) => setCorpusText(text))
         .catch(() => setCorpusText('Failed to load llms-full.txt corpus. Run the explorer's npm run dev or npm run build command to generate and copy the corpus into public/llms-full.txt.'));
     }
