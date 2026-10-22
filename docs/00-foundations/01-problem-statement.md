@@ -2,8 +2,8 @@
 title: "Problem Statement: The Meta-Programming Void in Modern Systems Languages"
 scope: "near-term"
 status: "canonical"
-version: "1.0.0"
-updated: "2026-07-31"
+version: "1.0.1"
+updated: "2026-10-22"
 summary: "Reflective Rust research specification for Problem Statement: The Meta-Programming Void in Modern Systems Languages under Scope I: Near-Term (Rust Semantic Reflection & Compile-Time Metaprogramming)."
 ---
 # Problem Statement: The Meta-Programming Void in Modern Systems Languages
