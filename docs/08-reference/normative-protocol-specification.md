@@ -66,7 +66,7 @@ The protocol distinguishes four explicit provenance tiers:
 
 | Tier | Kind | Description | Trust Requirement |
 |---|---|---|---|
-| **Tier 1** | `compiler-certified` | Produced directly by a verified compiler pass | Must include cryptographic certification (`CompilerCertification`) verified by trusted public key |
+| **Tier 1** | `compiler-certified` | Reserved for facts supplied by an identified compiler integration | Must include cryptographic certification (`CompilerCertification`) verified by a trusted public key; this workspace has no compiler extractor that produces such graphs |
 | **Tier 2** | `declared` | Synthesized from source annotations or declarations | Authoritative only within declared namespace scope |
 | **Tier 3** | `derived` | Derived algorithmically (e.g. OSG derived from runtimes) | Provenance retains computation lineage; cannot claim compiler certification |
 | **Tier 4** | `observed` | Point-in-time runtime observation | Requires bounded freshness window (`observed_at` and `expires_at`) |
@@ -78,7 +78,7 @@ Hand-authored fixtures and synthetic test cases MUST use `GraphProvenance::Fixtu
 
 ## 4. Access Projection
 
-Every node, field, edge, and capability declares a `minimum_access` level:
+Where the relevant schema defines access metadata, nodes, fields, edges, and capabilities carry a `minimum_access` level:
 
 ```text
 public < member < owner < administrator
