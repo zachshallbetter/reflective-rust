@@ -15,7 +15,7 @@ This document specifies the wire format, canonical serialization, cryptographic 
 
 ## 1. Architectural Model & Scope
 
-The protocol enables deterministic exchange of semantic graph reflections across compilers, runtimes, agents, and external systems.
+The protocol defines deterministic exchange formats for runtime descriptors and semantic-graph data. The workspace implements runtime envelopes and a CSG exchange/validation model; compiler extraction and cross-backend compiler conformance are not implemented.
 
 Every protocol payload is self-describing, strictly typed, access-partitioned, and verifiable without reliance on language-specific runtime reflection.
 
@@ -42,18 +42,18 @@ Every protocol payload is self-describing, strictly typed, access-partitioned, a
 ## 2. Canonical Serialization & Identity (RFC 8785)
 
 ### 2.1 Domain Separation & Identifiers
-All hashing and signing operations use strict domain separation to eliminate cross-type collision attacks:
+Signatures use explicit domain separation. Hashes are SHA-256 over the artifact-specific byte sequence shown below; they do not add a separate domain prefix:
 
 | Artifact | Domain Constant | Identity Representation |
 |---|---|---|
-| **Source Artifact** | None | `sha256:<hex>` over raw source UTF-8 bytes |
+| **Source Artifact** | None | `sha256:<hex>` over raw source bytes |
 | **Descriptor Body** | None | `sha256:<hex>` over JCS of inner `DescriptorBody` |
 | **Complete Envelope** | None | `sha256:<hex>` over JCS of `DescriptorEnvelope` |
 | **RSP Signature Payload** | `b"reflective-rust:rsp:ed25519:v1\0"` | `domain || key_id || 0x00 || canonical_envelope_json` |
 | **CSG Signature Payload** | `b"reflective-rust:csg:ed25519:v1\0"` | `domain || key_id || 0x00 || content_hash || 0x00 || certified_at` |
 
 ### 2.2 JSON Canonicalization Scheme (JCS)
-Payloads are canonicalized according to **RFC 8785**:
+Protocol JSON values used for canonical identity and signing are serialized according to **RFC 8785**:
 1. Object keys sorted lexicographically by UTF-16 code units.
 2. No unnecessary whitespace (no indentation, no space after `:` or `,`).
 3. Standard JSON number and string escape representations.
