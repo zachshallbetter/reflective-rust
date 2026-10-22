@@ -148,10 +148,10 @@ export const CsgGraphFlow: React.FC = () => {
         <div>
           <h2 className="text-2xl font-bold text-white flex items-center gap-2">
             <span className="w-3 h-3 rounded-full bg-cyan-400 animate-ping" />
-            Interactive Compiler Semantic Graph (CSG) Flow
+            Illustrative Compiler Semantic Graph (CSG) Diagram
           </h2>
           <p className="text-xs text-slate-400 font-mono mt-1">
-            Drag nodes, click to inspect compiler IR metadata, and observe the reflection pipeline in real-time.
+            Drag nodes to inspect hard-coded example data. This diagram is conceptual fixture content, not live compiler IR or output from a compiler extractor.
           </p>
         </div>
       </div>
@@ -187,7 +187,7 @@ export const CsgGraphFlow: React.FC = () => {
               </div>
 
               <div className="space-y-2">
-                <span className="text-slate-400 text-[10px] uppercase">Compiler Attributes</span>
+                <span className="text-slate-400 text-[10px] uppercase">Sample Fixture Attributes</span>
                 <div className="bg-slate-950 p-3 rounded-lg space-y-1.5">
                   {selectedNode.details.map((d: string, i: number) => (
                     <div key={i} className="flex justify-between border-b border-slate-800/60 pb-1">
