@@ -49,11 +49,6 @@ jobs:
       - name: Run Layer Changelog Gate
         run: python3 scripts/check-changelogs.py
 
-      - name: Build Interactive Explorer
-        run: |
-          npm ci --prefix explorer
-          npm --prefix explorer run build
-
       - name: Rebuild LLM Single-File Corpus & Check Drift
         run: |
           node scripts/gen-llms.mjs
@@ -62,6 +57,11 @@ jobs:
             git diff llms.txt
             exit 1
           fi
+
+      - name: Build Interactive Explorer
+        run: |
+          npm ci --prefix explorer
+          npm --prefix explorer run build
 
   conclusion:
     name: Verification Gate Conclusion (Required Check)
