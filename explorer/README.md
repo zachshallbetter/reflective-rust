@@ -1,32 +1,29 @@
-# React + TypeScript + Vite
+# Reflective Rust Explorer
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+This directory contains the interactive research explorer for the Reflective Rust proposal and runtime reference workspace. The compiler-reflection visualizations are **illustrative simulations**, not a working compiler integration. See the [root README](../README.md) and [implementation status](../docs/IMPLEMENTATION_STATUS.md) for what is implemented.
 
-Currently, two official plugins are available:
+## Requirements
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Node.js compatible with the versions in the lockfile
+- npm
 
-## React Compiler
+## Run locally
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+From this directory:
 
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+npm ci
+npm run dev
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+The dev and build scripts generate the consolidated documentation corpus from the repository sources and copy it into `public/llms-full.txt` for the corpus viewer.
+
+## Validate and build
+
+```bash
+npm run lint
+npm run build
+npm run preview
+```
+
+Generated corpus files are build artifacts and are not committed from `explorer/public/`.
