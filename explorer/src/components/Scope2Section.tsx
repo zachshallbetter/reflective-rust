@@ -100,12 +100,12 @@ const initialNodes: Node[] = [
     position: { x: 250, y: 360 },
     data: {
       kanji: 'セマンティックグラフ',
-      label: 'Compiler Semantic Graph',
+      label: 'Illustrative CSG Fixture',
       bgColor: 'bg-purple-500/20',
       textColor: 'text-purple-400',
       borderColor: 'border-purple-500/60',
       icon: <Shield className="w-4 h-4" />,
-      details: ['Nodes: 1,000', 'Backend: LLVM/Cranelift'],
+      details: ['Nodes: sample', 'Backend: illustrative'],
     },
   },
   {
