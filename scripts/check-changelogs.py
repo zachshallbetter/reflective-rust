@@ -55,7 +55,7 @@ def main():
 
     # Map folders to changelogs
     docs_modified = any(f.startswith("docs/") for f in modified_files)
-    changelog_modified = any("CHANGELOG.md" in f for f in modified_files)
+    changelog_modified = "CHANGELOG.md" in modified_files
 
     if docs_modified and not changelog_modified:
         print("\nFAILED: Changes detected under docs/ without updating CHANGELOG.md.")
