@@ -1,51 +1,34 @@
 ---
 title: "Layer Versioning Policy"
 status: "canonical"
-version: "1.0.1"
-updated: "2026-08-25"
+version: "1.0.2"
+updated: "2026-10-22"
 ---
 
-# Reflective Rust Layer Versioning Policy
+# Reflective Rust Versioning Policy
 
-> **Status:** Canonical Versioning Specification  
-> **Adapted from:** Fundamental Engine & FCI Independent Layer Versioning Policy  
+Reflective Rust contains several version axes. They must be stated explicitly and must not be treated as interchangeable.
 
-Reflective Rust versions theory, compiler specifications, runtime projection adapters, procedural reflection execution domains, spatial projections, and reference implementations **independently**. A shared version number **never** implies cross-layer conformance.
+## Version axes
 
----
+| Version axis | Current value | Meaning |
+| --- | --- | --- |
+| Cargo workspace/crate version | `0.2.0` | Version of the executable Rust reference workspace |
+| Runtime Semantic Projection schema | `rr-rsp-0.1` | Versioned runtime envelope/schema contract |
+| Compiler Semantic Graph exchange schema | `rr-csg-0.1` | Versioned graph exchange contract |
+| Research-document frontmatter | Per-document metadata | Editorial revision metadata; not a package or protocol release |
+| Public GitHub releases | See [GitHub Releases](https://github.com/zachshallbetter/reflective-rust/releases) | Published repository release tags and their release notes |
 
-## 1. The Independent Layer Model
+A matching version number does not imply cross-layer conformance. Protocol identifiers may remain stable across a Cargo package release; a workspace release does not mean that proposed compiler facilities have been implemented.
 
-```text
-Layer 1: Theory & Core Architecture (docs/00-foundations/, docs/03-rust-language-proposal/)
-    ├── Independent Versioning: v1.0.0 (SemVer for Language Spec)
-    └── Changelog: docs/CHANGELOG.md
+## Changelog policy
 
-Layer 2: Compiler Semantic Graph & Compiler Integrations (docs/07-compiler/)
-    ├── Independent Versioning: v0.4.0 (Compiler Interface Version)
-    └── Changelog: docs/07-compiler/CHANGELOG.md
+The repository currently maintains a single root `CHANGELOG.md`. It records repository-level changes and is the changelog checked by CI for documentation changes. There are **not currently separate per-layer changelog files** in the repository tree.
 
-Layer 3: Runtime Semantic Projection Adapters (docs/04-runtime/)
-    ├── Independent Versioning: v0.1.0 (implemented RSP/OSG protocol workspace)
-    └── Changelog: docs/04-runtime/CHANGELOG.md
+For a change under `docs/`, update the root changelog's `[Unreleased]` section. For code changes, update it when behavior, public interfaces, protocol semantics, or user-facing workflows change. Do not describe a proposed feature as implemented merely because its specification has changed.
 
-Layer 4: Spatial & AI Tooling Projections (docs/09-research/, docs/06-procedural-reflection/)
-    ├── Independent Versioning: v0.1.0 (SSP / AI Integration Specs)
-    └── Changelog: docs/09-research/CHANGELOG.md
-```
+## Conformance policy
 
----
+Cross-layer compatibility must be recorded in [the conformance record](conformance.md) and supported by reproducible evidence. Distinguish repository-local tests from maintainer-reported tests of external consumers. Never infer compiler, deployment, or operational equivalence from a matching version or content hash.
 
-## 2. Load-Bearing Policy Rules
-
-1. **No Silent Version Coupling**:
-   - A patch or clarification to the language specification (Layer 1) does **not** force a release bump in runtime projection crates (Layer 3).
-   - A performance fix in a compiler backend (Layer 2) does **not** imply a new theory specification version.
-2. **Explicit Conformance Records**:
-   - Cross-layer compatibility must be declared in an explicit **Conformance Record** (`docs/meta/conformance.md` or [`../08-reference/comparison-matrix.md`](../08-reference/comparison-matrix.md)) - never inferred from matching version numbers.
-3. **Per-Layer Changelogs**:
-   - Each layer maintains its own changelog. A single repo-wide changelog would assert exactly the version coupling this policy denies.
-4. **CI Enforcement**:
-   - CI workflows inspect the **diff** of changed files against per-layer changelogs (`scripts/check-changelogs.py`). Pull requests touching a layer without updating that layer's changelog fail CI.
-
-The root Cargo workspace version tracks the executable reference implementation only. It does not assert implementation of the independently versioned language or compiler proposals.
+The root Cargo workspace version tracks the executable reference implementation only. It does not assert implementation of the independently proposed language or compiler facilities.
