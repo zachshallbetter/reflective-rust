@@ -5,6 +5,10 @@
 > Historical note: older 1.x/0.x research-corpus entries below are legacy repository notes, not a reliable substitute for the published GitHub release list or current implementation status. Earlier claims about compiler reflection, cross-backend conformance, zero-cost behavior, and production services are superseded by [the verified implementation status](docs/IMPLEMENTATION_STATUS.md).
 
 ### Changed
+- Reconciled workspace version, protocol identifiers, implementation status, and release instructions across canonical docs.
+- Qualified unsupported build-time and zero-cost claims; identified compiler-reflection APIs as proposals rather than implemented stable Rust features.
+- Clarified that external-consumer test claims are maintainer-reported unless their evidence is present in this repository.
+- Updated the documentation changelog gate to require the root changelog rather than nonexistent per-layer changelogs.
 - Updated the README to distinguish the current workspace version from the latest published packaging release and to make implementation boundaries and feedback requests easier to find.
 - Added a runnable derive-macro example that serializes an opt-in runtime type descriptor as JSON.
 - Advanced the executable workspace to `0.2.0`; the runtime and CSG schema identifiers remain independently versioned as `rr-rsp-0.1` and `rr-csg-0.1`.
