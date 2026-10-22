@@ -26,6 +26,7 @@
 - Reworked interactive compile-time/layout/CSG demos to identify mock output, avoid unsupported zero-cost and performance metrics, and link to the tracked LLM index instead of an untracked corpus file.
 - Labeled the graph-flow canvas as hard-coded fixture data rather than live compiler IR.
 - Clarified generated agent-index language so it does not present the proposed architecture as an implemented compiler substrate.
+- Marked the original long-form report as historical and revised graph-slicing research/RFC language to distinguish fixture operations from compiler-certified facts.
 
 ## [0.1.3] - 2026-10-11
 
