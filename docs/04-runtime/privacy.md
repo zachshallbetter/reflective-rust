@@ -3,7 +3,7 @@ title: "Runtime Privacy"
 scope: "mid-term"
 status: "canonical"
 version: "1.0.0"
-updated: "2026-07-31"
+updated: "2026-10-22"
 summary: "Reflective Rust research specification for Runtime Privacy under Scope II: Mid-Term (Compiler Semantic Graph & Runtime Semantic Projection)."
 ---
 # Runtime Privacy
