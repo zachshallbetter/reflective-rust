@@ -3,49 +3,17 @@ import { Activity, ShieldCheck, FileText, ExternalLink } from 'lucide-react';
 import { audioEngine } from '../utils/audio';
 
 export const ProofDashboardSection: React.FC = () => {
-  const [activeTier, setActiveTier] = useState<number>(3); // Default to Tier 4: Empirically Validated
+  const [activeTier, setActiveTier] = useState<number>(2); // Default to Tier 3: Tested
 
   const tiers = [
     { title: '1. Documented', desc: 'RFC / Specification formally defined in monograph', color: 'text-amber-400', bg: 'bg-amber-500/20', border: 'border-amber-500/40' },
     { title: '2. Implemented', desc: 'Code prototype built across workspace crates', color: 'text-cyan-400', bg: 'bg-cyan-500/20', border: 'border-cyan-500/40' },
     { title: '3. Tested', desc: 'Unit & integration test suites passing in CI', color: 'text-purple-400', bg: 'bg-purple-500/20', border: 'border-purple-500/40' },
-    { title: '4. Empirically Validated', desc: 'Pre-registered benchmarks & non-regression gates proven', color: 'text-emerald-400', bg: 'bg-emerald-500/20', border: 'border-emerald-500/40' },
+    { title: '4. Empirically Validated', desc: 'Requires reproducible, pre-registered measurement evidence; not currently established', color: 'text-emerald-400', bg: 'bg-emerald-500/20', border: 'border-emerald-500/40' },
   ];
 
-  const metrics = [
-    {
-      label: 'Static Reflection Query',
-      value: '274.08 ns/op',
-      target: '< 500 ns/op',
-      status: 'PASSED',
-      tier: 'Empirically Validated',
-      sub: 'core::meta::of::<T>() Intrinsic',
-    },
-    {
-      label: 'Descriptor VTable Lookup',
-      value: '5.77 ns/op',
-      target: '< 20 ns/op',
-      status: 'PASSED',
-      tier: 'Empirically Validated',
-      sub: '#[derive(Reflectable)] VTable',
-    },
-    {
-      label: 'CSG JSON Serialization',
-      value: '10.68 ms/op',
-      target: '< 50 ms/op',
-      status: 'PASSED',
-      tier: 'Empirically Validated',
-      sub: '1,000 CSG Graph Nodes',
-    },
-    {
-      label: 'Agent Graph RAG Slicing',
-      value: '50.93 µs/op',
-      target: '< 250 µs/op',
-      status: 'PASSED',
-      tier: 'Empirically Validated',
-      sub: 'csg::slice_around Engine',
-    },
-  ];
+  // No reproducible numeric benchmark results are published in this dashboard.
+  const metrics = [];
 
   const handleTierClick = (idx: number) => {
     setActiveTier(idx);
@@ -59,14 +27,13 @@ export const ProofDashboardSection: React.FC = () => {
         <span className="px-4 py-1.5 rounded-none cyber-panel-crimson text-rose-300 text-xs font-mono font-bold border border-rose-500/50 inline-flex items-center gap-2">
           <div className="cyber-corner-crimson-tl" />
           <div className="cyber-corner-crimson-br" />
-          <Activity className="w-3.5 h-3.5 text-rose-400" /> EMPIRICAL PROOF & CLAIM TAXONOMY
+          <Activity className="w-3.5 h-3.5 text-rose-400" /> CLAIM STATUS & EVIDENCE
         </span>
         <h2 className="text-3xl sm:text-6xl font-black text-white tracking-tight font-sans">
-          Empirical Proof & Pre-Registered <br />
-          <span className="gradient-text-crimson">Performance Benchmark Metrics</span>
+          Evidence Status & Validation Boundaries
         </h2>
         <p className="text-slate-300 text-sm sm:text-base leading-relaxed font-sans">
-          Quantitative micro-benchmarks gathered via <code className="text-cyan-400 font-mono">crates/reflective-rust-bench</code> enforcing strict epistemic integrity.
+          The benchmark crate records local diagnostic timings, but no reproducible numeric results are published here. Proposed compiler-reflection performance is not measured by this workspace.
         </p>
       </div>
 
@@ -114,23 +81,23 @@ export const ProofDashboardSection: React.FC = () => {
 
         <div className="space-y-3">
           <span className="px-3 py-1 rounded-none bg-emerald-500/20 text-emerald-400 text-xs font-mono font-bold border border-emerald-500/40 inline-flex items-center gap-2">
-            <ShieldCheck className="w-4 h-4" /> Theorem 1.1 Formally Proven
+            <ShieldCheck className="w-4 h-4" /> No zero-cost theorem established
           </span>
-          <h3 className="text-2xl font-bold text-white font-sans">Zero-Cost Un-Annotated Type Memory Overhead</h3>
+          <h3 className="text-2xl font-bold text-white font-sans">Unannotated-type overhead is a design goal, not a proven result</h3>
           <p className="text-xs sm:text-sm text-slate-300 max-w-2xl leading-relaxed font-mono">
-            Un-annotated types generate strictly <strong className="text-emerald-400">0 bytes</strong> of static binary or runtime heap allocation. Static reflection handles exist exclusively during compiler <code className="text-cyan-400">consteval</code>.
+            This workspace does not implement the proposed compiler-reflection handles. No general zero-overhead guarantee is claimed; costs depend on the concrete implementation and build.
           </p>
         </div>
 
         <div className="text-center p-8 bg-slate-950/90 border border-slate-800 min-w-[240px] shadow-2xl">
-          <span className="text-4xl font-black text-emerald-400 font-mono block mb-1">0 BYTES</span>
-          <span className="text-xs text-slate-400 font-mono uppercase tracking-wider">Memory Overhead</span>
+          <span className="text-4xl font-black text-emerald-400 font-mono block mb-1">NOT PROVEN</span>
+          <span className="text-xs text-slate-400 font-mono uppercase tracking-wider">No zero-cost theorem</span>
         </div>
       </div>
 
       {/* Metrics Cards Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {metrics.map((m, idx) => (
+        {metrics.length === 0 ? (<div className="col-span-full p-6 border border-slate-700 text-sm text-slate-300">No numeric benchmark results are published in this dashboard. Run the local benchmark example, record the exact revision/toolchain/hardware and raw results, and review them before making performance claims.</div>) : metrics.map((m, idx) => (
           <div key={idx} className="cyber-panel p-6 space-y-4">
             <div className="cyber-corner-tl" />
             <div className="cyber-corner-br" />
