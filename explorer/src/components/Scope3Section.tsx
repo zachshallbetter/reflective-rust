@@ -133,12 +133,12 @@ export const Scope3Section: React.FC = () => {
               <Sparkles className="w-4 h-4" /> Illustrative Mock Slice Output
             </span>
             <span className="text-[10px] font-mono px-3 py-1 bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 font-bold">
-              0% HALLUCINATION CERTIFIED
+              No hallucination guarantee
             </span>
           </div>
 
           <pre className="bg-slate-950 p-6 text-xs font-mono text-emerald-400 border border-slate-800 min-h-[280px] overflow-x-auto leading-relaxed">
-{`/// COMPILER-CERTIFIED SEMANTIC CONTEXT FOR SYMBOL: ${selectedSymbol}
+{`/// ILLUSTRATIVE MOCK CONTEXT FOR SYMBOL: ${selectedSymbol}
 /// File: ${current.file} | Span: ${current.span} | Privacy: ${current.privacy}
 /// Graph Extraction Radius: ${radius} hop(s) | Privacy Mask: ${privacyMask ? 'ENABLED' : 'DISABLED'}
 /// Connected Dependencies & Members:
@@ -147,12 +147,12 @@ ${current.members
   .map((m) => `  - ${m.name} (${m.kind}) [Privacy: ${m.privacy}]`)
   .join('\n')}
 
-/// COMPILER INVARIANT VERIFIED: Private visibility and type bounds enforced.`}
+/// Sample fixture only — not compiler output or a verified privacy boundary.`}
           </pre>
 
           <div className="flex items-center gap-3 p-4 bg-emerald-950/40 border border-emerald-500/30 text-xs text-emerald-300 font-mono">
             <ShieldAlert className="w-5 h-5 text-emerald-400 shrink-0" />
-            AI agents consuming this slice receive exact compiler bounds, preventing invalid suggestions or privacy leaks.
+            This mock slice is illustrative only. Real compiler-backed bounds and privacy filtering require a compiler extractor and independent validation.
           </div>
         </div>
       </div>
