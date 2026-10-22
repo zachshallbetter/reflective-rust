@@ -72,12 +72,12 @@ const initialNodes: Node[] = [
     position: { x: 50, y: 180 },
     data: {
       kanji: '定数評価エンジン',
-      label: 'rustc TypeContext',
+      label: 'Proposed rustc integration',
       bgColor: 'bg-amber-500/20',
       textColor: 'text-amber-400',
       borderColor: 'border-amber-500/60',
       icon: <Cpu className="w-4 h-4" />,
-      details: ['ConstEval: Miri Engine', 'Monomorph: Folded'],
+      details: ['Status: proposal', 'Extractor: absent'],
     },
   },
   {
@@ -86,12 +86,12 @@ const initialNodes: Node[] = [
     position: { x: 450, y: 180 },
     data: {
       kanji: '静的反射ハンドル',
-      label: 'core::meta::Info',
+      label: 'Proposed core::meta::Info',
       bgColor: 'bg-cyan-500/20',
       textColor: 'text-cyan-400',
       borderColor: 'border-cyan-500/60',
       icon: <Layers className="w-4 h-4" />,
-      details: ['ID: 0x8000_0000', 'Memory: 0 Bytes'],
+      details: ['ID: illustrative only', 'Overhead: not measured'],
     },
   },
   {
