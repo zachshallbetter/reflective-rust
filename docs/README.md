@@ -73,6 +73,10 @@ Scope I (Near-Term)              Scope II (Mid-Term)                    Scope II
 
 ---
 
+## Research Manuscript
+
+The repository now includes a foundational manuscript draft: [Reflective Rust: Semantic Reflection, Compiler Graphs, and Reflective Systems Architecture](papers/reflective-rust-foundational-paper.md). It is a preprint draft, not a peer-reviewed or journal-published article. Its implementation-status section explicitly distinguishes tested runtime components from proposed compiler integration.
+
 ## Documentation Navigation
 
 Consult the [Table of Contents / Summary](SUMMARY.md) or explore by module:
