@@ -25,21 +25,11 @@ The research program of **Reflective Rust** draws upon and extends the following
 
 ---
 
-## Citation & BibTeX Entry
+## Citation Guidance
 
-```bibtex
-@article{shallbetter2026reflectiverust,
-  author    = {Shallbetter, Zach and Reflective Rust Research Team},
-  title     = {Reflective Rust: Semantic Reflection, Compiler Graphs, and Reflective Systems Architecture},
-  journal   = {Reflective Systems Architecture Monograph},
-  year      = {2026},
-  volume    = {1},
-  number    = {1},
-  pages     = {1--250},
-  publisher = {Reflective Rust Press},
-  url       = {https://github.com/zachshallbetter/reflective-rust}
-}
-```
+Do not cite a proposed or draft manuscript as though it has appeared in a journal. In particular, do not use invented journal, volume, issue, page, or publisher metadata. The foundational manuscript is currently a repository-hosted preprint draft; cite its exact version and persistent identifier only after a versioned deposit has been created.
+
+For the software workspace, use the repository's `CITATION.cff` and its software DOI. The software citation is separate from the research manuscript citation.
 ---
 
 ## Navigation
