@@ -9,6 +9,8 @@
 
 
 [Overview](README.md)
+- [Research Papers](papers/README.md)
+  - [Foundational Paper (preprint draft)](papers/reflective-rust-foundational-paper.md)
 
 ## Scope I: Near-Term (Rust Semantic Reflection & Compile-Time Metaprogramming)
 
