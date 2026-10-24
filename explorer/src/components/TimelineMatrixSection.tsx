@@ -17,22 +17,22 @@ export const TimelineMatrixSection: React.FC = () => {
       year: '1991',
       title: 'CLOS Metaobject Protocol (MOP)',
       author: 'Gregor Kiczales et al.',
-      desc: 'Formulated the Metaobject Protocol (MOP), demonstrating reflective capabilities without runtime degradation.',
+      desc: 'Formulated the Metaobject Protocol (MOP), demonstrating reflective capabilities; performance depends on implementation and workload.',
       detail: 'Established class, method, slot, and generic function metaobjects, enabling language extensibility.',
     },
     {
       year: '2023',
       title: 'C++ Static Reflection (P2996)',
       author: 'Hana Dusíková et al.',
-      desc: 'Pioneered modern static reflection in C++ using opaque handles and consteval expansion.',
+      desc: 'Proposed modern static reflection for C++ using opaque handles and compile-time expansion.',
       detail: 'Replaced syntax macros with compiler-resolved reflection handles and consteval expansion traits.',
     },
     {
       year: '2026',
-      title: 'Reflective Rust (RRSA & CSG)',
+      title: 'Reflective Rust (research proposal)',
       author: 'Reflective Rust Research Monograph',
-      desc: 'Introduced Compiler Semantic Graphs (CSG), zero-cost core::meta static reflection, and compiler-certified Graph RAG agent slicing.',
-      detail: 'Combined static reflection handles (core::meta::Info) with out-of-process CSG schemas and zero-cost opt-in VTables.',
+      desc: 'Proposed compiler-reflection APIs and a Compiler Semantic Graph (CSG) architecture; current code implements runtime descriptors and a CSG exchange schema, not a compiler extractor.',
+      detail: 'Describes a research direction; compiler handles, compiler extraction, and zero-cost VTable claims are not implemented or established.',
     },
   ];
 
@@ -136,7 +136,7 @@ export const TimelineMatrixSection: React.FC = () => {
           <tbody className="divide-y divide-slate-800/60 text-slate-300">
             <tr>
               <td className="py-4 px-4 font-semibold text-white">Zero Runtime Memory Overhead (0B)</td>
-              <td className="py-4 px-4 text-emerald-400 font-bold flex items-center gap-1.5"><Check className="w-4 h-4" /> Yes (Theorem 1.1)</td>
+              <td className="py-4 px-4 text-emerald-400 font-bold flex items-center gap-1.5"><Check className="w-4 h-4" /> Not established (proposal)</td>
               <td className="py-4 px-4 text-emerald-400 flex items-center gap-1.5"><Check className="w-4 h-4" /> Yes</td>
               <td className="py-4 px-4 text-rose-400 flex items-center gap-1.5"><X className="w-4 h-4" /> No (Heap Metadata)</td>
               <td className="py-4 px-4 text-rose-400 flex items-center gap-1.5"><X className="w-4 h-4" /> No (Interpreter Objects)</td>

@@ -3,12 +3,12 @@ title: "Runtime Privacy"
 scope: "mid-term"
 status: "canonical"
 version: "1.0.0"
-updated: "2026-07-31"
+updated: "2026-10-22"
 summary: "Reflective Rust research specification for Runtime Privacy under Scope II: Mid-Term (Compiler Semantic Graph & Runtime Semantic Projection)."
 ---
 # Runtime Privacy
 
-**Status:** Research synthesis
+**Status:** Research synthesis; compiler-owned access contexts and owner-site projection are proposed only. The runtime protocol can filter supplied metadata, but it does not grant or enforce Rust source-level private access.
 
 ## 19. Privacy and cross-crate access
 
@@ -32,13 +32,14 @@ pub const fn visible_fields_of(
 ) -> Query<MetaSlice<Info>>;
 ```
 
-The compiler creates non-forgeable access contexts from lexical scope.
+Design requirement: a future compiler integration would create non-forgeable access contexts from lexical scope. This workspace does not implement `AccessContext`, `reflect_runtime::project`, or compile-time owner-site projection.
 
 ### 19.3 Owner-site authorization
 
 The strongest rule is owner-site projection:
 
 ```rust
+// Proposed API sketch only; this is not compilable stable-Rust reflection syntax.
 mod model {
     pub struct SecretRecord {
         public_id: u64,

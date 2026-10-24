@@ -1,12 +1,13 @@
 # Reflective Rust: Agent Document Index
 
-> Reflective Rust: A Reflective Systems Architecture (RRSA) based on a Compiler Semantic Graph (CSG).
+> Reflective Rust is a research program and proposal; the workspace implements runtime descriptors and graph schemas, not compiler reflection.
 
 Version: v0.2.0
 
 ## Structural Hierarchy
 
-- docs/README.md: Overview, taxonomy matrix, and concentric scopes
+- docs/README.md: Research overview and proposal boundaries
+- docs/IMPLEMENTATION_STATUS.md: Verified implementation and non-implementation status
 - docs/meta/authority.md: Single source of truth & conflict resolution order
 - docs/meta/versioning.md: Independent layer versioning policy
 - docs/meta/conformance.md: Runtime protocol compatibility and consumer evidence

@@ -21,7 +21,7 @@ struct PlayerAccount {
 const INFO: Info = of::<PlayerAccount>();
 const LAYOUT = layout_of::<PlayerAccount>();`,
       simOutput: `==================================================
-  Reflective Rust core::meta Consteval Execution
+  SIMULATION — proposed core::meta (not implemented)
 ==================================================
 1. Querying core::meta::of::<PlayerAccount>()
    -> Handle ID: 0x8000_0000_0000_0010 (Kind: Struct)
@@ -33,7 +33,7 @@ const LAYOUT = layout_of::<PlayerAccount>();`,
    └─ Field 1: 'score'    (offset 8, type: u32, size: 4B)
    └─ Field 2: 'active'   (offset 12, type: bool, size: 1B)
 ==================================================
- Theorem 1.1 Invariant: 0 Bytes Runtime Memory Overhead!
+ SIMULATED OUTPUT ONLY — proposed behavior; not an implemented Rust API.
 ==================================================`,
     },
     NetworkPacket: {
@@ -49,7 +49,7 @@ struct NetworkPacket {
 const INFO: Info = of::<NetworkPacket>();
 const LAYOUT = layout_of::<NetworkPacket>();`,
       simOutput: `==================================================
-  Reflective Rust core::meta Consteval Execution
+  SIMULATION — proposed core::meta (not implemented)
 ==================================================
 1. Querying core::meta::of::<NetworkPacket>()
    -> Handle ID: 0x8000_0000_0000_0020 (Kind: Packed Struct)
@@ -61,7 +61,7 @@ const LAYOUT = layout_of::<NetworkPacket>();`,
    └─ Field 1: 'checksum' (offset 4, type: u16, size: 2B)
    └─ Field 2: 'flags'    (offset 6, type: u8, size: 1B)
 ==================================================
- Theorem 1.1 Invariant: 0 Bytes Runtime Memory Overhead!
+ SIMULATED OUTPUT ONLY — proposed behavior; not an implemented Rust API.
 ==================================================`,
     },
     CryptoKey: {
@@ -76,7 +76,7 @@ struct CryptoKey {
 const INFO: Info = of::<CryptoKey>();
 const LAYOUT = layout_of::<CryptoKey>();`,
       simOutput: `==================================================
-  Reflective Rust core::meta Consteval Execution
+  SIMULATION — proposed core::meta (not implemented)
 ==================================================
 1. Querying core::meta::of::<CryptoKey>()
    -> Handle ID: 0x8000_0000_0000_0030 (Kind: Aligned Struct)
@@ -87,7 +87,7 @@ const LAYOUT = layout_of::<CryptoKey>();`,
    └─ Field 0: 'bytes'    (offset 0, type: [u8; 32], size: 32B)
    └─ Field 1: 'key_id'   (offset 32, type: u32, size: 4B)
 ==================================================
- Theorem 1.1 Invariant: 0 Bytes Runtime Memory Overhead!
+ SIMULATED OUTPUT ONLY — proposed behavior; not an implemented Rust API.
 ==================================================`,
     },
   };
@@ -119,8 +119,8 @@ const LAYOUT = layout_of::<CryptoKey>();`,
           <Cpu className="w-3.5 h-3.5 text-cyan-400" /> SCOPE I: STATIC SEMANTIC REFLECTION
         </span>
         <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight">
-          Compile-Time Introspection <br />
-          <span className="gradient-text-cyan">Via Opaque `core::meta` Handles</span>
+          Proposed Compile-Time Introspection <br />
+          <span className="gradient-text-cyan">Via Future `core::meta` Handles</span>
         </h2>
         <p className="text-slate-300 text-sm sm:text-base leading-relaxed font-sans">
           Inspect memory layouts, field offsets, and monomorphized types directly during <code className="text-cyan-400 font-mono font-bold">consteval</code> without generating any runtime heap overhead.

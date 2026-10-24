@@ -83,7 +83,7 @@ const initialNodes: Node[] = [
       textColor: 'text-cyan-400',
       borderColor: 'border-cyan-500/50',
       icon: <Layers className="w-4 h-4" />,
-      details: ['ID: 0x8000_0000', 'Memory: 0 Bytes'],
+      details: ['ID: illustrative', 'Memory: not measured'],
     },
   },
   {
@@ -97,7 +97,7 @@ const initialNodes: Node[] = [
       textColor: 'text-purple-400',
       borderColor: 'border-purple-500/50',
       icon: <Shield className="w-4 h-4" />,
-      details: ['Nodes: 1,000', 'Backend: LLVM/Cranelift'],
+      details: ['Nodes: sample', 'Backend: hypothetical'],
     },
   },
   {
@@ -111,7 +111,7 @@ const initialNodes: Node[] = [
       textColor: 'text-emerald-400',
       borderColor: 'border-emerald-500/50',
       icon: <Eye className="w-4 h-4" />,
-      details: ['Latency: 50.93 µs', 'Hallucination: 0%'],
+      details: ['Latency: not measured', 'Hallucination: not guaranteed'],
     },
   },
 ];
@@ -148,10 +148,10 @@ export const CsgGraphFlow: React.FC = () => {
         <div>
           <h2 className="text-2xl font-bold text-white flex items-center gap-2">
             <span className="w-3 h-3 rounded-full bg-cyan-400 animate-ping" />
-            Interactive Compiler Semantic Graph (CSG) Flow
+            Illustrative Compiler Semantic Graph (CSG) Diagram
           </h2>
           <p className="text-xs text-slate-400 font-mono mt-1">
-            Drag nodes, click to inspect compiler IR metadata, and observe the reflection pipeline in real-time.
+            Drag nodes to inspect hard-coded example data. This diagram is conceptual fixture content, not live compiler IR or output from a compiler extractor.
           </p>
         </div>
       </div>
@@ -187,7 +187,7 @@ export const CsgGraphFlow: React.FC = () => {
               </div>
 
               <div className="space-y-2">
-                <span className="text-slate-400 text-[10px] uppercase">Compiler Attributes</span>
+                <span className="text-slate-400 text-[10px] uppercase">Sample Fixture Attributes</span>
                 <div className="bg-slate-950 p-3 rounded-lg space-y-1.5">
                   {selectedNode.details.map((d: string, i: number) => (
                     <div key={i} className="flex justify-between border-b border-slate-800/60 pb-1">

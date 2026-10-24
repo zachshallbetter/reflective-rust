@@ -11,13 +11,13 @@ export const Footer: React.FC = () => {
           </div>
           <div>
             <span className="font-bold text-white block">Reflective Rust Systems Architecture Monograph</span>
-            <span>Version 1.0.0 (Canonical Release)</span>
+            <span>Research proposal / runtime reference workspace</span>
           </div>
         </div>
 
         <div className="flex items-center gap-6">
           <span className="flex items-center gap-1 text-emerald-400">
-            <ShieldCheck className="w-4 h-4" /> 0 Bytes Memory Overhead Proven
+            <ShieldCheck className="w-4 h-4" /> Zero-cost goals not yet established
           </span>
           <span className="text-slate-500">MIT / Apache-2.0 Dual License</span>
         </div>

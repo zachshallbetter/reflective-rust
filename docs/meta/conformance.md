@@ -1,8 +1,8 @@
 ---
 title: "Runtime Protocol Conformance Record"
 status: "canonical"
-version: "0.1.0"
-updated: "2026-08-26"
+version: "0.1.1"
+updated: "2026-10-22"
 ---
 
 # Runtime Protocol Conformance Record
@@ -11,25 +11,23 @@ updated: "2026-08-26"
 
 | Layer | Identifier | Implementation |
 | --- | --- | --- |
-| Runtime Semantic Projection | `rr-rsp-0.1` | `reflective-rust-protocol` 0.1.0 |
-| Compiler Semantic Graph exchange | `rr-csg-0.1` | `reflective-rust-csg` 0.1.0 |
+| Runtime Semantic Projection | `rr-rsp-0.1` | `reflective-rust-protocol` 0.2.0 |
+| Compiler Semantic Graph exchange | `rr-csg-0.1` | `reflective-rust-csg` 0.2.0 |
 | Canonical serialization | JSON Canonicalization Scheme | `serde_jcs` |
 | Content identity | `sha256:<lowercase hex>` | SHA-256 over canonical envelope JSON |
 | Envelope authentication | `ed25519` | Domain-separated signature over key ID and canonical envelope JSON |
 
-Protocol compatibility and subject-schema compatibility are both exact in
-v0.1. A matching content hash is not evidence of compiler, deployment, or
-operational equivalence.
+The `rr-rsp-0.1` and `rr-csg-0.1` identifiers describe protocol/schema versions; they are independent of the Cargo workspace version (`0.2.0`). Protocol and subject-schema compatibility are exact within `v0.1`. A matching content hash is not evidence of compiler, deployment, or operational equivalence.
 
 ## Consumer evidence
 
 | Consumer | Status | Evidence | Permanent dependency |
 | --- | --- | --- | --- |
-| `rust-swift` Compiler Workspace | **Tested & Empirically Validated** | `crates/rust-swift-ir` projects into `CompilerSemanticGraph`; verified end-to-end via `crates/reflective-rust-cli/examples/reference_runtime_integration.rs` | Local path dependency and submodule qualification |
-| Python Conformance Verifier | **Tested & Empirically Validated** | `scripts/conformance-runner.py` validates JCS hashing and 8 positive/negative vectors independently | Zero external runtime dependencies (Python standard library) |
-| Comic OCR runtime 0.2 | Tested locally | Actual runtime crate mapped seven routes into RSP/OSG; access projection and configuration non-disclosure passed | Blocked until a tagged Git revision or registry release exists |
-| Infinite Platform | Reviewed mapping only | Existing declarations, database observations, and domain graph boundaries were classified | Blocked by repository issue/claim and approved-branch requirements |
-| Titan `fleet-contract` 0.5 | Tested locally | Actual manifest and heartbeat contracts mapped into RSP/OSG; access projection, authority topology, and bounded observation freshness passed; native contract tests pass | Permanent adapter blocked until a tagged Git revision or registry release exists |
+| `rust-swift` Compiler Workspace (external consumer) | Maintainer-reported end-to-end test | `crates/rust-swift-ir` is outside this repository; integration evidence is not reproducible from this checkout | Local path dependency and submodule qualification |
+| Python Conformance Verifier | Tested | `scripts/conformance-runner.py` checks JCS hashing and the repository's positive/negative vectors independently | Python standard library |
+| Comic OCR runtime 0.2 (external consumer) | Maintainer-reported local test | Consumer source and raw test evidence are not included in this repository | Blocked until a tagged Git revision or registry release exists |
+| Infinite Platform (external consumer) | Reviewed mapping only; maintainer-reported | Consumer source and review artifacts are not included in this repository | Blocked by repository issue/claim and approved-branch requirements |
+| Titan `fleet-contract` 0.5 (external consumer) | Maintainer-reported local test | Consumer source and raw test evidence are not included in this repository | Permanent adapter blocked until a tagged Git revision or registry release exists |
 
 ## Compiler boundary
 
@@ -37,4 +35,4 @@ operational equivalence.
 
 ## Release state
 
-`reflective-rust-protocol` and `reflective-rust-csg` package and verify successfully. The workspace maintains normative schemas in `schemas/` and versioned test vectors in `conformance/vectors/`.
+The current workspace CI verifies the code and tests. The repository maintains normative schemas in `schemas/` and versioned test vectors in `conformance/vectors/`. Consumer rows above are external maintainer reports unless their evidence is checked into this repository.

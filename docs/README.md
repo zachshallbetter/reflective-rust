@@ -2,22 +2,24 @@
 title: "Reflective Rust: Semantic Reflection, Compiler Graphs, and Reflective Systems Architecture"
 scope: "overview"
 status: "canonical"
-version: "1.0.0"
-updated: "2026-07-31"
+version: "1.0.1"
+updated: "2026-10-22"
 tags: [reflective-rust, rrsa, csg, semantic-reflection, metaobjects, spatial-projection]
-summary: "Reflective Rust: A Reflective Systems Architecture (RRSA) based on a Compiler Semantic Graph (CSG)."
+summary: "Research overview of the proposed Reflective Rust architecture and the current runtime reference implementation."
 ---
 
 # Reflective Rust
 
+> **Research corpus and proposal, not a compiler implementation.** This documentation explores a proposed Rust reflection architecture and related runtime protocols. Many language/compiler facilities described here are future proposals, not stable Rust features or implemented workspace capabilities. For the verified implementation boundary, start with [Implementation Status](IMPLEMENTATION_STATUS.md) and the [root README](../README.md).
+
 > **Full Title:** *Reflective Rust: Semantic Reflection, Compiler Graphs, and Reflective Systems Architecture*  
-> **Formal Architecture:** Rust Reflective Systems Architecture (RRSA)  
-> **Core Substrate:** Compiler Semantic Graph (CSG)  
+> **Proposed Architecture:** Rust Reflective Systems Architecture (RRSA)  
+> **Proposed Compiler Substrate:** Compiler Semantic Graph (CSG) exchange model  
 
 > [!NOTE]
 > **Special Acknowledgment**: Special thanks to **[LaurieWired](https://github.com/LaurieWired)** for her amazing YouTube channel ([@LaurieWired](https://www.youtube.com/@LaurieWired)) and her insightful video (*["Reverse Engineering Rust Vtables"](https://www.youtube.com/watch?v=M_720LesVg4)*), which originally inspired the core concept and architectural direction of Reflective Rust.
 
-Reflective Rust establishes a comprehensive systems architecture for reflection in Rust. Rather than reducing reflection to a single dynamic API or unconstrained syntax macro system, Reflective Rust defines a phase-staged hierarchy that preserves Rust's core guarantees - safety, coherence, privacy, incremental compilation, and zero-cost abstractions.
+Reflective Rust documents a proposed multi-layer architecture for reflection in Rust. The proposal aims to preserve Rust's safety, coherence, privacy, incremental-compilation, and performance constraints; these are design goals to validate, not guarantees established by this repository.
 
 ---
 
@@ -39,9 +41,9 @@ Reflective Rust (Research Program)
 | Subsystem | Name | Description |
 | :--- | :--- | :--- |
 | **Research Program** | **Reflective Rust** | Overarching research program and publication title. |
-| **Formal Architecture** | **Rust Reflective Systems Architecture (RRSA)** | Complete multi-layer architectural specification. |
-| **Core Substrate** | **Compiler Semantic Graph (CSG)** | The canonical, phase-queryable ontology of program semantics. |
-| **Language Subsystem** | **Rust Semantic Reflection** | Compile-time-only `core::meta::Info` handle & query surface. |
+| **Formal Architecture** | **Rust Reflective Systems Architecture (RRSA)** | Proposed multi-layer architecture; implementation status is documented separately. |
+| **Core Substrate** | **Compiler Semantic Graph (CSG)** | Proposed graph model for compiler-resolved semantic facts; the current workspace implements an exchange schema only. |
+| **Language Subsystem** | **Rust Semantic Reflection** | Proposed compile-time handle/query surface; not implemented or available in stable Rust. |
 | **Runtime Subsystem** | **Runtime Semantic Projection** | Opt-in generation of runtime descriptors & checked adapters. |
 | **Execution Subsystem** | **Procedural Reflection Domain** | Explicit execution domains for retained frame introspection. |
 

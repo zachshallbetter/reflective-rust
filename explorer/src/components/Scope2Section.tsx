@@ -72,12 +72,12 @@ const initialNodes: Node[] = [
     position: { x: 50, y: 180 },
     data: {
       kanji: '定数評価エンジン',
-      label: 'rustc TypeContext',
+      label: 'Proposed rustc integration',
       bgColor: 'bg-amber-500/20',
       textColor: 'text-amber-400',
       borderColor: 'border-amber-500/60',
       icon: <Cpu className="w-4 h-4" />,
-      details: ['ConstEval: Miri Engine', 'Monomorph: Folded'],
+      details: ['Status: proposal', 'Extractor: absent'],
     },
   },
   {
@@ -86,12 +86,12 @@ const initialNodes: Node[] = [
     position: { x: 450, y: 180 },
     data: {
       kanji: '静的反射ハンドル',
-      label: 'core::meta::Info',
+      label: 'Proposed core::meta::Info',
       bgColor: 'bg-cyan-500/20',
       textColor: 'text-cyan-400',
       borderColor: 'border-cyan-500/60',
       icon: <Layers className="w-4 h-4" />,
-      details: ['ID: 0x8000_0000', 'Memory: 0 Bytes'],
+      details: ['ID: illustrative only', 'Overhead: not measured'],
     },
   },
   {
@@ -100,12 +100,12 @@ const initialNodes: Node[] = [
     position: { x: 250, y: 360 },
     data: {
       kanji: 'セマンティックグラフ',
-      label: 'Compiler Semantic Graph',
+      label: 'Illustrative CSG Fixture',
       bgColor: 'bg-purple-500/20',
       textColor: 'text-purple-400',
       borderColor: 'border-purple-500/60',
       icon: <Shield className="w-4 h-4" />,
-      details: ['Nodes: 1,000', 'Backend: LLVM/Cranelift'],
+      details: ['Nodes: sample', 'Backend: illustrative'],
     },
   },
   {
@@ -162,7 +162,7 @@ export const Scope2Section: React.FC = () => {
           <span className="gradient-text-cyan">Out-of-Process Graph Schema</span>
         </h2>
         <p className="text-slate-400 text-sm sm:text-base leading-relaxed">
-          Standardized JSON schema capturing type hierarchies, methods, and privacy bounds across LLVM, Cranelift, and GCC.
+          Proposed exchange schema for type and relationship data. This interactive diagram is illustrative fixture data, not output from a compiler extractor; cross-backend extraction and conformance are not implemented in this repository.
         </p>
       </div>
 
@@ -194,7 +194,7 @@ export const Scope2Section: React.FC = () => {
           <div className="cyber-corner-br" />
 
           <h3 className="text-xs font-bold text-white uppercase tracking-wider font-mono flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-rose-500 animate-ping" /> HUD Node Telemetry
+            <span className="w-2 h-2 rounded-full bg-rose-500 animate-ping" /> Illustrative Fixture Node
           </h3>
 
           {selectedNode ? (

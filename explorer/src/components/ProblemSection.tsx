@@ -25,7 +25,7 @@ export const ProblemSection: React.FC = () => {
           <span className="gradient-text-crimson">Escalates Complexity & Waste</span>
         </h2>
         <p className="text-slate-300 text-sm sm:text-base leading-relaxed font-sans">
-          Rust's macro ecosystem relies on procedural macros operating on raw, unparsed token streams devoid of type context - forcing duplicate AST parsing, inflating build times, and leaving AI tools blind.
+          Procedural macros receive token streams rather than compiler-resolved type information. Some derives parse those tokens with crates such as syn; build-time impact varies by workload. This comparison presents a proposed compiler-reflection design, not a feature implemented by this repository.
         </p>
       </div>
 
@@ -40,7 +40,7 @@ export const ProblemSection: React.FC = () => {
                 : 'text-slate-400 hover:text-white'
             }`}
           >
-            Traditional Macro (`syn` / `quote`)
+            Current Proc Macros (`syn` / `quote`)
           </button>
           <button
             onClick={() => handleTabChange('rrsa')}
@@ -50,7 +50,7 @@ export const ProblemSection: React.FC = () => {
                 : 'text-slate-400 hover:text-white'
             }`}
           >
-            Reflective Rust (`core::meta::Info`)
+            Proposed API (`core::meta::Info`)
           </button>
         </div>
       </div>
@@ -75,7 +75,7 @@ export const ProblemSection: React.FC = () => {
                 </div>
               </div>
               <span className="px-3 py-1 bg-rose-500/20 text-rose-300 text-xs font-mono font-bold border border-rose-500/40">
-                Build Penalty: +4.2x to +11.8x
+                No general benchmark established
               </span>
             </div>
 
@@ -108,15 +108,15 @@ pub fn derive_reflect(input: TokenStream) -> TokenStream {
                 <div className="space-y-3">
                   <div className="p-3.5 bg-slate-950/80 border border-rose-500/30 space-y-1">
                     <strong className="text-rose-400 block font-bold">1. Zero Type Resolution</strong>
-                    <p className="text-slate-300">Macros cannot resolve struct field sizes, field offsets, trait bounds, or monomorphized types.</p>
+                    <p className="text-slate-300">A procedural macro cannot directly query rustc's resolved types or final layout through the stable proc-macro API.</p>
                   </div>
                   <div className="p-3.5 bg-slate-950/80 border border-rose-500/30 space-y-1">
                     <strong className="text-rose-400 block font-bold">2. Redundant Crate Compilations</strong>
-                    <p className="text-slate-300">Every project depends on hundreds of heavy `syn`, `quote`, and `proc-macro2` AST dependencies.</p>
+                    <p className="text-slate-300">Some derive macros use parsing and code-generation crates such as syn, quote, and proc-macro2. The cost varies by dependency graph and build; this project has not established a general multiplier.</p>
                   </div>
                   <div className="p-3.5 bg-slate-950/80 border border-rose-500/30 space-y-1">
                     <strong className="text-rose-400 block font-bold">3. LLM Code Hallucinations</strong>
-                    <p className="text-slate-300">AI coding assistants reading raw source files fail to identify private visibility boundaries or unsafe lifetime constraints.</p>
+                    <p className="text-slate-300">AI tools can misinterpret code context; a compiler-backed graph might help when the underlying facts are available and trustworthy. This project has not measured a general error rate.</p>
                   </div>
                 </div>
               </div>
@@ -130,19 +130,19 @@ pub fn derive_reflect(input: TokenStream) -> TokenStream {
                   <ShieldCheck className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-white font-mono">Reflective Rust Static Reflection Pipeline</h3>
-                  <span className="text-xs text-cyan-400 font-mono">Opaque consteval handle resolution via `core::meta`</span>
+                  <h3 className="text-lg font-bold text-white font-mono">Proposed Static Reflection Pipeline (not implemented)</h3>
+                  <span className="text-xs text-cyan-400 font-mono">Conceptual proposal — not available on stable Rust</span>
                 </div>
               </div>
               <span className="px-3 py-1 bg-emerald-500/20 text-emerald-300 text-xs font-mono font-bold border border-emerald-500/40">
-                0 Bytes Overhead Guaranteed
+                No zero-cost claim established
               </span>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               <div className="space-y-3">
                 <span className="text-xs font-mono text-slate-400 uppercase flex items-center gap-2">
-                  <Zap className="w-4 h-4 text-cyan-400" /> Type-Safe Static Reflection Code (`core::meta`)
+                  <Zap className="w-4 h-4 text-cyan-400" /> Illustrative proposal (`core::meta` is not available on stable Rust)
                 </span>
                 <pre className="bg-slate-950 p-4 text-xs font-mono text-cyan-300 border border-cyan-500/30 overflow-x-auto leading-relaxed">
 {`use core::meta::{of, layout_of, fields_of, Info};
@@ -153,7 +153,7 @@ struct UserAccount {
     active: bool,
 }
 
-// Resolved at compile-time during consteval without syn or token parsing!
+// PSEUDOCODE: proposed API; this is not compilable stable Rust.
 const ACCOUNT_INFO: Info = of::<UserAccount>();
 const ACCOUNT_LAYOUT = layout_of::<UserAccount>();
 
@@ -165,19 +165,19 @@ const_eval! {
               </div>
 
               <div className="space-y-4 text-xs font-mono">
-                <span className="text-xs font-mono text-slate-400 uppercase">Architectural Guarantees</span>
+                <span className="text-xs font-mono text-slate-400 uppercase">Design goals (not established guarantees)</span>
                 <div className="space-y-3">
                   <div className="p-3.5 bg-slate-950/80 border border-cyan-500/30 space-y-1">
-                    <strong className="text-cyan-400 block font-bold">1. Compiler-Certified Handles</strong>
-                    <p className="text-slate-300">Opaque handles query compiler type context directly without token parsing or macro dependency overhead.</p>
+                    <strong className="text-cyan-400 block font-bold">1. Proposed compiler-owned handles</strong>
+                    <p className="text-slate-300">If implemented, opaque handles could query compiler type context directly. This interface does not exist in the current workspace.</p>
                   </div>
                   <div className="p-3.5 bg-slate-950/80 border border-cyan-500/30 space-y-1">
-                    <strong className="text-cyan-400 block font-bold">2. Zero Memory Cost (Theorem 1.1)</strong>
-                    <p className="text-slate-300">Un-annotated structs generate exactly 0 bytes of static binary or runtime heap allocation.</p>
+                    <strong className="text-cyan-400 block font-bold">2. No measured overhead result</strong>
+                    <p className="text-slate-300">Avoiding metadata for unannotated types is a design goal, not a demonstrated theorem or benchmark result.</p>
                   </div>
                   <div className="p-3.5 bg-slate-950/80 border border-cyan-500/30 space-y-1">
-                    <strong className="text-cyan-400 block font-bold">3. Compiler-Certified LLM Graph RAG</strong>
-                    <p className="text-slate-300">`csg::slice_around` feeds AI models exact compiler context slices, eliminating LLM hallucinations.</p>
+                    <strong className="text-cyan-400 block font-bold">3. Future compiler-backed context slicing</strong>
+                    <p className="text-slate-300">Graph slicing can provide structured context only when trustworthy source facts exist; it cannot eliminate hallucinations, and this workspace has no compiler extractor.</p>
                   </div>
                 </div>
               </div>
@@ -210,7 +210,7 @@ const_eval! {
               <span className="w-2 h-2 rounded-full bg-rose-400 mt-1.5 shrink-0" />
               <div>
                 <strong className="text-rose-300 block mb-0.5">Unparsed `TokenStream` Input</strong>
-                Macros operate on raw syntax strings without type resolution, field offsets, or layout padding knowledge.
+                Procedural macros see token input rather than compiler-resolved type information; derive implementations may still emit code that queries runtime layout where available.
               </div>
             </li>
 

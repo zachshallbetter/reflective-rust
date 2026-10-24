@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "oxlint",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predev": "node ../scripts/gen-llms.mjs && node ../scripts/sync-explorer-corpus.mjs",
+    "prebuild": "node ../scripts/gen-llms.mjs && node ../scripts/sync-explorer-corpus.mjs"
   },
   "dependencies": {
     "@xyflow/react": "^12.11.2",

@@ -58,6 +58,11 @@ jobs:
             exit 1
           fi
 
+      - name: Build Interactive Explorer
+        run: |
+          npm ci --prefix explorer
+          npm --prefix explorer run build
+
   conclusion:
     name: Verification Gate Conclusion (Required Check)
     needs: [verification]

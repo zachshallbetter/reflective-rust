@@ -11,14 +11,14 @@ export const FooterSection: React.FC<FooterSectionProps> = ({ onOpenCorpus }) =>
 
   const handleCopyLink = () => {
     audioEngine.playClick(900);
-    navigator.clipboard.writeText(window.location.origin + '/llms-full.txt');
+    navigator.clipboard.writeText('https://raw.githubusercontent.com/zachshallbetter/reflective-rust/main/llms.txt');
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
 
   const handleDownload = () => {
     audioEngine.playCyberSweep();
-    window.open('/llms-full.txt', '_blank');
+    window.open('https://raw.githubusercontent.com/zachshallbetter/reflective-rust/main/llms.txt', '_blank');
   };
 
   return (
@@ -40,7 +40,7 @@ export const FooterSection: React.FC<FooterSectionProps> = ({ onOpenCorpus }) =>
                 Reflective Rust Systems Architecture (RRSA)
               </span>
               <span className="text-slate-400 block text-xs">
-                Research Monograph v1.0.0 • 115 Chapters (30,003 Words)
+                Research proposal • executable runtime reference implementation
               </span>
             </div>
           </div>
@@ -52,7 +52,7 @@ export const FooterSection: React.FC<FooterSectionProps> = ({ onOpenCorpus }) =>
                 onClick={onOpenCorpus}
                 className="px-4 py-2.5 bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 font-bold text-xs font-mono shadow-lg hover:bg-cyan-500/30 transition-all flex items-center gap-2"
               >
-                <BookOpen className="w-4 h-4 text-cyan-400" /> Read Single-File Corpus
+                <BookOpen className="w-4 h-4 text-cyan-400" /> Read Research Corpus
               </button>
             )}
 
@@ -60,7 +60,7 @@ export const FooterSection: React.FC<FooterSectionProps> = ({ onOpenCorpus }) =>
               onClick={handleDownload}
               className="px-4 py-2.5 bg-gradient-to-r from-rose-600 to-amber-600 text-white font-bold text-xs font-mono shadow-lg hover:scale-105 transition-all flex items-center gap-2"
             >
-              <Download className="w-4 h-4 text-cyan-300" /> Download `llms-full.txt` (276.5 KB)
+              <Download className="w-4 h-4 text-cyan-300" /> Open `llms.txt` index
             </button>
 
             <button
@@ -87,11 +87,11 @@ export const FooterSection: React.FC<FooterSectionProps> = ({ onOpenCorpus }) =>
         <div className="flex flex-col sm:flex-row items-center justify-between text-xs font-mono text-slate-500 border-t border-slate-800/80 pt-6">
           <span>Reflective Rust Research Group © 2026. MIT / Apache-2.0 Dual License.</span>
           <div className="flex items-center gap-4 text-[11px] mt-2 sm:mt-0">
-            <span className="text-emerald-400">Theorem 1.1 Verified</span>
+            <span className="text-amber-400">Zero-cost claims unproven</span>
             <span>•</span>
-            <span className="text-cyan-400">0B Memory Cost</span>
+            <span className="text-cyan-400">Runtime descriptors opt-in</span>
             <span>•</span>
-            <span className="text-purple-400">CSG Graph RAG Active</span>
+            <span className="text-purple-400">Compiler extractor not implemented</span>
           </div>
         </div>
       </div>

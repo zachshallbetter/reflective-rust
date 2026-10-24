@@ -3,7 +3,7 @@ title: "Bibliography"
 scope: "long-term"
 status: "canonical"
 version: "1.0.0"
-updated: "2026-07-31"
+updated: "2026-10-22"
 summary: "Reflective Rust research specification for Bibliography under Scope III: Long-Term (Reflective Environments, AI Tooling & Spatial Projection)."
 ---
 # Bibliography
@@ -15,8 +15,8 @@ summary: "Reflective Rust research specification for Bibliography under Scope II
 1. Barry Revzin et al. **P2996R13: Reflection for C++26.** WG21, 2025.  
    https://www9.open-std.org/JTC1/SC22/WG21/docs/papers/2025/p2996r13.html
 
-2. Rust Project Goals. **Reflection and comptime, 2026.**  
-   https://rust-lang.github.io/rust-project-goals/2026/reflection-and-comptime.html
+2. Rust Project Goals. **Reflection and comptime, 2026.** Accepted project goal describing ongoing experimental work; not a stable-language specification.  
+   https://goals.rust-lang.org/2026/reflection-and-comptime.html
 
 3. LaurieWired. **CallMeMaybe.**  
    https://github.com/LaurieWired/CallMeMaybe

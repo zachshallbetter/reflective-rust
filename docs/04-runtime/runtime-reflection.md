@@ -3,18 +3,18 @@ title: "Runtime Reflection"
 scope: "mid-term"
 status: "canonical"
 version: "1.0.0"
-updated: "2026-07-31"
+updated: "2026-10-22"
 summary: "Reflective Rust research specification for Runtime Reflection under Scope II: Mid-Term (Compiler Semantic Graph & Runtime Semantic Projection)."
 ---
 # Runtime Reflection
 
-**Status:** Research synthesis
+**Status:** Research synthesis. The model below is a proposed target shape, not the exact public API implemented by the current crates. `meta::Info` is not available in stable Rust; the workspace currently implements opt-in runtime descriptors through derive-generated code.
 
 ## 15. Runtime projection model
 
 ### 15.1 Principle
 
-`meta::Info` never survives into ordinary runtime memory. A compiler or metaprogram emits only the requested projection.
+Design goal: `meta::Info` would never survive into ordinary runtime memory; a compiler or metaprogram would emit only the requested projection. This is not a verified zero-cost guarantee of the current workspace.
 
 ### 15.2 Descriptor model
 

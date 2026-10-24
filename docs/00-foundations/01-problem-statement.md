@@ -2,8 +2,8 @@
 title: "Problem Statement: The Meta-Programming Void in Modern Systems Languages"
 scope: "near-term"
 status: "canonical"
-version: "1.0.0"
-updated: "2026-07-31"
+version: "1.0.1"
+updated: "2026-10-22"
 summary: "Reflective Rust research specification for Problem Statement: The Meta-Programming Void in Modern Systems Languages under Scope I: Near-Term (Rust Semantic Reflection & Compile-Time Metaprogramming)."
 ---
 # Problem Statement: The Meta-Programming Void in Modern Systems Languages
@@ -29,7 +29,7 @@ Procedural macros receive `proc_macro::TokenStream`, which represents abstract s
 - Trait implementations or visibility rules enforced by the module hierarchy.
 
 ### 2.2 Compilation Time Escalation & Duplicate AST Parsing
-Because procedural macros operate out-of-process without access to internal compiler data structures (`rustc_middle::ty::TyCtxt`), every crate consuming macros must re-parse, re-tokenise, and re-construct Abstract Syntax Trees (ASTs) using `syn`. In large enterprise codebases, `syn` compilation and token parsing consume up to 40% of total build time.
+Because procedural macros operate out-of-process without access to internal compiler data structures (`rustc_middle::ty::TyCtxt`), every crate consuming macros must re-parse, re-tokenise, and re-construct Abstract Syntax Trees (ASTs) using `syn`. Parsing and code-generation dependencies can contribute to build cost, but the impact depends on the dependency graph, caching, and workload. This document does not provide a benchmark supporting a general percentage claim; measure representative projects before quantifying the effect.
 
 ### 2.3 LLM Context Blindness & Hallucination
 AI coding tools and Language Server Protocols (LSP) operate on raw source code text. When attempting to perform structural refactoring or Graph RAG context retrieval, AI agents frequently hallucinate non-existent fields, misinterpret private struct visibility, or misjudge lifetime bounds because they lack access to compiler-certified semantic graphs.
@@ -41,7 +41,7 @@ Current Rust Metaprogramming Pipeline:
                                                                  (No Type Context)
 
 Reflective Rust Architecture:
-[Source Text] ──► [rustc Type Checker] ──► [core::meta::Info] ──► [CSG Graph] ──► [Zero-Cost VTables]
+[Source Text] ──► [rustc Type Checker] ──► [proposed core::meta::Info] ──► [CSG exchange schema] ──► [optional runtime descriptors]
                                                     ▲
                                             (Semantic Handles)
 ```
@@ -50,10 +50,10 @@ Reflective Rust Architecture:
 
 ## 3. The Reflective Rust Solution
 
-**Reflective Rust (RRSA)** resolves these limitations by introducing a three-tier architecture:
-1. **Static Semantic Reflection (`core::meta`)**: Language-level opaque handles (`Info`) exposing compile-time type, layout, and field metadata directly during `consteval`.
-2. **Compiler Semantic Graph (CSG)**: An out-of-process, language-agnostic graph schema capturing all declarations, relationships, and privacy boundaries.
-3. **Opt-In Zero-Cost Runtime Descriptors (`#[derive(Reflectable)]`)**: Compile-time synthesized VTables providing runtime reflection for annotated types with zero cost for un-annotated types.
+**Reflective Rust (RRSA)** proposes a three-tier architecture that could address some of these limitations if the required compiler support were designed, implemented, and validated:
+1. **Proposed static semantic reflection (`core::meta`)**: A future language/compiler interface with opaque handles (`Info`) for compile-time type, layout, and field metadata. This interface is not implemented by this workspace or available as a stable Rust API.
+2. **Compiler Semantic Graph (CSG)**: This repository implements an exchange schema, but does not implement a compiler extractor. Hand-authored graph fixtures are not compiler-certified evidence.
+3. **Opt-in runtime descriptors (`#[derive(Reflectable)]`)**: Implemented derive-macro support can produce runtime descriptors from syntax-level type declarations. Zero-cost behavior and compiler-synthesized VTables are not established claims.
 ---
 
 ## Navigation

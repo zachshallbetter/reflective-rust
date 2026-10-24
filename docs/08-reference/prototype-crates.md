@@ -3,12 +3,12 @@ title: "Prototype Crate Architecture"
 scope: "near-term"
 status: "canonical"
 version: "1.0.0"
-updated: "2026-07-31"
+updated: "2026-10-22"
 summary: "Reflective Rust research specification for Prototype Crate Architecture under Scope I: Near-Term (Rust Semantic Reflection & Compile-Time Metaprogramming)."
 ---
 # Prototype Crate Architecture
 
-**Status:** Research synthesis
+**Status:** Research synthesis. This is a proposed crate decomposition, not a list of the workspace's actual Cargo package names. See [Implementation Status](../IMPLEMENTATION_STATUS.md) for the implemented crates and their boundaries.
 
 ## 27. Prototype crate architecture
 

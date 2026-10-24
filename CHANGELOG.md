@@ -1,5 +1,38 @@
 # Reflective Rust - Changelog
 
+## [Unreleased]
+
+> Historical note: older 1.x/0.x research-corpus entries below are legacy repository notes, not a reliable substitute for the published GitHub release list or current implementation status. Earlier claims about compiler reflection, cross-backend conformance, zero-cost behavior, and production services are superseded by [the verified implementation status](docs/IMPLEMENTATION_STATUS.md).
+
+### Changed
+- Reconciled workspace version, protocol identifiers, implementation status, and release instructions across canonical docs.
+- Qualified unsupported build-time and zero-cost claims; identified compiler-reflection APIs as proposals rather than implemented stable Rust features.
+- Clarified that external-consumer test claims are maintainer-reported unless their evidence is present in this repository.
+- Updated the documentation changelog gate to require the root changelog rather than nonexistent per-layer changelogs.
+- Made the explorer's compiler-reflection and graph-slicing panels explicitly illustrative, removed unsupported benchmark figures, and ensured the generated corpus is copied into the explorer build.
+- Updated the README to distinguish the current workspace version from the latest published packaging release and to make implementation boundaries and feedback requests easier to find.
+- Added a runnable derive-macro example that serializes an opt-in runtime type descriptor as JSON.
+- Advanced the executable workspace to `0.2.0`; the runtime and CSG schema identifiers remain independently versioned as `rr-rsp-0.1` and `rr-csg-0.1`.
+- Added the canonical Runtime Semantic Projection envelope and Operational Semantic Graph, including provenance, compatibility, access projection, validation, JCS serialization, and SHA-256 identity.
+- Added authenticated envelopes with Ed25519 signatures, trusted key-ID binding, explicit compatibility checks, and enforced RFC 3339 freshness windows for observations.
+- Reworked `#[derive(Reflectable)]` to implement the shared runtime descriptor trait for structs, generics, and enums.
+- Made CSG provenance explicit and distinguished compiler-produced graphs from fixtures.
+- Replaced fabricated compiler metadata, unsafe raw-memory serialization, false cross-backend conformance, and hard-coded performance assertions with honest boundaries and testable behavior.
+- Removed the word-count and unverified “value metrics” gate; repository gates now verify code, structure, links, changelog discipline, and generated-corpus determinism.
+- Updated repository status, terminology, examples, and verification gates to match implemented behavior.
+- Labeled interactive explorer diagrams as illustrative proposals/fixtures and removed unverified zero-cost and zero-hallucination claims.
+- Clarified that the CSG and context-slicing explorer panels use hard-coded demonstration data rather than compiler-extracted evidence.
+- Fixed empty-metrics TypeScript inference in the evidence dashboards and clarified the server panel's example-only status.
+- Reworked interactive compile-time/layout/CSG demos to identify mock output, avoid unsupported zero-cost and performance metrics, and link to the tracked LLM index instead of an untracked corpus file.
+- Labeled the graph-flow canvas as hard-coded fixture data rather than live compiler IR.
+- Clarified generated agent-index language so it does not present the proposed architecture as an implemented compiler substrate.
+- Marked the original long-form report as historical and revised graph-slicing research/RFC language to distinguish fixture operations from compiler-certified facts.
+- Clarified the proposed `core::meta` API and CSG architecture against the actual runtime-oriented crates; repaired a malformed Markdown code fence in the `meta::Info` design note.
+- Corrected protocol documentation to distinguish domain-separated signatures from plain artifact hashes, and clarified that compiler-certified graph production is not implemented.
+- Updated Rust reflection/comptime status against the official 2026 Project Goals page and corrected the C++ reflection paper citation and unpublished-manuscript BibTeX metadata.
+- Clarified that compiler-generated access contexts, owner-site privacy projection, and reflection attributes are proposals, not stable-Rust behavior.
+- Clarified the runtime reflection, FAQ, and prototype-crate pages so proposed API sketches and target crate architecture are not mistaken for current workspace APIs.
+
 ## [0.1.3] - 2026-10-11
 
 ### Changed
@@ -14,20 +47,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
-
-## [Unreleased]
-
-### Changed
-- Updated the README to distinguish the current workspace version from the latest published packaging release and to make implementation boundaries and feedback requests easier to find.
-- Added a runnable derive-macro example that serializes an opt-in runtime type descriptor as JSON.
-- Reset the executable workspace to `0.1.0` so crate versions no longer imply implementation of the independently versioned language proposal.
-- Added the canonical Runtime Semantic Projection envelope and Operational Semantic Graph, including provenance, compatibility, access projection, validation, JCS serialization, and SHA-256 identity.
-- Added authenticated envelopes with Ed25519 signatures, trusted key-ID binding, explicit compatibility checks, and enforced RFC 3339 freshness windows for observations.
-- Reworked `#[derive(Reflectable)]` to implement the shared runtime descriptor trait for structs, generics, and enums.
-- Made CSG provenance explicit and distinguished compiler-produced graphs from fixtures.
-- Replaced fabricated compiler metadata, unsafe raw-memory serialization, false cross-backend conformance, and hard-coded performance assertions with honest boundaries and testable behavior.
-- Removed the word-count and unverified “value metrics” gate; repository gates now verify code, structure, links, changelog discipline, and generated-corpus determinism.
-- Updated repository status, terminology, examples, and verification gates to match implemented behavior.
 
 ## [1.0.1] - 2026-07-31
 

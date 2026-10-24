@@ -3,19 +3,19 @@ title: "Compiler Semantic Graph (CSG) Specification"
 scope: "mid-term"
 status: "canonical"
 version: "1.0.0"
-updated: "2026-07-31"
+updated: "2026-10-22"
 summary: "Reflective Rust research specification for Compiler Semantic Graph (CSG) Specification under Scope II: Mid-Term (Compiler Semantic Graph & Runtime Semantic Projection)."
 ---
 # Compiler Semantic Graph (CSG) Specification
 
-> **Status:** Canonical Architecture Specification  
-> **Reference Substrate:** [`crates/reflective-rust-csg`](../../crates/reflective-rust-csg)  
+> **Status:** Canonical repository design proposal; no compiler extractor is implemented.  
+> **Related workspace code:** [`crates/reflective-rust-csg`](../../crates/reflective-rust-csg) implements the CSG exchange model, validation, and certification checks; it does not extract compiler semantic data.  
 
 ---
 
 ## 1. Overview & CSG Schema Architecture
 
-The **Compiler Semantic Graph (CSG)** is an out-of-process, compiler-agnostic graph representation exported by `rustc` during compilation. It externalizes the compiler's internal High-Level Intermediate Representation (HIR) and Type Context (`TyCtxt`) into a standardized JSON graph structure consumable by IDEs, static analyzers, and AI agent engines.
+The proposed **Compiler Semantic Graph (CSG)** is an out-of-process, compiler-agnostic graph representation intended to be exported by a compiler integration during compilation. A future extractor could externalize selected compiler-resolved facts into a standardized JSON graph for IDEs, static analyzers, and AI tools. No `rustc`, LLVM, Cranelift, or GCC extractor currently exists in this workspace; the crate linked above validates the exchange model rather than reading HIR or `TyCtxt`.
 
 ```text
        Compiler Semantic Graph Architecture
@@ -52,7 +52,7 @@ The **Compiler Semantic Graph (CSG)** is an out-of-process, compiler-agnostic gr
 
 ```json
 {
-  "version": "1.0.0",
+  "schema_version": "rr-csg-0.1",
   "nodes": [
     {
       "id": 1,

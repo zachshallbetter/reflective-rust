@@ -1,14 +1,14 @@
 ---
-title: "Compiler-Certified Graph RAG Context Slicing (`csg::slice_around`)"
+title: "Graph RAG Context Slicing Proposal (`csg::slice_around`)"
 scope: "long-term"
 status: "canonical"
 version: "1.0.0"
 updated: "2026-07-31"
-summary: "Reflective Rust research specification for Compiler-Certified Graph RAG Context Slicing (`csg::slice_around`) under Scope III: Long-Term (Reflective Environments, AI Tooling & Spatial Projection)."
+summary: "Research proposal for graph-based context slicing; compiler-certified extraction is not implemented."
 ---
-# Compiler-Certified Graph RAG Context Slicing (`csg::slice_around`)
+# Proposed Graph-Based Context Slicing (`csg::slice_around`)
 
-> **Status:** Canonical Research Specification  
+> **Status:** Research proposal; compiler extraction is not implemented  
 > **Reference Substrate:** [`crates/reflective-rust-agent`](../../crates/reflective-rust-agent)  
 
 ---
@@ -24,12 +24,12 @@ Traditional AI coding assistants process source code as unstructured text files 
 
 ## 2. Compiler-Certified Graph RAG Slicing
 
-**Reflective Rust** eliminates LLM hallucination by introducing **Graph RAG Context Slicing (`csg::slice_around`)**:
+**Reflective Rust** proposes graph-based context slicing (`csg::slice_around`) to provide more structured context. The current workspace can slice supplied graph data, but has no compiler extractor; fixture data is not compiler-certified evidence.
 
 ```rust
 use reflective_rust_agent::slice_around;
 
-// Extract exact compiler-certified context slice around symbol #1 within radius 1
+// Illustrative pseudocode: slice a supplied graph fixture around symbol #1
 let slice = slice_around(&csg_graph, target_symbol_id, 1).unwrap();
 println!("{}", slice.formatted_prompt_context);
 ```
@@ -37,13 +37,13 @@ println!("{}", slice.formatted_prompt_context);
 ### 2.1 Slicing Protocol Output Example
 
 ```text
-/// COMPILER-CERTIFIED SEMANTIC CONTEXT FOR SYMBOL: SecurityToken
+/// ILLUSTRATIVE FIXTURE CONTEXT FOR SYMBOL: SecurityToken
 /// Kind: StructNode | Privacy: pub | Span: auth.rs:1
 /// Connected Dependencies & Members:
   - secret_key (FieldNode) [Privacy: pub(crate)]
 ```
 
-This guarantees LLM agents receive **exact, compiler-verified type bounds, field offsets, and privacy barriers**, completely eliminating hallucination.
+This does not guarantee compiler verification or eliminate hallucinations. Such guarantees would require a real compiler extractor, sound provenance enforcement, and independent validation; those integrations are future work.
 ---
 
 ## Navigation

@@ -2,13 +2,13 @@
 title: "Implementation Status"
 scope: "repository"
 status: "canonical"
-version: "0.1.0"
-updated: "2026-08-25"
+version: "1.0.1"
+updated: "2026-10-22"
 summary: "Verified distinction between implemented runtime protocols and proposed compiler reflection."
 ---
 # Implementation Status
 
-The workspace implements a **v0.1 runtime semantic protocol**, not a Rust compiler reflection implementation.
+The Cargo workspace is currently **0.2.0** and implements the `rr-rsp-0.1` and `rr-csg-0.1` protocol/schema families. These protocol identifiers are independent of the Cargo package version. This is a runtime protocol and reference implementation, **not** a Rust compiler-reflection implementation.
 
 | Capability | Status | Evidence |
 | --- | --- | --- |
@@ -36,4 +36,4 @@ Status words are strict:
 - **Tested** means an automated check exercises that behavior.
 - **Empirically validated** requires a recorded method, environment, data, and reproducible result; no workspace-wide empirical claim is made.
 
-Current repository version: `0.1.0`. The research specification and executable crates remain independently versioned by policy.
+Current Cargo workspace version: `0.2.0`. The `rr-rsp-0.1` and `rr-csg-0.1` schema identifiers remain `0.1`; schema/protocol identifiers and Cargo package versions are separate version axes. Research proposals describe future work and do not imply that compiler support exists.
