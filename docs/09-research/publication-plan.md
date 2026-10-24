@@ -10,6 +10,8 @@ summary: "Reflective Rust research specification for Publication Plan under Scop
 
 **Status:** Research synthesis
 
+**Current manuscript:** A first foundational paper draft now exists at [docs/papers/reflective-rust-foundational-paper.md](../papers/reflective-rust-foundational-paper.md). It is a draft for review and verification, not a published paper. The sequence below remains a plan for future publication and specialization.
+
 Recommended publication sequence:
 
 1. Position paper defining the taxonomy and staged architecture.

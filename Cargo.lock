@@ -292,6 +292,7 @@ dependencies = [
  "proc-macro2",
  "quote",
  "reflective-rust-protocol",
+ "serde_json",
  "syn 2.0.119",
 ]
 
