@@ -26,7 +26,7 @@ Reflective Rust builds upon four decades of programming language research and me
 2. **Gregor Kiczales, Jim des Rivières, and Daniel G. Bobrow (1991)**: For formulating the Metaobject Protocol (MOP) and CLOS, demonstrating that object-oriented execution environments can expose clean reflective interfaces without sacrificing runtime performance.
 3. **C++ Reflection Working Group (P2996)**: For pioneering modern static reflection in C++, demonstrating the power of opaque type handles and compile-time evaluation.
 4. **The Rust Core Team & Community**: For designing Rust's affine type system, ownership semantics, hygiene models, and const evaluation engines (`consteval` / `Miri`) upon which this architecture is constructed.
-5. **LaurieWired**: For her YouTube channel ([@LaurieWired](https://www.youtube.com/@LaurieWired)), GitHub projects ([@LaurieWired](https://github.com/LaurieWired)), and video [*Reverse Engineering Rust Vtables*](https://www.youtube.com/watch?v=M_720LesVg4), which inspired the initial inquiry into vtable layout and static reflection.
+5. **LaurieWired**: For her YouTube channel ([@LaurieWired](https://www.youtube.com/@LaurieWired)), GitHub projects ([@LaurieWired](https://github.com/LaurieWired)), and video [*The LEAST Private Operating System Ever Created*](https://www.youtube.com/watch?v=M_720LesVg4), whose discussion of Symbolics Genera, Lisp, and reflection inspired the initial inquiry behind Reflective Rust.
 6. **The Julia and Smalltalk Research Communities**: For demonstrating the expressive power of dynamic introspection and signals-first reflective environments.
 ---
 

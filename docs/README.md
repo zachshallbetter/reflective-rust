@@ -17,7 +17,7 @@ summary: "Research overview of the proposed Reflective Rust architecture and the
 > **Proposed Compiler Substrate:** Compiler Semantic Graph (CSG) exchange model  
 
 > [!NOTE]
-> **Special Acknowledgment**: Special thanks to **[LaurieWired](https://github.com/LaurieWired)** for her amazing YouTube channel ([@LaurieWired](https://www.youtube.com/@LaurieWired)) and her insightful video (*["Reverse Engineering Rust Vtables"](https://www.youtube.com/watch?v=M_720LesVg4)*), which originally inspired the core concept and architectural direction of Reflective Rust.
+> **Special Acknowledgment**: Special thanks to **[LaurieWired](https://github.com/LaurieWired)** for her YouTube channel ([@LaurieWired](https://www.youtube.com/@LaurieWired)) and her video [*The LEAST Private Operating System Ever Created*](https://www.youtube.com/watch?v=M_720LesVg4). Its examination of Symbolics Genera, Lisp, and reflection helped inspire the inquiry that became Reflective Rust.
 
 Reflective Rust documents a proposed multi-layer architecture for reflection in Rust. The proposal aims to preserve Rust's safety, coherence, privacy, incremental-compilation, and performance constraints; these are design goals to validate, not guarantees established by this repository.
 

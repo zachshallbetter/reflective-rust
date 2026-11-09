@@ -5,6 +5,8 @@
 > Historical note: older 1.x/0.x research-corpus entries below are legacy repository notes, not a reliable substitute for the published GitHub release list or current implementation status. Earlier claims about compiler reflection, cross-backend conformance, zero-cost behavior, and production services are superseded by [the verified implementation status](docs/IMPLEMENTATION_STATUS.md).
 
 ### Changed
+- Corrected the LaurieWired video title and reflection-focused attribution in the research overview and abstract; the original video URL was already correct.
+- Added frontmatter to the research-papers index so the documented structure check can validate it.
 - Reconciled workspace version, protocol identifiers, implementation status, and release instructions across canonical docs.
 - Qualified unsupported build-time and zero-cost claims; identified compiler-reflection APIs as proposals rather than implemented stable Rust features.
 - Clarified that external-consumer test claims are maintainer-reported unless their evidence is present in this repository.
