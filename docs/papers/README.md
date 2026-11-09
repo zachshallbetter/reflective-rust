@@ -1,3 +1,12 @@
+---
+title: "Research Papers"
+scope: "research"
+status: "index"
+version: "0.1.0"
+updated: "2026-11-08"
+summary: "Index of repository-hosted research manuscript drafts, not peer-reviewed publications."
+---
+
 # Research Papers
 
 This directory contains standalone manuscript artifacts derived from the broader Reflective Rust research specification.
