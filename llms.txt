@@ -23,6 +23,8 @@ Version: v0.2.0
 - docs/meta/releasing.md: Releasing
 - docs/meta/publishing.md: Publishing
 - docs/README.md: Overview
+- docs/papers/README.md: Research Papers
+- docs/papers/reflective-rust-foundational-paper.md: Foundational Paper (preprint draft)
 - docs/00-foundations/README.md: 00 Foundations
 - docs/00-foundations/00-abstract.md: Abstract
 - docs/00-foundations/01-problem-statement.md: Problem Statement
