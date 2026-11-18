@@ -1,0 +1,26 @@
+name: Feature request
+description: Propose a change to the reference implementation, the schemas or the research documents.
+labels: [enhancement]
+body:
+  - type: markdown
+    attributes:
+      value: >
+        Architectural criticism is welcome. Keep compiler facts, runtime descriptors and operational topology
+        distinct, and say whether the idea belongs in a derive macro, a runtime library or a future compiler
+        integration (see docs/IMPLEMENTATION_STATUS.md).
+  - type: textarea
+    id: problem
+    attributes:
+      label: The need
+      description: What can't be expressed or checked today?
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: How you imagine it
+      description: A crate, an API, a schema field, a document, an existing project to learn from.
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered

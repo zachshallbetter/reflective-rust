@@ -1,0 +1,41 @@
+name: Bug report
+description: A crate, a schema, a document or a verification gate isn't behaving as documented.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: >
+        Thanks for the report. A minimal reproduction is the fastest path to a fix. Report a security problem
+        privately, see SECURITY.md.
+  - type: input
+    id: package
+    attributes:
+      label: Crate and version
+      placeholder: reflective-rust-protocol 0.2.0 (or the commit, if built from main)
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+      description: What should have happened. Quote the docs or implementation-status section if relevant.
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: What happened instead
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Reproduction
+      description: Steps, a code snippet, or a command such as `cargo run -p reflective-rust-derive --example describe_type`.
+    validations:
+      required: true
+  - type: input
+    id: env
+    attributes:
+      label: Environment
+      placeholder: rustc version, OS
